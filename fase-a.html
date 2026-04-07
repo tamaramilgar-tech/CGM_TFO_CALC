@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASE A | Tipos de datos y referencias | Calc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <a class="breadcrumb" href="index.html">← Inicio</a>
+      <p class="eyebrow">FASE A</p>
+      <h1>Tipos de datos y referencias</h1>
+      <p class="lead">Uso de diferentes tipos de datos y referencias para celdas, rangos, hojas y libros.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container content-grid">
+      <aside class="card sticky-card">
+        <h3>Resumen de la fase</h3>
+        <p>Trabajas en una pequeña papelería y debes preparar una hoja con productos, precios, cantidades e IVA para calcular importes correctamente sin repetir operaciones manuales.</p>
+        <h4>Material necesario</h4>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Un archivo nuevo en formato ODS</span><span class="pill">Conocimientos básicos de abrir, guardar y desplazarse por la hoja</span></div>
+      </aside>
+
+      <div>
+        <section class="card">
+          <h2>Conceptos básicos que debes conocer</h2>
+          <ul class="list-clean">
+            <li>Tipos de datos en Calc: texto, número, fecha, moneda, porcentaje y fórmula.</li>
+<li>Celda, fila, columna, hoja y libro.</li>
+<li>Referencias relativas, absolutas y mixtas.</li>
+<li>Rangos como conjunto de celdas relacionadas.</li>
+<li>Referencias entre hojas con expresiones como Hoja2.A1 o similares según inserción automática de Calc.</li>
+          </ul>
+          <div class="note">
+            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Datos de partida para la práctica</h2>
+          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Producto</th><th>Precio</th><th>Cantidad</th></tr></thead>
+              <tbody>
+                <tr><td>Bolígrafos</td><td>1,20</td><td>25</td></tr>
+<tr><td>Cuadernos</td><td>2,50</td><td>18</td></tr>
+<tr><td>Carpetas</td><td>3,10</td><td>12</td></tr>
+<tr><td>Archivadores</td><td>4,90</td><td>9</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Práctica guiada paso a paso</h2>
+          <div class="step-list">
+            <article class="step"><h4>Paso 1. Preparar la hoja</h4><p>Abre Calc y guarda el archivo con el nombre <strong>fase-a-datos-referencias.ods</strong>. Cambia el nombre de la primera hoja a <strong>Ventas</strong>.</p></article>
+<article class="step"><h4>Paso 2. Introducir los datos</h4><p>Escribe en la fila 1 los encabezados <strong>Producto</strong>, <strong>Precio</strong> y <strong>Cantidad</strong>. Después completa la tabla con los datos propuestos.</p></article>
+<article class="step"><h4>Paso 3. Añadir el total por producto</h4><p>En la celda D1 escribe <strong>Total sin IVA</strong>. En D2 introduce la fórmula <code>=B2*C2</code> y copia hacia abajo. Explica al alumnado que aquí se usa una <strong>referencia relativa</strong>.</p></article>
+<article class="step"><h4>Paso 4. Crear un valor fijo de IVA</h4><p>En F1 escribe <strong>IVA</strong> y en F2 escribe <strong>21%</strong>. En E1 escribe <strong>Total con IVA</strong>.</p></article>
+<article class="step"><h4>Paso 5. Usar referencia absoluta</h4><p>En E2 escribe <code>=D2*(1+$F$2)</code>. Copia la fórmula hacia abajo. Comenta que <code>$F$2</code> no cambia al copiar porque es una <strong>referencia absoluta</strong>.</p></article>
+<article class="step"><h4>Paso 6. Practicar una referencia mixta</h4><p>En H1, I1 e J1 escribe los nombres de tres meses. Luego copia una pequeña tabla y utiliza referencias mixtas, por ejemplo <code=$B2*H$1</code> en un ejercicio guiado por el docente para mostrar qué parte queda fija.</p></article>
+<article class="step"><h4>Paso 7. Referenciar otra hoja</h4><p>Crea una segunda hoja llamada <strong>Resumen</strong>. En A1 escribe <strong>Importe total</strong> y en B1 usa una fórmula que sume los importes de la hoja Ventas, por ejemplo <code>=SUMA(Ventas.E2:E5)</code>.</p></article>
+<article class="step"><h4>Paso 8. Guardar y revisar</h4><p>Comprueba que al modificar un precio o una cantidad cambian automáticamente los resultados. Guarda el archivo y revisa qué fórmulas usan referencias relativas y cuáles absolutas.</p></article>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Tipo test final</h2>
+          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
+          <div class="test-item"><h4>1. ¿Qué ocurre con una referencia relativa al copiar una fórmula?</h4><p><strong>Opciones:</strong> Siempre queda fija / Se adapta a la nueva posición / Se convierte en texto</p><p><strong>Respuesta correcta:</strong> Se adapta a la nueva posición.</p></div>
+<div class="test-item"><h4>2. ¿Cuál de estas referencias es absoluta?</h4><p><strong>Opciones:</strong> A1 / $A$1 / A$1:B5</p><p><strong>Respuesta correcta:</strong> $A$1.</p></div>
+<div class="test-item"><h4>3. ¿Qué representa A2:D8?</h4><p><strong>Opciones:</strong> Una hoja / Un rango / Una macro</p><p><strong>Respuesta correcta:</strong> Un rango.</p></div>
+<div class="test-item"><h4>4. ¿Para qué sirve usar una referencia absoluta en esta práctica?</h4><p><strong>Opciones:</strong> Para fijar el valor del IVA / Para borrar datos / Para crear gráficos</p><p><strong>Respuesta correcta:</strong> Para fijar el valor del IVA.</p></div>
+<div class="test-item"><h4>5. ¿Se pueden usar datos de otra hoja del mismo libro?</h4><p><strong>Opciones:</strong> No / Sí / Solo con macros</p><p><strong>Respuesta correcta:</strong> Sí.</p></div>
+        </section>
+
+        <nav class="phase-nav">
+          <a class="button button-secondary" href="index.html">Volver al inicio</a>
+          <a class="button" href="fase-b.html">Ir a la fase B</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>FASE A · Tipos de datos y referencias</p>
+      <a href="index.html">Portada</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASE D | Macros para automatizar tareas | Calc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <a class="breadcrumb" href="index.html">← Inicio</a>
+      <p class="eyebrow">FASE D</p>
+      <h1>Macros para automatizar tareas</h1>
+      <p class="lead">Uso de macros para la realización de documentos y plantillas.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container content-grid">
+      <aside class="card sticky-card">
+        <h3>Resumen de la fase</h3>
+        <p>En una oficina se necesita aplicar siempre el mismo formato a tablas de pedidos. Para ahorrar tiempo, se decide grabar una macro.</p>
+        <h4>Material necesario</h4>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo con una tabla simple</span><span class="pill">Opciones de seguridad de macros revisadas si fuese necesario</span></div>
+      </aside>
+
+      <div>
+        <section class="card">
+          <h2>Conceptos básicos que debes conocer</h2>
+          <ul class="list-clean">
+            <li>Una macro es una secuencia de acciones grabadas para automatizar tareas repetitivas.</li>
+<li>Calc permite grabar macros sencillas si la opción está habilitada.</li>
+<li>Las macros pueden aplicarse a formato, inserción de textos y acciones repetidas.</li>
+<li>Es importante guardar y probar una macro antes de usarla muchas veces.</li>
+<li>También pueden asociarse a botones o accesos rápidos.</li>
+          </ul>
+          <div class="note">
+            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Datos de partida para la práctica</h2>
+          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Pedido</th><th>Cliente</th><th>Importe</th></tr></thead>
+              <tbody>
+                <tr><td>P-001</td><td>Librería Norte</td><td>245</td></tr>
+<tr><td>P-002</td><td>Papelería Sol</td><td>180</td></tr>
+<tr><td>P-003</td><td>Centro Aula</td><td>320</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Práctica guiada paso a paso</h2>
+          <div class="step-list">
+            <article class="step"><h4>Paso 1. Crear la tabla base</h4><p>Guarda el archivo como <strong>fase-d-macros.ods</strong>. Introduce una tabla sencilla con encabezados y datos.</p></article>
+<article class="step"><h4>Paso 2. Planificar la tarea repetitiva</h4><p>Decide qué acciones vas a grabar: poner los encabezados en negrita, aplicar color de fondo, centrar texto y añadir borde a la tabla.</p></article>
+<article class="step"><h4>Paso 3. Grabar la macro</h4><p>Ve a <strong>Herramientas &gt; Macros &gt; Grabar macro</strong>. Realiza las acciones previstas sobre la tabla y detén la grabación.</p></article>
+<article class="step"><h4>Paso 4. Guardar la macro</h4><p>Pon un nombre claro, por ejemplo <strong>FormatoTablaPedidos</strong>, y guárdala en el documento actual.</p></article>
+<article class="step"><h4>Paso 5. Probar la macro</h4><p>Crea una segunda tabla pequeña y ejecuta la macro para comprobar que repite el formato automáticamente.</p></article>
+<article class="step"><h4>Paso 6. Insertar un botón o acceso</h4><p>Si se desea, inserta un botón de formulario y asígnale la macro para que el alumnado vea una forma práctica de ejecutarla.</p></article>
+<article class="step"><h4>Paso 7. Comentar ventajas y límites</h4><p>Explica que las macros son útiles para tareas repetitivas, pero conviene revisarlas y usarlas con cuidado, especialmente si vienen de otros archivos.</p></article>
+<article class="step"><h4>Paso 8. Guardar y cerrar</h4><p>Guarda el documento verificando que la macro queda disponible al volver a abrir el archivo.</p></article>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Tipo test final</h2>
+          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
+          <div class="test-item"><h4>1. ¿Qué es una macro?</h4><p><strong>Opciones:</strong> Un gráfico / Una secuencia automatizada de acciones / Un tipo de fórmula</p><p><strong>Respuesta correcta:</strong> Una secuencia automatizada de acciones.</p></div>
+<div class="test-item"><h4>2. ¿Para qué sirve en esta práctica?</h4><p><strong>Opciones:</strong> Automatizar el formato de tablas / Borrar hojas / Conectarse a internet</p><p><strong>Respuesta correcta:</strong> Automatizar el formato de tablas.</p></div>
+<div class="test-item"><h4>3. ¿Es recomendable poner nombres claros a las macros?</h4><p><strong>Opciones:</strong> No / Sí / Solo en Excel</p><p><strong>Respuesta correcta:</strong> Sí.</p></div>
+<div class="test-item"><h4>4. ¿Se puede asignar una macro a un botón?</h4><p><strong>Opciones:</strong> Sí / No / Solo en Writer</p><p><strong>Respuesta correcta:</strong> Sí.</p></div>
+<div class="test-item"><h4>5. ¿Conviene revisar macros de archivos externos?</h4><p><strong>Opciones:</strong> No hace falta / Sí, por seguridad / Solo si son largas</p><p><strong>Respuesta correcta:</strong> Sí, por seguridad.</p></div>
+        </section>
+
+        <nav class="phase-nav">
+          <a class="button button-secondary" href="fase-c.html">Volver a la fase C</a>
+          <a class="button" href="fase-e.html">Ir a la fase E</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>FASE D · Macros para automatizar tareas</p>
+      <a href="index.html">Portada</a>
+    </div>
+  </footer>
+</body>
+</html>

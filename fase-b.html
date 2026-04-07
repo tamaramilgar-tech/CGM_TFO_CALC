@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASE B | Fórmulas y funciones | Calc</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="container">
+      <a class="breadcrumb" href="index.html">← Inicio</a>
+      <p class="eyebrow">FASE B</p>
+      <h1>Fórmulas y funciones</h1>
+      <p class="lead">Aplicación de fórmulas y funciones en una hoja de cálculo.</p>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container content-grid">
+      <aside class="card sticky-card">
+        <h3>Resumen de la fase</h3>
+        <p>Eres el auxiliar administrativo de un centro de formación y debes registrar las calificaciones de un grupo, calcular medias y decidir si cada estudiante ha aprobado.</p>
+        <h4>Material necesario</h4>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo nuevo o continuación de la fase anterior</span><span class="pill">Lista de estudiantes y calificaciones</span></div>
+      </aside>
+
+      <div>
+        <section class="card">
+          <h2>Conceptos básicos que debes conocer</h2>
+          <ul class="list-clean">
+            <li>Las fórmulas empiezan por el signo igual.</li>
+<li>Una función es una fórmula predefinida que ahorra tiempo y reduce errores.</li>
+<li>Funciones básicas: SUMA, PROMEDIO, MAX, MIN, CONTAR y SI.</li>
+<li>Los argumentos de una función suelen ir entre paréntesis.</li>
+<li>Las funciones se pueden combinar para resolver tareas reales.</li>
+          </ul>
+          <div class="note">
+            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Datos de partida para la práctica</h2>
+          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Alumno</th><th>Prueba 1</th><th>Prueba 2</th><th>Práctica</th></tr></thead>
+              <tbody>
+                <tr><td>Ana</td><td>7</td><td>8</td><td>9</td></tr>
+<tr><td>Luis</td><td>5</td><td>6</td><td>4</td></tr>
+<tr><td>Marta</td><td>9</td><td>8</td><td>10</td></tr>
+<tr><td>Sergio</td><td>4</td><td>5</td><td>6</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Práctica guiada paso a paso</h2>
+          <div class="step-list">
+            <article class="step"><h4>Paso 1. Crear la tabla de calificaciones</h4><p>Guarda el archivo como <strong>fase-b-formulas-funciones.ods</strong>. Introduce los encabezados y completa los datos del alumnado.</p></article>
+<article class="step"><h4>Paso 2. Calcular la nota media</h4><p>En la columna E escribe <strong>Media</strong>. En E2 introduce <code>=PROMEDIO(B2:D2)</code> y copia hacia abajo.</p></article>
+<article class="step"><h4>Paso 3. Calcular la nota más alta y la más baja</h4><p>Debajo de la tabla, utiliza <code>=MAX(E2:E5)</code> para obtener la media más alta y <code>=MIN(E2:E5)</code> para la más baja.</p></article>
+<article class="step"><h4>Paso 4. Contar alumnado registrado</h4><p>En otra celda escribe <code>=CONTAR(E2:E5)</code> para contar cuántos resultados numéricos hay en la columna de medias.</p></article>
+<article class="step"><h4>Paso 5. Aplicar una función condicional</h4><p>En la columna F escribe <strong>Resultado</strong>. En F2 introduce <code>=SI(E2>=5;"Aprobado";"Suspenso")</code> y copia hacia abajo.</p></article>
+<article class="step"><h4>Paso 6. Calcular la suma de una columna</h4><p>Añade una celda de control con <code>=SUMA(B2:B5)</code> para mostrar la suma total de la Prueba 1.</p></article>
+<article class="step"><h4>Paso 7. Interpretar resultados</h4><p>Pide al alumnado que observe qué estudiantes aprueban y cómo cambia el resultado si modifican una nota.</p></article>
+<article class="step"><h4>Paso 8. Guardar la práctica</h4><p>Guarda el documento y revisa que todas las fórmulas funcionen correctamente sin errores.</p></article>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Tipo test final</h2>
+          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
+          <div class="test-item"><h4>1. ¿Con qué signo comienza una fórmula en Calc?</h4><p><strong>Opciones:</strong> + / = / #</p><p><strong>Respuesta correcta:</strong> =</p></div>
+<div class="test-item"><h4>2. ¿Qué hace la función PROMEDIO?</h4><p><strong>Opciones:</strong> Suma todos los datos / Calcula la media aritmética / Cuenta textos</p><p><strong>Respuesta correcta:</strong> Calcula la media aritmética.</p></div>
+<div class="test-item"><h4>3. ¿Qué función usarías para obtener el valor más alto?</h4><p><strong>Opciones:</strong> MIN / MAX / SI</p><p><strong>Respuesta correcta:</strong> MAX.</p></div>
+<div class="test-item"><h4>4. ¿Qué hace la función SI?</h4><p><strong>Opciones:</strong> Compara una condición y devuelve un resultado / Cambia el formato de la celda / Ordena datos</p><p><strong>Respuesta correcta:</strong> Compara una condición y devuelve un resultado.</p></div>
+<div class="test-item"><h4>5. ¿Para qué sirve CONTAR?</h4><p><strong>Opciones:</strong> Para contar celdas numéricas / Para sumar importes / Para crear hojas</p><p><strong>Respuesta correcta:</strong> Para contar celdas numéricas.</p></div>
+        </section>
+
+        <nav class="phase-nav">
+          <a class="button button-secondary" href="fase-a.html">Volver a la fase A</a>
+          <a class="button" href="fase-c.html">Ir a la fase C</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>FASE B · Fórmulas y funciones</p>
+      <a href="index.html">Portada</a>
+    </div>
+  </footer>
+</body>
+</html>
