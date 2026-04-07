@@ -3,88 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FASE E | Importación y exportación de hojas de cálculo | Calc</title>
+  <title>FASE E | Importación y exportación | Calc</title>
+  <meta name="description" content="Fase E del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-phase="e">
   <header class="page-header">
     <div class="container">
       <a class="breadcrumb" href="index.html">← Inicio</a>
       <p class="eyebrow">FASE E</p>
-      <h1>Importación y exportación de hojas de cálculo</h1>
-      <p class="lead">Intercambio de archivos entre Calc y otras aplicaciones o formatos.</p>
+      <h1>Importación y exportación</h1>
+      <p class="lead">Apertura, adaptación y guardado de hojas creadas con otras aplicaciones y formatos.</p>
     </div>
   </header>
 
-  <main class="section">
+  <section class="section-soft" style="padding:1.4rem 0 0;">
+    <div class="container" id="phase-lock-state"></div>
+  </section>
+
+  <main class="section" id="phase-learning-content">
     <div class="container content-grid">
       <aside class="card sticky-card">
-        <h3>Resumen de la fase</h3>
-        <p>Una empresa recibe listados de productos en CSV y después debe compartir el resultado con otra oficina que usa Excel.</p>
+        <h3>Situación real</h3>
+        <p>Has recibido un listado de pedidos en formato CSV y debes abrirlo en Calc, revisarlo, guardarlo como ODS y exportarlo también como archivo Excel para enviarlo a otra empresa.</p>
         <h4>Material necesario</h4>
-        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Un archivo CSV de ejemplo</span><span class="pill">Capacidad para guardar como ODS y XLSX</span></div>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Conocer Guardar como</span><span class="pill">Distinguir CSV, XLSX y ODS</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
       </aside>
 
       <div>
         <section class="card">
           <h2>Conceptos básicos que debes conocer</h2>
-          <ul class="list-clean">
-            <li>ODS es el formato nativo de LibreOffice Calc.</li>
-<li>XLSX es un formato habitual de Microsoft Excel.</li>
-<li>CSV guarda datos separados por delimitadores y no conserva formato avanzado.</li>
-<li>Importar permite abrir o incorporar datos de otros formatos.</li>
-<li>Exportar sirve para compartir el archivo en un formato compatible con otros programas.</li>
-          </ul>
-          <div class="note">
-            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
-          </div>
+          <ul class="list-clean"><li>ODS es el formato nativo de LibreOffice Calc.</li><li>CSV guarda datos separados por comas o punto y coma, sin formato avanzado.</li><li>XLSX es un formato habitual de Microsoft Excel.</li><li>Importar consiste en abrir datos generados por otra aplicación o formato.</li><li>Exportar o guardar en otro formato permite compartir la información con otros usuarios y programas.</li></ul>
         </section>
 
         <section class="card">
-          <h2>Datos de partida para la práctica</h2>
-          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead><tr><th>Código</th><th>Artículo</th><th>Stock</th></tr></thead>
-              <tbody>
-                <tr><td>A100</td><td>Tóner negro</td><td>15</td></tr>
-<tr><td>A101</td><td>Papel A4</td><td>80</td></tr>
-<tr><td>A102</td><td>Grapas</td><td>42</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Código</th><th>Cliente</th><th>Importe</th><th>Provincia</th></tr></thead><tbody><tr><td>P-100</td><td>Atenea S.L.</td><td>1200,50</td><td>Sevilla</td></tr>
+<tr><td>P-101</td><td>Brisa Market</td><td>850,00</td><td>Cádiz</td></tr>
+<tr><td>P-102</td><td>CopiSur</td><td>430,75</td><td>Huelva</td></tr>
+<tr><td>P-103</td><td>Delta Oficina</td><td>999,99</td><td>Málaga</td></tr></tbody></table></div>
         </section>
 
         <section class="card">
           <h2>Práctica guiada paso a paso</h2>
-          <div class="step-list">
-            <article class="step"><h4>Paso 1. Crear un CSV de ejemplo o abrir uno existente</h4><p>Guarda el archivo como <strong>fase-e-importacion-exportacion.ods</strong> y trabaja también con un pequeño CSV con columnas de código, artículo y stock.</p></article>
-<article class="step"><h4>Paso 2. Importar el archivo CSV</h4><p>Desde Calc, abre el CSV y observa la ventana de importación. Revisa el separador y la vista previa antes de aceptar.</p></article>
-<article class="step"><h4>Paso 3. Comprobar los datos importados</h4><p>Verifica que cada campo aparece en su columna correcta y que números y textos se han interpretado bien.</p></article>
-<article class="step"><h4>Paso 4. Guardar en formato ODS</h4><p>Una vez abierto o adaptado el contenido, guarda una copia en formato <strong>.ods</strong> para seguir trabajando con todas las opciones de Calc.</p></article>
-<article class="step"><h4>Paso 5. Exportar o guardar como XLSX</h4><p>Utiliza <strong>Guardar como</strong> y selecciona el formato de Excel para generar una versión compatible con otras aplicaciones.</p></article>
-<article class="step"><h4>Paso 6. Comparar formatos</h4><p>Pide al alumnado que observe qué elementos se mantienen y cuáles pueden cambiar según el formato elegido.</p></article>
-<article class="step"><h4>Paso 7. Añadir una pequeña modificación</h4><p>Cambia un valor de stock, añade una fila nueva y vuelve a exportar el archivo para consolidar el proceso.</p></article>
-<article class="step"><h4>Paso 8. Reflexionar sobre compatibilidad</h4><p>Explica cuándo conviene usar ODS, cuándo XLSX y cuándo CSV según el objetivo del documento.</p></article>
+          <div class="step-list"><article class="step"><h4>Paso 1. Crear o recibir el archivo CSV</h4><p>Si el docente te facilita un CSV, ábrelo. Si no, crea una hoja en Calc con los datos de la tabla y después guárdala como <strong>pedidos.csv</strong>. Cierra el archivo y vuelve a abrirlo para simular una importación real.</p></article><article class="step"><h4>Paso 2. Revisar el asistente de importación</h4><p>Al abrir el CSV, comprueba que cada dato aparece en su columna. Si todo se junta en una sola columna, revisa el separador elegido, normalmente coma o punto y coma según la configuración regional.</p></article><article class="step"><h4>Paso 3. Guardar en formato nativo de Calc</h4><p>Una vez abierto correctamente, guarda el archivo como <strong>fase-e-pedidos.ods</strong>. Este será el archivo principal de trabajo.</p></article><article class="step"><h4>Paso 4. Dar formato a los datos</h4><p>Aplica formato de moneda a la columna Importe y negrita a los encabezados. Inserta en E1 el título <strong>Importe con IVA</strong> y en E2 la fórmula <code>=C2*1,21</code> o <code>=C2*1.21</code> según la configuración de tu equipo. Copia hasta E5.</p></article><article class="step"><h4>Paso 5. Comprobar resultados</h4><p>Los resultados esperados aproximados son: E2 = <strong>1452,61</strong>, E3 = <strong>1028,50</strong>, E4 = <strong>521,21</strong> y E5 = <strong>1209,99</strong>.</p></article><article class="step"><h4>Paso 6. Guardar una copia para Excel</h4><p>Usa <strong>Guardar como</strong> y crea una copia llamada <strong>fase-e-pedidos.xlsx</strong>. No sustituyas el archivo ODS; conserva ambos formatos.</p></article><article class="step"><h4>Paso 7. Exportar una versión para compartir</h4><p>Si el docente lo pide, exporta también una versión PDF del informe para enviarla a un cliente. Añade antes un título en la parte superior: <strong>Listado de pedidos importados</strong>.</p></article><article class="step"><h4>Paso 8. Comparar formatos</h4><p>En una zona libre de la hoja escribe tres conclusiones: qué formato conserva mejor el trabajo de Calc, cuál es más simple y cuál es útil para compartir con usuarios de Excel.</p></article><article class="step"><h4>Paso 9. Simular un reenvío externo</h4><p>Cierra el archivo y abre la copia XLSX para comprobar que se mantiene la estructura general. Después vuelve a abrir el ODS y verifica que es tu archivo de edición principal.</p></article><article class="step"><h4>Paso 10. Guardar el trabajo final</h4><p>Deja en la carpeta de la práctica al menos estos archivos: <strong>pedidos.csv</strong>, <strong>fase-e-pedidos.ods</strong> y <strong>fase-e-pedidos.xlsx</strong>.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Archivo o dato</th><th>Resultado esperado</th></tr></thead><tbody><tr><td>E2</td><td>1452,61</td></tr>
+<tr><td>E3</td><td>1028,50</td></tr>
+<tr><td>E4</td><td>521,21</td></tr>
+<tr><td>E5</td><td>1209,99</td></tr>
+<tr><td>Formato nativo</td><td>ODS</td></tr>
+<tr><td>Formato de intercambio con Excel</td><td>XLSX</td></tr>
+<tr><td>Formato simple de texto separado</td><td>CSV</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
           </div>
         </section>
 
         <section class="card">
           <h2>Tipo test final</h2>
-          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
-          <div class="test-item"><h4>1. ¿Cuál es el formato nativo de Calc?</h4><p><strong>Opciones:</strong> ODS / CSV / DOCX</p><p><strong>Respuesta correcta:</strong> ODS.</p></div>
-<div class="test-item"><h4>2. ¿Qué formato se usa mucho para intercambiar datos simples separados por comas o punto y coma?</h4><p><strong>Opciones:</strong> CSV / PNG / PDF</p><p><strong>Respuesta correcta:</strong> CSV.</p></div>
-<div class="test-item"><h4>3. ¿Qué acción permite compartir el archivo con usuarios de Excel?</h4><p><strong>Opciones:</strong> Guardar como XLSX / Cambiar la fuente / Insertar una macro</p><p><strong>Respuesta correcta:</strong> Guardar como XLSX.</p></div>
-<div class="test-item"><h4>4. ¿El CSV conserva siempre gráficos y formato complejo?</h4><p><strong>Opciones:</strong> Sí / No / Solo en línea</p><p><strong>Respuesta correcta:</strong> No.</p></div>
-<div class="test-item"><h4>5. ¿Qué conviene revisar al abrir un CSV?</h4><p><strong>Opciones:</strong> El separador y la vista previa / El color del escritorio / La impresora</p><p><strong>Respuesta correcta:</strong> El separador y la vista previa.</p></div>
+          <p>Marca una sola opción en cada pregunta.</p>
+          <div class="test-item"><h4>1. ¿Cuál es el formato nativo de LibreOffice Calc?</h4><ol class="options"><li><strong>a)</strong> CSV</li><li><strong>b)</strong> XLSX</li><li><strong>c)</strong> ODS</li><li><strong>d)</strong> DOCX</li></ol></div>
+<div class="test-item"><h4>2. ¿Qué caracteriza a un archivo CSV?</h4><ol class="options"><li><strong>a)</strong> Guarda macros complejas</li><li><strong>b)</strong> Guarda datos separados por delimitadores</li><li><strong>c)</strong> Solo sirve para imágenes</li><li><strong>d)</strong> No puede abrirse en Calc</li></ol></div>
+<div class="test-item"><h4>3. ¿Qué acción permite abrir datos creados con otro formato?</h4><ol class="options"><li><strong>a)</strong> Filtrar</li><li><strong>b)</strong> Importar</li><li><strong>c)</strong> Ordenar</li><li><strong>d)</strong> Proteger</li></ol></div>
+<div class="test-item"><h4>4. ¿Qué archivo se creó para trabajar en Calc tras abrir el CSV?</h4><ol class="options"><li><strong>a)</strong> fase-e-pedidos.pdf</li><li><strong>b)</strong> fase-e-pedidos.ods</li><li><strong>c)</strong> fase-e-pedidos.html</li><li><strong>d)</strong> fase-e-pedidos.png</li></ol></div>
+<div class="test-item"><h4>5. ¿Qué formato se recomendó para compartir con usuarios de Excel?</h4><ol class="options"><li><strong>a)</strong> ODS</li><li><strong>b)</strong> TXT</li><li><strong>c)</strong> XLSX</li><li><strong>d)</strong> ODT</li></ol></div>
+<div class="test-item"><h4>6. ¿Qué puede ocurrir al abrir un CSV si el separador está mal elegido?</h4><ol class="options"><li><strong>a)</strong> Se borra el archivo</li><li><strong>b)</strong> Todos los datos aparecen en una sola columna</li><li><strong>c)</strong> Se convierte en gráfico</li><li><strong>d)</strong> Se crea una macro</li></ol></div>
+<div class="test-item"><h4>7. ¿Qué fórmula se usó para calcular el importe con IVA?</h4><ol class="options"><li><strong>a)</strong> =C2+21</li><li><strong>b)</strong> =C2*1,21</li><li><strong>c)</strong> =SUMA(C2:E2)</li><li><strong>d)</strong> =SI(C2>0;1;0)</li></ol></div>
+<div class="test-item"><h4>8. ¿Qué resultado aproximado debía aparecer en E3?</h4><ol class="options"><li><strong>a)</strong> 850,00</li><li><strong>b)</strong> 999,99</li><li><strong>c)</strong> 1028,50</li><li><strong>d)</strong> 1209,99</li></ol></div>
+<div class="test-item"><h4>9. ¿Qué formato es más simple y no guarda normalmente formato avanzado?</h4><ol class="options"><li><strong>a)</strong> ODS</li><li><strong>b)</strong> CSV</li><li><strong>c)</strong> XLSX</li><li><strong>d)</strong> PDF</li></ol></div>
+<div class="test-item"><h4>10. ¿Qué archivo conviene conservar como versión principal editable en Calc?</h4><ol class="options"><li><strong>a)</strong> El ODS</li><li><strong>b)</strong> El PDF</li><li><strong>c)</strong> El JPG</li><li><strong>d)</strong> El HTML</li></ol></div><div class="details"><summary>Ver plantilla de corrección</summary><ol class="answer-key"><li><strong>1.</strong> c) ODS</li><li><strong>2.</strong> b) Guarda datos separados por delimitadores</li><li><strong>3.</strong> b) Importar</li><li><strong>4.</strong> b) fase-e-pedidos.ods</li><li><strong>5.</strong> c) XLSX</li><li><strong>6.</strong> b) Todos los datos aparecen en una sola columna</li><li><strong>7.</strong> b) =C2*1,21</li><li><strong>8.</strong> c) 1028,50</li><li><strong>9.</strong> b) CSV</li><li><strong>10.</strong> a) El ODS</li></ol></div>
         </section>
 
         <nav class="phase-nav">
-          <a class="button button-secondary" href="fase-d.html">Volver a la fase D</a>
+          <a class="button button-light" href="fase-d.html">Ir a la fase D</a>
           <a class="button" href="fase-f.html">Ir a la fase F</a>
         </nav>
       </div>
@@ -93,7 +97,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>FASE E · Importación y exportación de hojas de cálculo</p>
+      <p>FASE E · Importación y exportación · <span data-current-year></span></p>
       <a href="index.html">Portada</a>
     </div>
   </footer>

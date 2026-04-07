@@ -4,89 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FASE F | Calc como base de datos | Calc</title>
+  <meta name="description" content="Fase F del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-phase="f">
   <header class="page-header">
     <div class="container">
       <a class="breadcrumb" href="index.html">← Inicio</a>
       <p class="eyebrow">FASE F</p>
       <h1>Calc como base de datos</h1>
-      <p class="lead">Formularios, listas, filtrado, protección y ordenación de datos.</p>
+      <p class="lead">Uso de la hoja de cálculo como lista de datos: formularios, filtros, ordenación y protección.</p>
     </div>
   </header>
 
-  <main class="section">
+  <section class="section-soft" style="padding:1.4rem 0 0;">
+    <div class="container" id="phase-lock-state"></div>
+  </section>
+
+  <main class="section" id="phase-learning-content">
     <div class="container content-grid">
       <aside class="card sticky-card">
-        <h3>Resumen de la fase</h3>
-        <p>Debes gestionar una lista de clientes de una academia y localizar rápidamente información por localidad, fecha de alta o estado de pago.</p>
+        <h3>Situación real</h3>
+        <p>Trabajas en una academia y debes organizar una lista de clientes o alumnos para localizar registros, filtrar por provincia, ordenar por cuotas y proteger la hoja para evitar cambios accidentales.</p>
         <h4>Material necesario</h4>
-        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Tabla de clientes</span><span class="pill">Conocimientos básicos sobre ordenar y seleccionar rangos</span></div>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Saber introducir tablas</span><span class="pill">Conocer las opciones básicas del menú Datos</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
       </aside>
 
       <div>
         <section class="card">
           <h2>Conceptos básicos que debes conocer</h2>
-          <ul class="list-clean">
-            <li>Una hoja de cálculo puede almacenar listas estructuradas como una base de datos simple.</li>
-<li>Cada fila suele representar un registro y cada columna un campo.</li>
-<li>Ordenar organiza los datos según un criterio.</li>
-<li>Filtrar muestra solo la información que cumple determinadas condiciones.</li>
-<li>La protección ayuda a evitar cambios accidentales en celdas o hojas.</li>
-          </ul>
-          <div class="note">
-            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
-          </div>
+          <ul class="list-clean"><li>Una hoja de cálculo puede funcionar como una base de datos sencilla cuando se organiza en forma de lista.</li><li>Cada fila representa un registro y cada columna un campo.</li><li>Ordenar permite reorganizar los registros por un criterio, por ejemplo nombre o importe.</li><li>Filtrar muestra solo los registros que cumplen una condición.</li><li>Proteger la hoja ayuda a evitar modificaciones no deseadas.</li></ul>
         </section>
 
         <section class="card">
-          <h2>Datos de partida para la práctica</h2>
-          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead><tr><th>Cliente</th><th>Localidad</th><th>Fecha alta</th><th>Estado</th></tr></thead>
-              <tbody>
-                <tr><td>María Gil</td><td>La Laguna</td><td>12/01/2026</td><td>Pagado</td></tr>
-<tr><td>Daniel León</td><td>Santa Cruz</td><td>18/01/2026</td><td>Pendiente</td></tr>
-<tr><td>Irene Pérez</td><td>La Orotava</td><td>22/01/2026</td><td>Pagado</td></tr>
-<tr><td>Juan Martín</td><td>Santa Cruz</td><td>01/02/2026</td><td>Pendiente</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>ID</th><th>Nombre</th><th>Provincia</th><th>Curso</th><th>Cuota</th><th>Estado</th></tr></thead><tbody><tr><td>1</td><td>Alicia Pérez</td><td>Sevilla</td><td>Excel</td><td>45</td><td>Activo</td></tr>
+<tr><td>2</td><td>Bruno León</td><td>Cádiz</td><td>Calc</td><td>40</td><td>Activo</td></tr>
+<tr><td>3</td><td>Carmen Ruiz</td><td>Sevilla</td><td>Word</td><td>35</td><td>Baja</td></tr>
+<tr><td>4</td><td>David Mora</td><td>Huelva</td><td>Calc</td><td>40</td><td>Activo</td></tr>
+<tr><td>5</td><td>Elena Solís</td><td>Málaga</td><td>Excel</td><td>45</td><td>Activo</td></tr>
+<tr><td>6</td><td>Felipe Toro</td><td>Sevilla</td><td>Calc</td><td>40</td><td>Activo</td></tr></tbody></table></div>
         </section>
 
         <section class="card">
           <h2>Práctica guiada paso a paso</h2>
-          <div class="step-list">
-            <article class="step"><h4>Paso 1. Crear la lista de datos</h4><p>Guarda el archivo como <strong>fase-f-base-datos.ods</strong>. Introduce una tabla con encabezados claros y varios registros de clientes.</p></article>
-<article class="step"><h4>Paso 2. Convertir la tabla en una lista usable</h4><p>Asegúrate de que no haya filas ni columnas vacías intermedias. Esto facilita ordenar y filtrar correctamente.</p></article>
-<article class="step"><h4>Paso 3. Ordenar los registros</h4><p>Selecciona la tabla y usa la opción de ordenar por <strong>Localidad</strong> o por <strong>Fecha alta</strong> para ver cómo cambia el orden de los datos.</p></article>
-<article class="step"><h4>Paso 4. Aplicar filtros</h4><p>Activa el filtro automático y muestra únicamente los clientes de una localidad concreta o con estado <strong>Pendiente</strong>.</p></article>
-<article class="step"><h4>Paso 5. Crear una vista útil</h4><p>Combina filtro y ordenación para localizar, por ejemplo, los clientes pendientes de Santa Cruz.</p></article>
-<article class="step"><h4>Paso 6. Proteger celdas o la hoja</h4><p>Protege la hoja o ciertas celdas para evitar modificaciones accidentales en encabezados o fórmulas.</p></article>
-<article class="step"><h4>Paso 7. Comentar el uso de formularios</h4><p>Explica que Calc puede servir como base para introducir datos ordenados y que existen formularios sencillos o herramientas relacionadas para facilitar la entrada.</p></article>
-<article class="step"><h4>Paso 8. Guardar la práctica</h4><p>Revisa el funcionamiento de la lista y comprueba que sabes quitar y volver a aplicar los filtros.</p></article>
+          <div class="step-list"><article class="step"><h4>Paso 1. Crear la lista</h4><p>En una hoja llamada <strong>Clientes</strong>, escribe los encabezados de la tabla en A1:F1 e introduce los seis registros en A2:F7 exactamente como aparecen en la tabla de datos.</p></article><article class="step"><h4>Paso 2. Dar formato de lista</h4><p>Aplica negrita a los encabezados, bordes a toda la tabla y formato numérico a la columna Cuota. La tabla debe quedar preparada para trabajar como una base de datos simple.</p></article><article class="step"><h4>Paso 3. Ordenar por nombre</h4><p>Selecciona toda la tabla y usa <strong>Datos &gt; Ordenar</strong> para ordenar por la columna <strong>Nombre</strong> de A a Z. Comprueba que Alicia queda antes que Bruno y así sucesivamente.</p></article><article class="step"><h4>Paso 4. Ordenar por cuota y curso</h4><p>Vuelve a seleccionar la tabla y ordena primero por <strong>Cuota</strong> de mayor a menor y luego por <strong>Curso</strong> de A a Z si tu versión de Calc permite varios criterios.</p></article><article class="step"><h4>Paso 5. Aplicar un filtro por provincia</h4><p>Activa el filtro automático. Muestra solo los registros cuya provincia sea <strong>Sevilla</strong>. El resultado esperado es ver a <strong>Alicia Pérez</strong>, <strong>Carmen Ruiz</strong> y <strong>Felipe Toro</strong>.</p></article><article class="step"><h4>Paso 6. Filtrar por curso</h4><p>Quita el filtro anterior y muestra ahora solo el curso <strong>Calc</strong>. El resultado esperado es ver a Bruno León, David Mora y Felipe Toro.</p></article><article class="step"><h4>Paso 7. Crear una lista de activos</h4><p>Filtra por <strong>Estado = Activo</strong>. Deben quedar visibles 5 registros. Escribe en H1 <strong>Número de alumnos activos</strong> y en H2 anota <strong>5</strong>.</p></article><article class="step"><h4>Paso 8. Simular un formulario sencillo</h4><p>Usa <strong>Datos &gt; Formulario</strong> si está disponible en tu instalación, o bien crea manualmente una zona de entrada en H5:M6 con los nombres de los campos para explicar cómo se podría introducir un nuevo registro de forma ordenada.</p></article><article class="step"><h4>Paso 9. Proteger la hoja</h4><p>Aplica protección a la hoja con una contraseña sencilla de aula si el docente lo indica. La idea es impedir cambios accidentales en los encabezados y registros finales.</p></article><article class="step"><h4>Paso 10. Extraer conclusiones</h4><p>En H8:H11 escribe qué provincia tiene más registros, cuántos alumnos cursan Calc, para qué sirve el filtro y para qué sirve la protección de hoja. Guarda el archivo como <strong>fase-f-base-datos.ods</strong>.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Consulta</th><th>Resultado esperado</th></tr></thead><tbody><tr><td>Registros de Sevilla</td><td>3</td></tr>
+<tr><td>Nombres en Sevilla</td><td>Alicia Pérez, Carmen Ruiz, Felipe Toro</td></tr>
+<tr><td>Registros del curso Calc</td><td>3</td></tr>
+<tr><td>Registros activos</td><td>5</td></tr>
+<tr><td>Cuota más alta</td><td>45</td></tr>
+<tr><td>Objetivo de la protección</td><td>Evitar cambios accidentales</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
           </div>
         </section>
 
         <section class="card">
           <h2>Tipo test final</h2>
-          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
-          <div class="test-item"><h4>1. En una lista de datos, ¿qué suele representar cada fila?</h4><p><strong>Opciones:</strong> Un registro / Un gráfico / Una contraseña</p><p><strong>Respuesta correcta:</strong> Un registro.</p></div>
-<div class="test-item"><h4>2. ¿Para qué sirve un filtro?</h4><p><strong>Opciones:</strong> Para mostrar solo los datos que cumplen una condición / Para traducir textos / Para insertar imágenes</p><p><strong>Respuesta correcta:</strong> Para mostrar solo los datos que cumplen una condición.</p></div>
-<div class="test-item"><h4>3. ¿Qué permite la ordenación?</h4><p><strong>Opciones:</strong> Cambiar el orden de los registros según un criterio / Bloquear el archivo / Crear macros</p><p><strong>Respuesta correcta:</strong> Cambiar el orden de los registros según un criterio.</p></div>
-<div class="test-item"><h4>4. ¿Por qué puede ser útil proteger una hoja?</h4><p><strong>Opciones:</strong> Para evitar cambios accidentales / Para sumar más rápido / Para importar un CSV</p><p><strong>Respuesta correcta:</strong> Para evitar cambios accidentales.</p></div>
-<div class="test-item"><h4>5. ¿Puede una hoja de cálculo funcionar como una base de datos simple?</h4><p><strong>Opciones:</strong> Sí / No / Solo con internet</p><p><strong>Respuesta correcta:</strong> Sí.</p></div>
+          <p>Marca una sola opción en cada pregunta.</p>
+          <div class="test-item"><h4>1. En una lista tipo base de datos, ¿qué representa cada fila?</h4><ol class="options"><li><strong>a)</strong> Un gráfico</li><li><strong>b)</strong> Un registro</li><li><strong>c)</strong> Una macro</li><li><strong>d)</strong> Una función</li></ol></div>
+<div class="test-item"><h4>2. ¿Qué representa normalmente cada columna?</h4><ol class="options"><li><strong>a)</strong> Un registro</li><li><strong>b)</strong> Un campo</li><li><strong>c)</strong> Una contraseña</li><li><strong>d)</strong> Una hoja distinta</li></ol></div>
+<div class="test-item"><h4>3. ¿Para qué sirve ordenar una lista?</h4><ol class="options"><li><strong>a)</strong> Para ocultar datos</li><li><strong>b)</strong> Para reorganizar registros según un criterio</li><li><strong>c)</strong> Para crear macros</li><li><strong>d)</strong> Para exportar a PDF</li></ol></div>
+<div class="test-item"><h4>4. ¿Qué hace un filtro?</h4><ol class="options"><li><strong>a)</strong> Borra filas</li><li><strong>b)</strong> Muestra solo los datos que cumplen una condición</li><li><strong>c)</strong> Convierte texto en número</li><li><strong>d)</strong> Protege el archivo</li></ol></div>
+<div class="test-item"><h4>5. ¿Cuántos registros de Sevilla hay en la tabla propuesta?</h4><ol class="options"><li><strong>a)</strong> 2</li><li><strong>b)</strong> 3</li><li><strong>c)</strong> 4</li><li><strong>d)</strong> 5</li></ol></div>
+<div class="test-item"><h4>6. ¿Qué tres nombres aparecen al filtrar por curso Calc?</h4><ol class="options"><li><strong>a)</strong> Alicia, Carmen y Elena</li><li><strong>b)</strong> Bruno, David y Felipe</li><li><strong>c)</strong> Alicia, Bruno y Carmen</li><li><strong>d)</strong> David, Elena y Felipe</li></ol></div>
+<div class="test-item"><h4>7. ¿Cuántos registros activos hay?</h4><ol class="options"><li><strong>a)</strong> 3</li><li><strong>b)</strong> 4</li><li><strong>c)</strong> 5</li><li><strong>d)</strong> 6</li></ol></div>
+<div class="test-item"><h4>8. ¿Para qué sirve proteger la hoja?</h4><ol class="options"><li><strong>a)</strong> Para ordenar mejor</li><li><strong>b)</strong> Para evitar modificaciones no deseadas</li><li><strong>c)</strong> Para cambiar el idioma</li><li><strong>d)</strong> Para sumar cuotas</li></ol></div>
+<div class="test-item"><h4>9. ¿Qué cuota más alta aparece en la tabla?</h4><ol class="options"><li><strong>a)</strong> 35</li><li><strong>b)</strong> 40</li><li><strong>c)</strong> 45</li><li><strong>d)</strong> 50</li></ol></div>
+<div class="test-item"><h4>10. ¿Qué uso tiene un formulario en este contexto?</h4><ol class="options"><li><strong>a)</strong> Introducir registros de forma más ordenada</li><li><strong>b)</strong> Crear páginas web</li><li><strong>c)</strong> Cambiar el tamaño de letra</li><li><strong>d)</strong> Enviar correos</li></ol></div><div class="details"><summary>Ver plantilla de corrección</summary><ol class="answer-key"><li><strong>1.</strong> b) Un registro</li><li><strong>2.</strong> b) Un campo</li><li><strong>3.</strong> b) Para reorganizar registros según un criterio</li><li><strong>4.</strong> b) Muestra solo los datos que cumplen una condición</li><li><strong>5.</strong> b) 3</li><li><strong>6.</strong> b) Bruno, David y Felipe</li><li><strong>7.</strong> c) 5</li><li><strong>8.</strong> b) Para evitar modificaciones no deseadas</li><li><strong>9.</strong> c) 45</li><li><strong>10.</strong> a) Introducir registros de forma más ordenada</li></ol></div>
         </section>
 
         <nav class="phase-nav">
-          <a class="button button-secondary" href="fase-e.html">Volver a la fase E</a>
-          <a class="button" href="index.html">Volver al inicio</a>
+          <a class="button button-light" href="fase-e.html">Ir a la fase E</a>
+          <a class="button" href="index.html">Volver a la portada</a>
         </nav>
       </div>
     </div>
@@ -94,7 +98,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>FASE F · Calc como base de datos</p>
+      <p>FASE F · Calc como base de datos · <span data-current-year></span></p>
       <a href="index.html">Portada</a>
     </div>
   </footer>

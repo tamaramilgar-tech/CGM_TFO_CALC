@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header class="hero">
@@ -16,7 +18,7 @@
       <a class="brand" href="index.html">Calc · TII</a>
       <div class="navlinks">
         <a href="#fases">Fases</a>
-        <a href="#metodologia">Metodología</a>
+        <a href="#estructura">Estructura</a>
         <a href="#uso">Uso en clase</a>
       </div>
     </nav>
@@ -26,9 +28,9 @@
         <p class="eyebrow">Ciclo Formativo de Grado Medio</p>
         <h1>Tratamiento Informático de la Información con LibreOffice Calc</h1>
         <p class="lead">
-          Recurso web para trabajar, paso a paso, el uso de hojas de cálculo en <strong>Calc</strong> mediante
-          seis fases prácticas: datos y referencias, fórmulas y funciones, gráficos, macros,
-          importación y exportación, y uso de la hoja de cálculo como base de datos.
+          Web didáctica lista para publicar en <strong>GitHub Pages</strong>. Cada fase plantea un <strong>caso real</strong>,
+          explica los conceptos básicos, guía al alumnado con <strong>pasos detallados</strong>, indica qué escribir en cada celda,
+          muestra los <strong>resultados esperados</strong> y termina con un <strong>tipo test de 10 preguntas</strong>.
         </p>
         <div class="cta-row">
           <a class="button" href="#fases">Ver fases</a>
@@ -36,40 +38,37 @@
         </div>
       </div>
       <aside class="hero-card">
-        <h2>Qué incluye esta web</h2>
+        <h2>Qué incluye esta versión</h2>
         <ul>
-          <li>6 fases, una por cada resultado de aprendizaje solicitado.</li>
-          <li>Conceptos previos claros y adaptados a Grado Medio.</li>
-          <li>Prácticas guiadas con pasos detallados.</li>
-          <li>Actividades basadas en casos cercanos al entorno administrativo.</li>
-          <li>Mini test final por fase para comprobar el aprendizaje.</li>
+          <li>6 fases independientes en archivos HTML reales.</li>
+          <li>Contexto profesional en cada práctica.</li>
+          <li>Tablas completas con datos concretos.</li>
+          <li>Indicaciones de celdas, fórmulas y resultados esperados.</li>
+          <li>10 preguntas tipo test por fase con 4 opciones.</li>
+          <li>Navegación entre fases para trabajar como web docente.</li>
         </ul>
       </aside>
     </div>
   </header>
 
   <main>
-    <section class="section container">
+    <section class="section container" id="estructura">
       <div class="section-heading">
-        <p class="eyebrow">Presentación</p>
-        <h2>Objetivo del recurso</h2>
+        <p class="eyebrow">Cómo está pensada</p>
+        <h2>Estructura didáctica de cada fase</h2>
       </div>
-      <div class="grid-2">
+      <div class="grid-3">
         <article class="card">
-          <h3>Qué va a aprender el alumnado</h3>
-          <p>
-            El alumnado trabajará con una hoja de cálculo de forma progresiva: introducirá distintos tipos de datos,
-            aplicará referencias y rangos, construirá fórmulas y funciones, generará gráficos, automatizará tareas con macros,
-            intercambiará archivos con otros formatos y usará Calc para gestionar datos como si fuese una pequeña base de datos.
-          </p>
+          <h3>1. Situación real</h3>
+          <p>El alumnado parte de un encargo cercano al entorno administrativo: ventas, notas, informes, clientes, inventario o intercambio de archivos.</p>
         </article>
-        <article class="card" id="metodologia">
-          <h3>Cómo está organizada la web</h3>
-          <p>
-            Cada fase incluye tres bloques: <strong>conceptos básicos</strong>, <strong>práctica guiada</strong> y
-            <strong>tipo test</strong>. La idea es que el estudiante comprenda primero lo esencial y después desarrolle una tarea realista
-            siguiendo instrucciones claras y ordenadas.
-          </p>
+        <article class="card">
+          <h3>2. Desarrollo guiado</h3>
+          <p>Se indica qué introducir en cada columna, qué fórmulas escribir y qué resultado debería aparecer para poder comprobar si el trabajo está bien hecho.</p>
+        </article>
+        <article class="card">
+          <h3>3. Comprobación final</h3>
+          <p>Cada fase termina con 10 preguntas tipo test de 4 opciones, útiles para repasar conceptos o hacer evaluación rápida.</p>
         </article>
       </div>
     </section>
@@ -78,62 +77,78 @@
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Itinerario didáctico</p>
-          <h2>Las 6 fases de aprendizaje</h2>
-          <p>Cada fase trabaja uno de los aspectos clave del manejo de Calc en el módulo.</p>
+          <h2>Las 6 fases del módulo</h2>
+          <p>Una práctica completa por cada bloque de contenido solicitado.</p>
         </div>
 
         <div class="phase-grid">
-          <a class="phase-card" href="fase-a.html">
+          <a class="phase-card" href="fase-a.html" data-phase-card="a">
             <span class="phase-tag">Fase A</span>
             <h3>Tipos de datos y referencias</h3>
-            <p>Uso de datos, celdas, rangos, hojas, libros y referencias relativas, absolutas y mixtas.</p>
+            <p>Datos, celdas, rangos, hojas, referencias relativas, absolutas y mixtas en una hoja de ventas.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
-          <a class="phase-card" href="fase-b.html">
+          <a class="phase-card" href="fase-b.html" data-phase-card="b">
             <span class="phase-tag">Fase B</span>
             <h3>Fórmulas y funciones</h3>
-            <p>Operaciones, funciones básicas y condicionales aplicadas a un caso práctico de notas.</p>
+            <p>Operaciones y funciones en el cálculo de calificaciones y estadísticas de grupo.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
-          <a class="phase-card" href="fase-c.html">
+          <a class="phase-card" href="fase-c.html" data-phase-card="c">
             <span class="phase-tag">Fase C</span>
             <h3>Gráficos</h3>
-            <p>Creación e interpretación de gráficos de barras, líneas y sectores a partir de datos reales.</p>
+            <p>Creación de gráficos de columnas, líneas y sectores para un informe de ventas trimestrales.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
-          <a class="phase-card" href="fase-d.html">
+          <a class="phase-card" href="fase-d.html" data-phase-card="d">
             <span class="phase-tag">Fase D</span>
             <h3>Macros y automatización</h3>
-            <p>Grabación de macros sencillas para automatizar tareas repetitivas y mejorar la productividad.</p>
+            <p>Grabación y uso de macros para dar formato uniforme y preparar plantillas repetitivas.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
-          <a class="phase-card" href="fase-e.html">
+          <a class="phase-card" href="fase-e.html" data-phase-card="e">
             <span class="phase-tag">Fase E</span>
             <h3>Importación y exportación</h3>
-            <p>Trabajo con CSV, XLSX y ODS para importar, adaptar y compartir hojas de cálculo.</p>
+            <p>Trabajo con CSV, XLSX y ODS para abrir, adaptar y compartir hojas creadas con otras aplicaciones.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
-          <a class="phase-card" href="fase-f.html">
+          <a class="phase-card" href="fase-f.html" data-phase-card="f">
             <span class="phase-tag">Fase F</span>
             <h3>Calc como base de datos</h3>
-            <p>Listas, filtrado, ordenación, formularios sencillos y protección de datos en una tabla.</p>
+            <p>Listas, formularios, filtrado, ordenación y protección sobre una base de datos de clientes.</p><span class="phase-status phase-status-open" data-phase-status></span>
           </a>
         </div>
+      </div>
+    </section>
+
+    <section class="section container" id="certificado-final">
+      <div class="card">
+        <p class="eyebrow">Cierre del itinerario</p>
+        <h2>Certificado final</h2>
+        <p>Cuando el estudiante haya superado las seis fases, podrá acceder al certificado final desde la propia web.</p>
+        <a class="button" href="certificado.html" data-certificate-link>Acceder al certificado</a>
       </div>
     </section>
 
     <section class="section container" id="uso">
       <div class="section-heading">
         <p class="eyebrow">Aplicación</p>
-        <h2>Uso didáctico recomendado</h2>
+        <h2>Uso recomendado en clase</h2>
       </div>
-      <div class="grid-3">
+      <div class="grid-2">
         <article class="card">
-          <h3>En clase</h3>
-          <p>Presentar la fase, explicar los conceptos y resolver la práctica con acompañamiento inicial.</p>
+          <h3>Propuesta de secuencia</h3>
+          <ol class="list-clean">
+            <li>Presentar el caso real y los conceptos previos.</li>
+            <li>Resolver en gran grupo los dos o tres primeros pasos.</li>
+            <li>Dejar que el alumnado continúe siguiendo la guía.</li>
+            <li>Comparar el resultado obtenido con la solución esperada.</li>
+            <li>Finalizar con el test para consolidar el aprendizaje.</li>
+          </ol>
         </article>
         <article class="card">
-          <h3>Trabajo autónomo</h3>
-          <p>El alumnado puede seguir los pasos de forma individual y comprobar lo aprendido con el test final.</p>
-        </article>
-        <article class="card">
-          <h3>Evaluación</h3>
-          <p>Se puede valorar el resultado final de la práctica, la autonomía en el proceso y la corrección del test.</p>
+          <h3>Qué encontrará el alumnado</h3>
+          <div class="kpi-list">
+            <div class="kpi-item"><strong>Datos cerrados:</strong> no necesitan inventar la tabla inicial.</div>
+            <div class="kpi-item"><strong>Pasos claros:</strong> qué escribir, dónde y para qué.</div>
+            <div class="kpi-item"><strong>Autocontrol:</strong> pueden revisar si el resultado coincide.</div>
+            <div class="kpi-item"><strong>Navegación sencilla:</strong> cada fase tiene acceso a la siguiente.</div>
+          </div>
         </article>
       </div>
     </section>
@@ -141,7 +156,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>Web didáctica de apoyo · LibreOffice Calc · Tratamiento Informático de la Información</p>
+      <p>Web didáctica de apoyo · LibreOffice Calc · Tratamiento Informático de la Información · <span data-current-year></span></p>
       <a href="fase-a.html">Ir a la primera fase</a>
     </div>
   </footer>

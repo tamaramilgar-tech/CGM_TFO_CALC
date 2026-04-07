@@ -4,88 +4,115 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FASE B | Fórmulas y funciones | Calc</title>
+  <meta name="description" content="Fase B del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-phase="b">
   <header class="page-header">
     <div class="container">
       <a class="breadcrumb" href="index.html">← Inicio</a>
       <p class="eyebrow">FASE B</p>
       <h1>Fórmulas y funciones</h1>
-      <p class="lead">Aplicación de fórmulas y funciones en una hoja de cálculo.</p>
+      <p class="lead">Aplicación de operaciones y funciones habituales de Calc en un boletín de calificaciones.</p>
     </div>
   </header>
 
-  <main class="section">
+  <section class="section-soft" style="padding:1.4rem 0 0;">
+    <div class="container" id="phase-lock-state"></div>
+  </section>
+
+  <main class="section" id="phase-learning-content">
     <div class="container content-grid">
       <aside class="card sticky-card">
-        <h3>Resumen de la fase</h3>
-        <p>Eres el auxiliar administrativo de un centro de formación y debes registrar las calificaciones de un grupo, calcular medias y decidir si cada estudiante ha aprobado.</p>
+        <h3>Situación real</h3>
+        <p>Trabajas en la secretaría de un centro y debes preparar una hoja que calcule automáticamente la nota final de varios alumnos y muestre si han aprobado o no.</p>
         <h4>Material necesario</h4>
-        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo nuevo o continuación de la fase anterior</span><span class="pill">Lista de estudiantes y calificaciones</span></div>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo nuevo o una nueva hoja</span><span class="pill">Conocer la diferencia entre fórmula y función</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
       </aside>
 
       <div>
         <section class="card">
           <h2>Conceptos básicos que debes conocer</h2>
-          <ul class="list-clean">
-            <li>Las fórmulas empiezan por el signo igual.</li>
-<li>Una función es una fórmula predefinida que ahorra tiempo y reduce errores.</li>
-<li>Funciones básicas: SUMA, PROMEDIO, MAX, MIN, CONTAR y SI.</li>
-<li>Los argumentos de una función suelen ir entre paréntesis.</li>
-<li>Las funciones se pueden combinar para resolver tareas reales.</li>
-          </ul>
-          <div class="note">
-            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
-          </div>
+          <ul class="list-clean"><li>Una fórmula comienza siempre por el signo igual.</li><li>Las funciones son fórmulas predefinidas que simplifican cálculos frecuentes.</li><li>SUMA, PROMEDIO, MAX y MIN permiten hacer estadísticas básicas.</li><li>SI permite mostrar un resultado u otro según se cumpla una condición.</li><li>Las funciones se pueden copiar a otras filas si las referencias están bien planteadas.</li></ul>
         </section>
 
         <section class="card">
-          <h2>Datos de partida para la práctica</h2>
-          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead><tr><th>Alumno</th><th>Prueba 1</th><th>Prueba 2</th><th>Práctica</th></tr></thead>
-              <tbody>
-                <tr><td>Ana</td><td>7</td><td>8</td><td>9</td></tr>
-<tr><td>Luis</td><td>5</td><td>6</td><td>4</td></tr>
-<tr><td>Marta</td><td>9</td><td>8</td><td>10</td></tr>
-<tr><td>Sergio</td><td>4</td><td>5</td><td>6</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Contenido</th></tr></thead><tbody><tr><td>A1</td><td>Alumno</td></tr>
+<tr><td>B1</td><td>Práctica 1</td></tr>
+<tr><td>C1</td><td>Práctica 2</td></tr>
+<tr><td>D1</td><td>Examen</td></tr>
+<tr><td>E1</td><td>Nota final</td></tr>
+<tr><td>F1</td><td>Resultado</td></tr>
+<tr><td>A2</td><td>Ana</td></tr>
+<tr><td>B2</td><td>7</td></tr>
+<tr><td>C2</td><td>8</td></tr>
+<tr><td>D2</td><td>6</td></tr>
+<tr><td>A3</td><td>Bruno</td></tr>
+<tr><td>B3</td><td>5</td></tr>
+<tr><td>C3</td><td>6</td></tr>
+<tr><td>D3</td><td>4</td></tr>
+<tr><td>A4</td><td>Carla</td></tr>
+<tr><td>B4</td><td>9</td></tr>
+<tr><td>C4</td><td>8</td></tr>
+<tr><td>D4</td><td>9</td></tr>
+<tr><td>A5</td><td>Diego</td></tr>
+<tr><td>B5</td><td>6</td></tr>
+<tr><td>C5</td><td>7</td></tr>
+<tr><td>D5</td><td>5</td></tr>
+<tr><td>A6</td><td>Elena</td></tr>
+<tr><td>B6</td><td>4</td></tr>
+<tr><td>C6</td><td>5</td></tr>
+<tr><td>D6</td><td>7</td></tr></tbody></table></div>
         </section>
 
         <section class="card">
           <h2>Práctica guiada paso a paso</h2>
-          <div class="step-list">
-            <article class="step"><h4>Paso 1. Crear la tabla de calificaciones</h4><p>Guarda el archivo como <strong>fase-b-formulas-funciones.ods</strong>. Introduce los encabezados y completa los datos del alumnado.</p></article>
-<article class="step"><h4>Paso 2. Calcular la nota media</h4><p>En la columna E escribe <strong>Media</strong>. En E2 introduce <code>=PROMEDIO(B2:D2)</code> y copia hacia abajo.</p></article>
-<article class="step"><h4>Paso 3. Calcular la nota más alta y la más baja</h4><p>Debajo de la tabla, utiliza <code>=MAX(E2:E5)</code> para obtener la media más alta y <code>=MIN(E2:E5)</code> para la más baja.</p></article>
-<article class="step"><h4>Paso 4. Contar alumnado registrado</h4><p>En otra celda escribe <code>=CONTAR(E2:E5)</code> para contar cuántos resultados numéricos hay en la columna de medias.</p></article>
-<article class="step"><h4>Paso 5. Aplicar una función condicional</h4><p>En la columna F escribe <strong>Resultado</strong>. En F2 introduce <code>=SI(E2>=5;"Aprobado";"Suspenso")</code> y copia hacia abajo.</p></article>
-<article class="step"><h4>Paso 6. Calcular la suma de una columna</h4><p>Añade una celda de control con <code>=SUMA(B2:B5)</code> para mostrar la suma total de la Prueba 1.</p></article>
-<article class="step"><h4>Paso 7. Interpretar resultados</h4><p>Pide al alumnado que observe qué estudiantes aprueban y cómo cambia el resultado si modifican una nota.</p></article>
-<article class="step"><h4>Paso 8. Guardar la práctica</h4><p>Guarda el documento y revisa que todas las fórmulas funcionen correctamente sin errores.</p></article>
+          <div class="step-list"><article class="step"><h4>Paso 1. Preparar la hoja</h4><p>Crea una hoja llamada <strong>Notas</strong> y escribe los encabezados de A1:F1 como aparecen en la tabla. Después introduce los nombres y calificaciones de A2:D6.</p></article><article class="step"><h4>Paso 2. Calcular la nota final</h4><p>En E2 escribe <code>=PROMEDIO(B2:D2)</code>. El resultado esperado es <strong>7,00</strong>. Copia la fórmula hasta E6. Debes obtener: E3 = <strong>5,00</strong>, E4 = <strong>8,67</strong>, E5 = <strong>6,00</strong> y E6 = <strong>5,33</strong>.</p></article><article class="step"><h4>Paso 3. Determinar aprobado o suspenso</h4><p>En F2 escribe <code>=SI(E2>=5;"Aprobado";"Suspenso")</code>. Copia la fórmula hasta F6. El resultado esperado es: Ana aprobado, Bruno aprobado, Carla aprobado, Diego aprobado y Elena aprobado. Después cambia D3 de 4 a 3 y comprueba si Bruno sigue aprobando o no.</p></article><article class="step"><h4>Paso 4. Hallar la nota más alta</h4><p>En H1 escribe <strong>Nota más alta</strong> y en H2 introduce <code>=MAX(E2:E6)</code>. El resultado esperado es <strong>8,67</strong>.</p></article><article class="step"><h4>Paso 5. Hallar la nota más baja</h4><p>En I1 escribe <strong>Nota más baja</strong> y en I2 introduce <code>=MIN(E2:E6)</code>. El resultado esperado es <strong>5,00</strong> antes del cambio de Bruno y <strong>5,33</strong> si has cambiado su examen a 3.</p></article><article class="step"><h4>Paso 6. Contar cuántos aprobados hay</h4><p>En J1 escribe <strong>Aprobados</strong> y en J2 usa <code>=CONTAR.SI(F2:F6;"Aprobado")</code>. El resultado inicial esperado es <strong>5</strong>.</p></article><article class="step"><h4>Paso 7. Calcular la media del grupo</h4><p>En K1 escribe <strong>Media del grupo</strong> y en K2 usa <code>=PROMEDIO(E2:E6)</code>. El resultado esperado inicial es <strong>6,40</strong>.</p></article><article class="step"><h4>Paso 8. Formato y redondeo</h4><p>Selecciona E2:E6 y aplica dos decimales. Después en L1 escribe <strong>Nota redondeada</strong> y en L2 usa <code>=REDONDEAR(E2;0)</code>. Copia hasta L6 para ver cómo cambia la presentación de la nota.</p></article><article class="step"><h4>Paso 9. Interpretar la hoja</h4><p>Responde por escrito en N1:N3: quién obtiene la mejor media, cuál es la media general y qué función te ha servido para decidir si un alumno aprueba.</p></article><article class="step"><h4>Paso 10. Guardar</h4><p>Guarda el archivo como <strong>fase-b-formulas-funciones.ods</strong>.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Resultado esperado inicial</th></tr></thead><tbody><tr><td>E2</td><td>7,00</td></tr>
+<tr><td>E3</td><td>5,00</td></tr>
+<tr><td>E4</td><td>8,67</td></tr>
+<tr><td>E5</td><td>6,00</td></tr>
+<tr><td>E6</td><td>5,33</td></tr>
+<tr><td>H2</td><td>8,67</td></tr>
+<tr><td>I2</td><td>5,00</td></tr>
+<tr><td>J2</td><td>5</td></tr>
+<tr><td>K2</td><td>6,40</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
           </div>
         </section>
 
         <section class="card">
           <h2>Tipo test final</h2>
-          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
-          <div class="test-item"><h4>1. ¿Con qué signo comienza una fórmula en Calc?</h4><p><strong>Opciones:</strong> + / = / #</p><p><strong>Respuesta correcta:</strong> =</p></div>
-<div class="test-item"><h4>2. ¿Qué hace la función PROMEDIO?</h4><p><strong>Opciones:</strong> Suma todos los datos / Calcula la media aritmética / Cuenta textos</p><p><strong>Respuesta correcta:</strong> Calcula la media aritmética.</p></div>
-<div class="test-item"><h4>3. ¿Qué función usarías para obtener el valor más alto?</h4><p><strong>Opciones:</strong> MIN / MAX / SI</p><p><strong>Respuesta correcta:</strong> MAX.</p></div>
-<div class="test-item"><h4>4. ¿Qué hace la función SI?</h4><p><strong>Opciones:</strong> Compara una condición y devuelve un resultado / Cambia el formato de la celda / Ordena datos</p><p><strong>Respuesta correcta:</strong> Compara una condición y devuelve un resultado.</p></div>
-<div class="test-item"><h4>5. ¿Para qué sirve CONTAR?</h4><p><strong>Opciones:</strong> Para contar celdas numéricas / Para sumar importes / Para crear hojas</p><p><strong>Respuesta correcta:</strong> Para contar celdas numéricas.</p></div>
+          <p>Marca una sola opción en cada pregunta.</p>
+          <div class="test-item"><h4>1. ¿Cómo empieza cualquier fórmula en Calc?</h4><ol class="options"><li><strong>a)</strong> Con +</li><li><strong>b)</strong> Con =</li><li><strong>c)</strong> Con #</li><li><strong>d)</strong> Con @</li></ol></div>
+<div class="test-item"><h4>2. ¿Qué función calcula la media de varias notas?</h4><ol class="options"><li><strong>a)</strong> SUMA</li><li><strong>b)</strong> MAX</li><li><strong>c)</strong> PROMEDIO</li><li><strong>d)</strong> SI</li></ol></div>
+<div class="test-item"><h4>3. ¿Qué fórmula se usó para la nota final?</h4><ol class="options"><li><strong>a)</strong> =SUMA(B2:D2)</li><li><strong>b)</strong> =PROMEDIO(B2:D2)</li><li><strong>c)</strong> =MAX(B2:D2)</li><li><strong>d)</strong> =MIN(B2:D2)</li></ol></div>
+<div class="test-item"><h4>4. ¿Qué función muestra Aprobado o Suspenso según una condición?</h4><ol class="options"><li><strong>a)</strong> CONTAR</li><li><strong>b)</strong> SI</li><li><strong>c)</strong> SUMA</li><li><strong>d)</strong> REDONDEAR</li></ol></div>
+<div class="test-item"><h4>5. ¿Qué resultado inicial tiene Ana en E2?</h4><ol class="options"><li><strong>a)</strong> 6,00</li><li><strong>b)</strong> 7,00</li><li><strong>c)</strong> 8,00</li><li><strong>d)</strong> 5,50</li></ol></div>
+<div class="test-item"><h4>6. ¿Qué función localiza la nota más alta?</h4><ol class="options"><li><strong>a)</strong> MIN</li><li><strong>b)</strong> MAX</li><li><strong>c)</strong> SI</li><li><strong>d)</strong> PROMEDIO</li></ol></div>
+<div class="test-item"><h4>7. ¿Qué función se usó para contar aprobados?</h4><ol class="options"><li><strong>a)</strong> CONTAR.SI</li><li><strong>b)</strong> SUMA.SI</li><li><strong>c)</strong> PROMEDIO</li><li><strong>d)</strong> ABS</li></ol></div>
+<div class="test-item"><h4>8. ¿Cuál es la media inicial del grupo?</h4><ol class="options"><li><strong>a)</strong> 5,00</li><li><strong>b)</strong> 6,40</li><li><strong>c)</strong> 7,25</li><li><strong>d)</strong> 8,67</li></ol></div>
+<div class="test-item"><h4>9. ¿Para qué sirve REDONDEAR?</h4><ol class="options"><li><strong>a)</strong> Para cambiar una nota por texto</li><li><strong>b)</strong> Para mostrar menos decimales según una regla</li><li><strong>c)</strong> Para ordenar una tabla</li><li><strong>d)</strong> Para filtrar alumnos</li></ol></div>
+<div class="test-item"><h4>10. Si una alumna tiene 4, 5 y 7, ¿aprueba según la condición >=5?</h4><ol class="options"><li><strong>a)</strong> No, porque hay un 4</li><li><strong>b)</strong> Sí, porque la media es 5,33</li><li><strong>c)</strong> Solo si lo dice el profesor</li><li><strong>d)</strong> Solo si se usa SUMA</li></ol></div><div class="details"><summary>Ver plantilla de corrección</summary><ol class="answer-key"><li><strong>1.</strong> b) Con =</li><li><strong>2.</strong> c) PROMEDIO</li><li><strong>3.</strong> b) =PROMEDIO(B2:D2)</li><li><strong>4.</strong> b) SI</li><li><strong>5.</strong> b) 7,00</li><li><strong>6.</strong> b) MAX</li><li><strong>7.</strong> a) CONTAR.SI</li><li><strong>8.</strong> b) 6,40</li><li><strong>9.</strong> b) Para mostrar menos decimales según una regla</li><li><strong>10.</strong> b) Sí, porque la media es 5,33</li></ol></div>
         </section>
 
         <nav class="phase-nav">
-          <a class="button button-secondary" href="fase-a.html">Volver a la fase A</a>
+          <a class="button button-light" href="fase-a.html">Ir a la fase A</a>
           <a class="button" href="fase-c.html">Ir a la fase C</a>
         </nav>
       </div>
@@ -94,7 +121,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>FASE B · Fórmulas y funciones</p>
+      <p>FASE B · Fórmulas y funciones · <span data-current-year></span></p>
       <a href="index.html">Portada</a>
     </div>
   </footer>

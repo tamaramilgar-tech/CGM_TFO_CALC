@@ -3,90 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FASE C | Gráficos en Calc | Calc</title>
+  <title>FASE C | Gráficos | Calc</title>
+  <meta name="description" content="Fase C del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body data-phase="c">
   <header class="page-header">
     <div class="container">
       <a class="breadcrumb" href="index.html">← Inicio</a>
       <p class="eyebrow">FASE C</p>
-      <h1>Gráficos en Calc</h1>
-      <p class="lead">Creación y modificación de gráficos de distintos tipos.</p>
+      <h1>Gráficos</h1>
+      <p class="lead">Generación y modificación de gráficos de columnas, líneas y sectores a partir de datos comerciales.</p>
     </div>
   </header>
 
-  <main class="section">
+  <section class="section-soft" style="padding:1.4rem 0 0;">
+    <div class="container" id="phase-lock-state"></div>
+  </section>
+
+  <main class="section" id="phase-learning-content">
     <div class="container content-grid">
       <aside class="card sticky-card">
-        <h3>Resumen de la fase</h3>
-        <p>Una tienda quiere mostrar la evolución de sus ventas mensuales y la distribución de productos vendidos para presentar los datos en una reunión.</p>
+        <h3>Situación real</h3>
+        <p>Formas parte del departamento comercial de una tienda y debes presentar a tu responsable un informe visual de ventas trimestrales para que pueda interpretar los datos de un vistazo.</p>
         <h4>Material necesario</h4>
-        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Tabla con meses y ventas</span><span class="pill">Tabla con categorías y porcentajes</span></div>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Saber seleccionar rangos</span><span class="pill">Archivo en formato ODS</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
       </aside>
 
       <div>
         <section class="card">
           <h2>Conceptos básicos que debes conocer</h2>
-          <ul class="list-clean">
-            <li>Un gráfico representa visualmente datos numéricos.</li>
-<li>Los tipos más frecuentes en esta práctica son barras, líneas y sectores.</li>
-<li>Un buen gráfico necesita título, leyenda y datos claros.</li>
-<li>Cada tipo de gráfico sirve mejor para una finalidad distinta.</li>
-<li>Modificar un gráfico ayuda a hacerlo más comprensible.</li>
-          </ul>
-          <div class="note">
-            <strong>Idea clave:</strong> antes de empezar la práctica, conviene que el estudiante comprenda para qué sirve cada herramienta y en qué situación real podría utilizarla.
-          </div>
+          <ul class="list-clean"><li>Un gráfico representa visualmente una tabla de datos.</li><li>Los gráficos de columnas comparan cantidades entre categorías.</li><li>Los gráficos de líneas muestran evolución a lo largo del tiempo.</li><li>Los gráficos de sectores sirven para comparar proporciones sobre un total.</li><li>Todo gráfico debe tener título, leyenda clara y datos bien seleccionados.</li></ul>
         </section>
 
         <section class="card">
-          <h2>Datos de partida para la práctica</h2>
-          <p>Utiliza esta tabla inicial como base del ejercicio:</p>
-          <div class="table-wrap">
-            <table class="data-table">
-              <thead><tr><th>Mes</th><th>Ventas (€)</th></tr></thead>
-              <tbody>
-                <tr><td>Enero</td><td>1200</td></tr>
-<tr><td>Febrero</td><td>1450</td></tr>
-<tr><td>Marzo</td><td>1330</td></tr>
-<tr><td>Abril</td><td>1680</td></tr>
-<tr><td>Mayo</td><td>1725</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Mes</th><th>Portátiles</th><th>Impresoras</th><th>Tablets</th></tr></thead><tbody><tr><td>Enero</td><td>12</td><td>8</td><td>10</td></tr>
+<tr><td>Febrero</td><td>15</td><td>6</td><td>11</td></tr>
+<tr><td>Marzo</td><td>18</td><td>9</td><td>13</td></tr>
+<tr><td>Abril</td><td>14</td><td>10</td><td>12</td></tr></tbody></table></div>
         </section>
 
         <section class="card">
           <h2>Práctica guiada paso a paso</h2>
-          <div class="step-list">
-            <article class="step"><h4>Paso 1. Crear la tabla de ventas</h4><p>Guarda el archivo como <strong>fase-c-graficos.ods</strong>. Introduce los meses y las ventas mensuales en dos columnas.</p></article>
-<article class="step"><h4>Paso 2. Insertar un gráfico de barras</h4><p>Selecciona la tabla completa. Ve a <strong>Insertar &gt; Gráfico</strong> y elige un gráfico de barras. Finaliza el asistente.</p></article>
-<article class="step"><h4>Paso 3. Editar el título del gráfico</h4><p>Haz doble clic sobre el gráfico y cambia el título por <strong>Ventas mensuales del primer trimestre ampliado</strong> o uno similar.</p></article>
-<article class="step"><h4>Paso 4. Modificar elementos visuales</h4><p>Ajusta la leyenda, el color de las barras y el tamaño del gráfico para mejorar la presentación.</p></article>
-<article class="step"><h4>Paso 5. Crear un gráfico de líneas</h4><p>Duplica o reutiliza la misma tabla para insertar ahora un gráfico de líneas y comparar cómo se ve la evolución de los datos.</p></article>
-<article class="step"><h4>Paso 6. Añadir un gráfico circular</h4><p>Crea una segunda tabla con categorías de productos y cantidades. Inserta un gráfico de sectores para representar porcentajes o distribución.</p></article>
-<article class="step"><h4>Paso 7. Comparar tipos de gráfico</h4><p>Pide al alumnado que explique qué gráfico resulta más útil para evolución temporal y cuál para reparto porcentual.</p></article>
-<article class="step"><h4>Paso 8. Guardar la práctica</h4><p>Revisa que los gráficos sean legibles, estén bien titulados y guarden relación con los datos.</p></article>
+          <div class="step-list"><article class="step"><h4>Paso 1. Introducir la tabla</h4><p>En una hoja llamada <strong>Informe</strong>, escribe en A1:D5 la tabla de datos de ventas mensuales. Usa los encabezados <strong>Mes</strong>, <strong>Portátiles</strong>, <strong>Impresoras</strong> y <strong>Tablets</strong>.</p></article><article class="step"><h4>Paso 2. Crear un gráfico de columnas</h4><p>Selecciona A1:D5 y ve a <strong>Insertar &gt; Gráfico</strong>. Elige <strong>Columnas</strong>. Pon como título <strong>Ventas mensuales por producto</strong>. Comprueba que en el eje horizontal aparecen los meses y que las tres series corresponden a los productos.</p></article><article class="step"><h4>Paso 3. Personalizar el gráfico</h4><p>Modifica el subtítulo a <strong>Primer cuatrimestre</strong>, activa la leyenda y cambia el color o estilo de una serie para distinguirla mejor. Sitúa el gráfico debajo de la tabla.</p></article><article class="step"><h4>Paso 4. Crear un gráfico de líneas</h4><p>Copia la misma tabla en F1:I5 o vuelve a seleccionar A1:D5. Inserta ahora un <strong>gráfico de líneas</strong> con el título <strong>Evolución de ventas</strong>. Este gráfico debe servir para ver qué producto crece de forma más estable.</p></article><article class="step"><h4>Paso 5. Calcular el total por producto</h4><p>En K1 escribe <strong>Producto</strong> y en L1 <strong>Total</strong>. En K2:K4 escribe Portátiles, Impresoras y Tablets. En L2 escribe <code>=SUMA(B2:B5)</code>, en L3 <code>=SUMA(C2:C5)</code> y en L4 <code>=SUMA(D2:D5)</code>. Resultados esperados: Portátiles <strong>59</strong>, Impresoras <strong>33</strong>, Tablets <strong>46</strong>.</p></article><article class="step"><h4>Paso 6. Crear un gráfico de sectores</h4><p>Selecciona K1:L4 e inserta un <strong>gráfico de sectores</strong> con el título <strong>Reparto total de ventas</strong>. Activa las etiquetas de datos en porcentaje si la versión de Calc lo permite.</p></article><article class="step"><h4>Paso 7. Interpretar los resultados</h4><p>Escribe en N1:N3 tres conclusiones breves: qué producto vende más, cuál vende menos y en qué mes se alcanza la cifra más alta de portátiles.</p></article><article class="step"><h4>Paso 8. Probar una modificación</h4><p>Cambia las ventas de abril de portátiles de 14 a 20 y comprueba que el gráfico de columnas y el de líneas se actualizan. Revisa también el total en L2, que debe pasar de <strong>59</strong> a <strong>65</strong>.</p></article><article class="step"><h4>Paso 9. Mejorar la presentación</h4><p>Alinea la tabla, aplica bordes y usa negrita en los encabezados. El informe debe poder imprimirse y entenderse sin explicación adicional.</p></article><article class="step"><h4>Paso 10. Guardar</h4><p>Guarda el archivo como <strong>fase-c-graficos.ods</strong>.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Dato</th><th>Resultado esperado inicial</th></tr></thead><tbody><tr><td>Total Portátiles</td><td>59</td></tr>
+<tr><td>Total Impresoras</td><td>33</td></tr>
+<tr><td>Total Tablets</td><td>46</td></tr>
+<tr><td>Mes con más portátiles</td><td>Marzo (18)</td></tr>
+<tr><td>Producto con mayor total</td><td>Portátiles</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
           </div>
         </section>
 
         <section class="card">
           <h2>Tipo test final</h2>
-          <p>Este pequeño cuestionario sirve para comprobar si se han entendido los conceptos trabajados en la práctica.</p>
-          <div class="test-item"><h4>1. ¿Qué gráfico suele ser adecuado para comparar cantidades entre categorías?</h4><p><strong>Opciones:</strong> Barras / Sectores 3D siempre / Ninguno</p><p><strong>Respuesta correcta:</strong> Barras.</p></div>
-<div class="test-item"><h4>2. ¿Qué gráfico es útil para ver una evolución en el tiempo?</h4><p><strong>Opciones:</strong> Líneas / Sectores / Tabla dinámica</p><p><strong>Respuesta correcta:</strong> Líneas.</p></div>
-<div class="test-item"><h4>3. ¿Qué gráfico suele utilizarse para mostrar porcentajes de un total?</h4><p><strong>Opciones:</strong> Circular o de sectores / Dispersión / Columnas vacías</p><p><strong>Respuesta correcta:</strong> Circular o de sectores.</p></div>
-<div class="test-item"><h4>4. ¿Qué elemento ayuda a identificar el contenido del gráfico?</h4><p><strong>Opciones:</strong> El título / La contraseña / La macro</p><p><strong>Respuesta correcta:</strong> El título.</p></div>
-<div class="test-item"><h4>5. ¿Se puede modificar un gráfico una vez creado?</h4><p><strong>Opciones:</strong> No / Sí / Solo exportándolo</p><p><strong>Respuesta correcta:</strong> Sí.</p></div>
+          <p>Marca una sola opción en cada pregunta.</p>
+          <div class="test-item"><h4>1. ¿Qué gráfico es más adecuado para comparar cantidades entre productos y meses?</h4><ol class="options"><li><strong>a)</strong> Sectores</li><li><strong>b)</strong> Columnas</li><li><strong>c)</strong> Dispersión</li><li><strong>d)</strong> Área</li></ol></div>
+<div class="test-item"><h4>2. ¿Qué gráfico se usa para ver una evolución en el tiempo?</h4><ol class="options"><li><strong>a)</strong> Líneas</li><li><strong>b)</strong> Sectores</li><li><strong>c)</strong> Barras apiladas</li><li><strong>d)</strong> Radar</li></ol></div>
+<div class="test-item"><h4>3. ¿Qué gráfico es útil para mostrar proporciones de un total?</h4><ol class="options"><li><strong>a)</strong> Líneas</li><li><strong>b)</strong> Columnas</li><li><strong>c)</strong> Sectores</li><li><strong>d)</strong> Histograma</li></ol></div>
+<div class="test-item"><h4>4. ¿Qué total inicial tienen los portátiles?</h4><ol class="options"><li><strong>a)</strong> 46</li><li><strong>b)</strong> 59</li><li><strong>c)</strong> 33</li><li><strong>d)</strong> 65</li></ol></div>
+<div class="test-item"><h4>5. ¿Cuál es el producto con menor total inicial?</h4><ol class="options"><li><strong>a)</strong> Portátiles</li><li><strong>b)</strong> Impresoras</li><li><strong>c)</strong> Tablets</li><li><strong>d)</strong> Todos igual</li></ol></div>
+<div class="test-item"><h4>6. ¿Qué mes tiene más ventas de portátiles antes del cambio?</h4><ol class="options"><li><strong>a)</strong> Enero</li><li><strong>b)</strong> Febrero</li><li><strong>c)</strong> Marzo</li><li><strong>d)</strong> Abril</li></ol></div>
+<div class="test-item"><h4>7. Si modificas un dato de la tabla, ¿qué debe pasar con el gráfico?</h4><ol class="options"><li><strong>a)</strong> Nada</li><li><strong>b)</strong> Se bloquea</li><li><strong>c)</strong> Se actualiza</li><li><strong>d)</strong> Se elimina</li></ol></div>
+<div class="test-item"><h4>8. ¿Qué función se utilizó para obtener los totales por producto?</h4><ol class="options"><li><strong>a)</strong> MAX</li><li><strong>b)</strong> PROMEDIO</li><li><strong>c)</strong> SUMA</li><li><strong>d)</strong> SI</li></ol></div>
+<div class="test-item"><h4>9. ¿Qué elemento ayuda a saber qué color corresponde a cada serie?</h4><ol class="options"><li><strong>a)</strong> La leyenda</li><li><strong>b)</strong> La fila</li><li><strong>c)</strong> El filtro</li><li><strong>d)</strong> La hoja 2</li></ol></div>
+<div class="test-item"><h4>10. Tras cambiar abril de portátiles a 20, ¿qué total debería aparecer en L2?</h4><ol class="options"><li><strong>a)</strong> 59</li><li><strong>b)</strong> 60</li><li><strong>c)</strong> 65</li><li><strong>d)</strong> 70</li></ol></div><div class="details"><summary>Ver plantilla de corrección</summary><ol class="answer-key"><li><strong>1.</strong> b) Columnas</li><li><strong>2.</strong> a) Líneas</li><li><strong>3.</strong> c) Sectores</li><li><strong>4.</strong> b) 59</li><li><strong>5.</strong> b) Impresoras</li><li><strong>6.</strong> c) Marzo</li><li><strong>7.</strong> c) Se actualiza</li><li><strong>8.</strong> c) SUMA</li><li><strong>9.</strong> a) La leyenda</li><li><strong>10.</strong> c) 65</li></ol></div>
         </section>
 
         <nav class="phase-nav">
-          <a class="button button-secondary" href="fase-b.html">Volver a la fase B</a>
+          <a class="button button-light" href="fase-b.html">Ir a la fase B</a>
           <a class="button" href="fase-d.html">Ir a la fase D</a>
         </nav>
       </div>
@@ -95,7 +95,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <p>FASE C · Gráficos en Calc</p>
+      <p>FASE C · Gráficos · <span data-current-year></span></p>
       <a href="index.html">Portada</a>
     </div>
   </footer>
