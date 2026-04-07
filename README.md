@@ -1,24 +1,53 @@
 # Web didáctica de LibreOffice Calc
 
-Proyecto preparado para GitHub Pages.
+Proyecto listo para publicar en GitHub Pages.
 
-## Incluye
-- 6 fases con prácticas detalladas
-- verificación por código tras la entrega en EVAGD
+## Archivos
+- `index.html`
+- `fase-a.html`
+- `fase-b.html`
+- `fase-c.html`
+- `fase-d.html`
+- `fase-e.html`
+- `fase-f.html`
+- `certificado.html`
+- `style.css`
+- `script.js`
+
+## Qué incluye esta versión
+- 6 fases con práctica guiada y caso real
+- validación por código para cada práctica entregada en EVAGD
 - test dinámico de 10 preguntas por fase
-- 3 intentos máximos
-- preguntas y opciones barajadas en cada intento
-- autocorrección solo tras agotar los 3 intentos
-- superación con 8/10 o más
-- avance bloqueado por fases
-- certificado final
-- guardado del progreso del estudiante en localStorage
+- 3 intentos máximos por fase
+- preguntas y orden de respuestas variables en cada intento
+- autocorrección solo al terminar el tercer intento
+- superación con 8 de 10 o más
+- desbloqueo progresivo de fases
+- certificado final al completar las 6 fases
 
-## Importante
-Edita en `script.js` los códigos del bloque `PHASE_CODES`.
+## IMPORTANTE: códigos de verificación
+En el archivo `script.js` encontrarás este bloque:
 
-## Publicación
-1. Sube el contenido al repositorio.
-2. En GitHub, ve a Settings > Pages.
-3. Selecciona la rama principal y la carpeta raíz.
-4. Guarda los cambios.
+```js
+const PHASE_CODES = {
+  a: "CAMBIA-CODIGO-A",
+  b: "CAMBIA-CODIGO-B",
+  c: "CAMBIA-CODIGO-C",
+  d: "CAMBIA-CODIGO-D",
+  e: "CAMBIA-CODIGO-E",
+  f: "CAMBIA-CODIGO-F"
+};
+```
+
+Debes sustituir esos valores por los códigos reales que entregarás al alumnado a través de EVAGD.
+
+## Publicación rápida en GitHub Pages
+1. Sube todos los archivos a un repositorio.
+2. Ve a **Settings > Pages**.
+3. En **Build and deployment**, selecciona **Deploy from a branch**.
+4. Elige la rama principal y la carpeta `/root`.
+5. Guarda los cambios.
+6. GitHub publicará la web y te dará la URL.
+
+## Nota técnica
+El progreso se guarda en el navegador mediante `localStorage`, por lo que cada estudiante mantiene su avance en su propio equipo/navegador.

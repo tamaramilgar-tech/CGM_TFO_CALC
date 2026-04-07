@@ -864,48 +864,37 @@ const APP_DATA = {
   }
 };
 
-function getTodayCode(date = new Date()) {
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const year = String(date.getFullYear()).slice(-2);
-  return `${day}${month}${year}`;
-}
-
 const PHASE_CODES = {
-  a: () => getTodayCode(),
-  b: () => getTodayCode(),
-  c: () => getTodayCode(),
-  d: () => getTodayCode(),
-  e: () => getTodayCode(),
-  f: () => getTodayCode()
+  a: "CAMBIA-CODIGO-A",
+  b: "CAMBIA-CODIGO-B",
+  c: "CAMBIA-CODIGO-C",
+  d: "CAMBIA-CODIGO-D",
+  e: "CAMBIA-CODIGO-E",
+  f: "CAMBIA-CODIGO-F"
 };
 
 const PASS_MARK = 8;
 const ATTEMPTS_MAX = 3;
 const QUESTIONS_PER_ATTEMPT = 10;
-const STORAGE_KEY = "calc_tii_progress_v3";
+const STORAGE_KEY = "calc_tii_progress_v2";
 
-function defaultProgress() {
-  return { studentName: "", verified: {}, passed: {}, attempts: {}, bestScores: {} };
-}
 function getProgress() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    const parsed = raw ? JSON.parse(raw) : defaultProgress();
-    return {
-      studentName: parsed.studentName || "",
-      verified: parsed.verified || {},
-      passed: parsed.passed || {},
-      attempts: parsed.attempts || {},
-      bestScores: parsed.bestScores || {}
-    };
+    const parsed = raw ? JSON.parse(raw) : {};
+    parsed.verified = parsed.verified || {};
+    parsed.passed = parsed.passed || {};
+    parsed.attempts = parsed.attempts || {};
+    parsed.bestScores = parsed.bestScores || {};
+    return parsed;
   } catch (e) {
-    return defaultProgress();
+    return { verified: {}, passed: {}, attempts: {}, bestScores: {} };
   }
 }
-function saveProgress(progress) { localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-function resetProgress() { localStorage.removeItem(STORAGE_KEY); }
-function phaseOrder() { return ["a","b","c","d","e","f"]; }
+
+function saveProgress(progress) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
 
 function shuffle(array) {
   const arr = [...array];
@@ -916,81 +905,53 @@ function shuffle(array) {
   return arr;
 }
 
-function isPhaseAccessible(phase, progress) {
-  const order = phaseOrder();
-  const idx = order.indexOf(phase);
-  if (idx === 0) return true;
-  return order.slice(0, idx).every(p => !!progress.passed[p]);
-}
-function statusLabel(phase, progress) {
-  if (progress.passed[phase]) return "superada";
-  if (isPhaseAccessible(phase, progress)) return "pendiente";
-  return "bloqueada";
-}
-function updateYear() {
-  document.querySelectorAll("[data-current-year]").forEach(el => el.textContent = new Date().getFullYear());
-}
-function updateStudentNameUI() {
-  const progress = getProgress();
-  document.querySelectorAll("[data-student-name]").forEach(el => {
-    el.textContent = progress.studentName || "Nombre del alumno/a";
+function sampleQuestions(phase, usedQuestions=[]) {
+  const pool = APP_DATA.pools[phase];
+  const unused = pool.filter(q => !usedQuestions.includes(q.q));
+  const source = unused.length >= QUESTIONS_PER_ATTEMPT ? unused : pool;
+  return shuffle(source).slice(0, QUESTIONS_PER_ATTEMPT).map((item) => {
+    const order = shuffle(item.options.map((opt, idx) => ({ text: opt, originalIndex: idx })));
+    return {
+      q: item.q,
+      options: order.map(o => o.text),
+      answer: order.findIndex(o => o.originalIndex === item.answer)
+    };
   });
-  const input = document.getElementById("student-name-input");
-  if (input) input.value = progress.studentName || "";
 }
 
-function mountStudentProfile() {
-  const input = document.getElementById("student-name-input");
-  const saveBtn = document.getElementById("save-student-name");
-  const resetBtn = document.getElementById("reset-progress");
-  const message = document.getElementById("student-profile-message");
-  if (saveBtn && input) {
-    saveBtn.addEventListener("click", () => {
-      const progress = getProgress();
-      progress.studentName = input.value.trim();
-      saveProgress(progress);
-      updateStudentNameUI();
-      if (message) message.textContent = progress.studentName ? "Nombre guardado correctamente." : "Nombre eliminado.";
-    });
-  }
-  if (resetBtn) {
-    resetBtn.addEventListener("click", () => {
-      if (!window.confirm("Se borrará el progreso guardado de este navegador. ¿Quieres continuar?")) return;
-      resetProgress();
-      window.location.href = "index.html";
-    });
-  }
+function phaseOrder() {
+  return ["a","b","c","d","e","f"];
+}
+
+function isPhaseAccessible(phase, progress) {
+  const order = phaseOrder();
+  const index = order.indexOf(phase);
+  if (index <= 0) return true;
+  return order.slice(0, index).every(p => progress.passed[p]);
 }
 
 function updatePhaseCards() {
   const progress = getProgress();
   document.querySelectorAll("[data-phase-card]").forEach(card => {
     const phase = card.dataset.phaseCard;
-    const state = statusLabel(phase, progress);
+    const accessible = isPhaseAccessible(phase, progress);
+    const passed = !!progress.passed[phase];
     const badge = card.querySelector("[data-phase-status]");
     if (badge) {
-      badge.textContent = `FASE ${phase.toUpperCase()}: ${state}`;
-      badge.className = "phase-status " + (state === "superada" ? "phase-status-pass" : (state === "pendiente" ? "phase-status-open" : "phase-status-lock"));
+      badge.textContent = passed ? "Superada" : (accessible ? "Disponible" : "Bloqueada");
+      badge.className = "phase-status " + (passed ? "phase-status-pass" : (accessible ? "phase-status-open" : "phase-status-lock"));
     }
-    card.classList.toggle("is-locked", state === "bloqueada");
-  });
-  document.querySelectorAll("[data-phase-link]").forEach(link => {
-    const phase = link.dataset.phaseLink;
-    const state = statusLabel(phase, progress);
-    if (state === "bloqueada") {
-      link.classList.add("is-disabled");
-      link.setAttribute("aria-disabled","true");
-      link.addEventListener("click", (e) => e.preventDefault(), { once: true });
-    } else {
-      link.classList.remove("is-disabled");
-      link.removeAttribute("aria-disabled");
+    if (!accessible) {
+      card.classList.add("is-locked");
+      card.setAttribute("aria-disabled","true");
+      card.addEventListener("click", (e) => e.preventDefault(), { once: true });
     }
   });
   document.querySelectorAll("[data-certificate-link]").forEach(link => {
-    const allPassed = phaseOrder().every(p => !!progress.passed[p]);
+    const allPassed = phaseOrder().every(p => progress.passed[p]);
     if (!allPassed) {
       link.classList.add("is-disabled");
-      link.setAttribute("aria-disabled","true");
+      link.setAttribute("aria-disabled", "true");
       link.addEventListener("click", (e) => e.preventDefault(), { once: true });
     } else {
       link.classList.remove("is-disabled");
@@ -999,85 +960,190 @@ function updatePhaseCards() {
   });
 }
 
-function mountDashboard() {
+function mountPhasePage() {
+  const page = document.body.dataset.phase;
+  if (!page) return;
+  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
+
   const progress = getProgress();
-  const mount = document.getElementById("phase-dashboard");
-  if (!mount) return;
-  mount.innerHTML = phaseOrder().map(phase => {
-    const label = statusLabel(phase, progress);
-    const lockClass = label === "bloqueada" ? "is-locked" : "";
-    const stateClass = label === "superada" ? "mini-pass" : (label === "pendiente" ? "mini-open" : "mini-lock");
-    return `
-      <a class="dashboard-item ${lockClass}" href="fase-${phase}.html" data-phase-link="${phase}">
-        <strong>FASE ${phase.toUpperCase()}</strong>
-        <span>${APP_DATA.titles[phase]}</span>
-        <em class="mini-state ${stateClass}">${label}</em>
-      </a>
-    `;
-  }).join("");
-  const overall = document.getElementById("overall-progress");
-  if (overall) {
-    const allPassed = phaseOrder().every(p => !!progress.passed[p]);
-    overall.innerHTML = allPassed
-      ? '<div class="note note-success"><strong>Itinerario completo.</strong> Ya puedes acceder al certificado final.</div>'
-      : '<div class="note note-warning"><strong>Cómo funciona:</strong> realiza la práctica, súbela a EVAGD, valida el código del docente y supera el test con un mínimo de 8/10.</div>';
+  const accessible = isPhaseAccessible(page, progress);
+  const title = APP_DATA.titles[page];
+  const lockBox = document.getElementById("phase-lock-state");
+  const content = document.getElementById("phase-learning-content");
+  const testMount = document.getElementById("dynamic-test");
+  const summaryMount = document.getElementById("attempt-summary");
+  const nextLink = document.getElementById("next-phase-link");
+
+  if (!accessible) {
+    content.innerHTML = `
+      <section class="card card-warning">
+        <h2>Fase bloqueada</h2>
+        <p>Para acceder a <strong>${title}</strong> primero debes superar la fase anterior. Vuelve al inicio y continúa el itinerario en orden.</p>
+        <a class="button" href="index.html">Volver al inicio</a>
+      </section>`;
+    if (lockBox) lockBox.remove();
+    return;
+  }
+
+  renderVerificationBlock(page, progress);
+
+  if (progress.verified[page]) {
+    renderTestBlock(page);
+  } else if (testMount) {
+    testMount.innerHTML = `
+      <div class="note note-warning">
+        <strong>Test aún bloqueado.</strong> Cuando entregues la práctica en EVAGD, introduce aquí el código facilitado por el profesorado para activar el test de esta fase.
+      </div>`;
+  }
+
+  if (summaryMount) renderAttemptSummary(page, summaryMount);
+
+  if (nextLink) {
+    const order = phaseOrder();
+    const idx = order.indexOf(page);
+    if (idx === order.length - 1) {
+      nextLink.href = "certificado.html";
+      nextLink.textContent = "Ir al certificado final";
+    } else {
+      nextLink.href = `fase-${order[idx+1]}.html`;
+    }
+    if (progress.passed[page]) nextLink.classList.remove('is-disabled');
   }
 }
 
-function sampleQuestions(phase, usedQuestions=[]) {
-  const pool = APP_DATA.pools[phase];
-  const unused = pool.filter(q => !usedQuestions.includes(q.q));
-  const source = unused.length >= QUESTIONS_PER_ATTEMPT ? unused : pool;
-  return shuffle(source).slice(0, QUESTIONS_PER_ATTEMPT).map(item => {
-    const ordered = shuffle(item.options.map((text, idx) => ({ text, idx })));
-    return {
-      q: item.q,
-      options: ordered.map(o => o.text),
-      answer: ordered.findIndex(o => o.idx === item.answer)
-    };
-  });
-}
-
-function renderVerificationBlock(phase) {
-  const progress = getProgress();
+function renderVerificationBlock(phase, progress) {
   const mount = document.getElementById("phase-lock-state");
   if (!mount) return;
-  const isVerified = !!progress.verified[phase];
+  const alreadyVerified = !!progress.verified[phase];
   mount.innerHTML = `
     <section class="card verification-card">
-      <p class="eyebrow">Entrega y verificación</p>
-      <h2>Verificación del docente</h2>
-      <p>Cuando hayas subido la práctica de esta fase a EVAGD, introduce el <strong>código de verificación</strong> facilitado por el profesorado. El campo se muestra oculto para que el código no quede visible.</p>
+      <h2>Verificación de práctica en EVAGD</h2>
+      <p>Cuando hayas subido la práctica de esta fase a EVAGD, introduce el <strong>código de verificación</strong> que te facilita el profesorado. El código se escribe en modo oculto para que no se vea en pantalla.</p>
       <form id="phase-code-form" class="inline-form">
-        <input type="password" id="phase-code-input" placeholder="Introduce el código de la fase" autocomplete="off" ${isVerified ? "disabled" : ""}>
-        <button class="button" type="submit" ${isVerified ? "disabled" : ""}>${isVerified ? "Práctica verificada" : "Validar código"}</button>
+        <input type="password" id="phase-code-input" placeholder="Introduce el código de la fase" autocomplete="off" ${alreadyVerified ? "disabled" : ""}>
+        <button class="button" type="submit" ${alreadyVerified ? "disabled" : ""}>${alreadyVerified ? "Práctica verificada" : "Validar práctica"}</button>
       </form>
-      <div id="phase-code-message" class="form-message">${isVerified ? "La práctica ya está verificada. El test está disponible." : ""}</div>
-    </section>
-  `;
+      <div id="phase-code-message" class="form-message">${alreadyVerified ? "La práctica ya está verificada. Ya puedes trabajar el test de esta fase." : ""}</div>
+    </section>`;
   const form = document.getElementById("phase-code-form");
-  if (!form || isVerified) return;
+  if (!form || alreadyVerified) return;
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const value = (document.getElementById("phase-code-input").value || "").trim();
-    const message = document.getElementById("phase-code-message");
-    if (value === PHASE_CODES[phase]()) {
+    const input = document.getElementById("phase-code-input");
+    const msg = document.getElementById("phase-code-message");
+    const value = (input.value || "").trim();
+    if (value && value === PHASE_CODES[phase]) {
       const fresh = getProgress();
       fresh.verified[phase] = true;
       saveProgress(fresh);
-      message.textContent = "Código correcto. El test ya está desbloqueado.";
-      renderVerificationBlock(phase);
+      msg.textContent = "Código correcto. El test de esta fase se ha desbloqueado.";
+      renderVerificationBlock(phase, fresh);
       renderTestBlock(phase);
-      updatePhaseCards();
-      mountDashboard();
     } else {
-      message.textContent = "Código incorrecto. Revisa el código facilitado por el profesorado.";
+      msg.textContent = "Código incorrecto. Revisa el código facilitado por el profesorado en EVAGD.";
     }
   });
 }
 
-function renderAttemptSummary(phase) {
-  const mount = document.getElementById("attempt-summary");
+function renderTestBlock(phase) {
+  const progress = getProgress();
+  const mount = document.getElementById("dynamic-test");
+  if (!mount) return;
+  const history = progress.attempts[phase] || [];
+  const attemptsUsed = history.length;
+  const passed = !!progress.passed[phase];
+
+  if (passed) {
+    mount.innerHTML = `
+      <section class="card">
+        <h2>Test de fase superado</h2>
+        <p>Ya has superado esta fase con al menos <strong>${PASS_MARK}/10</strong>. Puedes repasar el contenido o continuar con la siguiente fase.</p>
+      </section>`;
+    return;
+  }
+
+  if (attemptsUsed >= ATTEMPTS_MAX) {
+    mount.innerHTML = `
+      <section class="card">
+        <h2>Intentos agotados</h2>
+        <p>Ya se han utilizado los tres intentos disponibles. Consulta la autocorrección final y revisa tus errores antes de continuar con apoyo del profesorado.</p>
+      </section>`;
+    return;
+  }
+
+  const usedQuestions = history.flatMap(at => (at.questions || []).map(q => q.q));
+  const questions = sampleQuestions(phase, usedQuestions);
+  mount.innerHTML = `
+    <section class="card">
+      <div class="test-header-flex">
+        <div>
+          <h2>Test autocorregible de la fase</h2>
+          <p><strong>Normas:</strong> 3 intentos máximos, 10 preguntas por intento, 4 opciones por pregunta y solo se supera la fase con <strong>${PASS_MARK} aciertos o más</strong>.</p>
+          <p class="muted-text">La corrección no se muestra hasta agotar los tres intentos.</p>
+        </div>
+        <span class="attempt-badge">Intento ${attemptsUsed + 1} de ${ATTEMPTS_MAX}</span>
+      </div>
+      <form id="dynamic-test-form" class="quiz-form"></form>
+    </section>`;
+
+  const form = document.getElementById("dynamic-test-form");
+  questions.forEach((item, idx) => {
+    const block = document.createElement("fieldset");
+    block.className = "test-item";
+    block.innerHTML = `<legend>${idx+1}. ${item.q}</legend>`;
+    item.options.forEach((option, optIdx) => {
+      const wrap = document.createElement("label");
+      wrap.className = "option-row";
+      wrap.innerHTML = `<input type="radio" name="q_${idx}" value="${optIdx}" required> <span>${String.fromCharCode(97 + optIdx)}) ${option}</span>`;
+      block.appendChild(wrap);
+    });
+    form.appendChild(block);
+  });
+
+  const footer = document.createElement("div");
+  footer.className = "quiz-actions";
+  footer.innerHTML = `<button class="button" type="submit">Enviar intento</button>`;
+  form.appendChild(footer);
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const answers = [];
+    let score = 0;
+    questions.forEach((q, idx) => {
+      const selected = form.querySelector(`input[name="q_${idx}"]:checked`);
+      const value = Number(selected.value);
+      answers.push(value);
+      if (value === q.answer) score += 1;
+    });
+
+    const fresh = getProgress();
+    const phaseAttempts = fresh.attempts[phase] || [];
+    phaseAttempts.push({ score, answers, questions });
+    fresh.attempts[phase] = phaseAttempts;
+    fresh.bestScores[phase] = Math.max(...phaseAttempts.map(a => a.score));
+    if (phaseAttempts.length >= ATTEMPTS_MAX && fresh.bestScores[phase] >= PASS_MARK) {
+      fresh.passed[phase] = true;
+    }
+    saveProgress(fresh);
+
+    renderAttemptSummary(phase, document.getElementById("attempt-summary"));
+    updatePhaseCards();
+
+    if (phaseAttempts.length >= ATTEMPTS_MAX) {
+      mount.innerHTML = `
+        <section class="card">
+          <h2>Intentos completados</h2>
+          <p>Ya has realizado los tres intentos. Debajo tienes la autocorrección final y el resultado de la fase.</p>
+        </section>`;
+      const nextLink = document.getElementById("next-phase-link");
+      if (nextLink && fresh.passed[phase]) nextLink.classList.remove("is-disabled");
+    } else {
+      renderTestBlock(phase);
+    }
+  });
+}
+
+function renderAttemptSummary(phase, mount) {
   if (!mount) return;
   const progress = getProgress();
   const attempts = progress.attempts[phase] || [];
@@ -1092,227 +1158,84 @@ function renderAttemptSummary(phase) {
     <section class="card">
       <h2>Seguimiento del test</h2>
       <div class="attempt-grid">
-        ${attempts.map((attempt, idx) => `
-          <article class="attempt-card">
-            <h3>Intento ${idx + 1}</h3>
-            <p>${exhausted ? `Puntuación registrada: <strong>${attempt.score}/10</strong>` : "Intento guardado correctamente."}</p>
-            <p class="muted-text">${exhausted ? "La corrección completa aparece debajo." : "La corrección no se muestra hasta finalizar el tercer intento."}</p>
-          </article>
-        `).join("")}
-      </div>
-  `;
+        ${attempts.map((at, idx) => `<article class="attempt-card"><h3>Intento ${idx+1}</h3><p>Registrado correctamente.</p><p class="muted-text">${exhausted ? `Puntuación: <strong>${at.score}/10</strong>` : 'La corrección se mostrará al final del tercer intento.'}</p></article>`).join('')}
+      </div>`;
+
   if (exhausted) {
-    html += `
-      <div class="result-banner ${passed ? "result-pass" : "result-fail"}">
-        <strong>Resultado final:</strong> mejor puntuación ${best}/10. ${passed ? "Fase superada." : "Fase no superada. Debe revisarse con el profesorado."}
-      </div>
-    `;
-    attempts.forEach((attempt, attemptIndex) => {
-      html += `<div class="correction-block"><h3>Autocorrección del intento ${attemptIndex + 1}</h3>`;
-      attempt.questions.forEach((q, idx) => {
-        const selected = attempt.answers[idx];
-        const isOK = selected === q.answer;
-        html += `
-          <div class="correction-item ${isOK ? "ok" : "ko"}">
-            <p><strong>${idx + 1}. ${q.q}</strong></p>
-            <p>Tu respuesta: ${selected >= 0 ? q.options[selected] : "Sin responder"}</p>
-            <p>Respuesta correcta: <strong>${q.options[q.answer]}</strong></p>
-          </div>
-        `;
+    html += `<div class="result-banner ${passed ? 'result-pass' : 'result-fail'}">
+      <strong>Resultado final:</strong> mejor puntuación <strong>${best}/10</strong>.
+      ${passed ? 'Fase superada.' : 'Fase no superada. Necesita revisión con el profesorado.'}
+    </div>`;
+
+    attempts.forEach((attempt, idx) => {
+      html += `<div class="correction-block"><h3>Autocorrección del intento ${idx+1}</h3>`;
+      attempt.questions.forEach((q, qIdx) => {
+        const selected = attempt.answers[qIdx];
+        const isOk = selected === q.answer;
+        html += `<div class="correction-item ${isOk ? 'ok' : 'ko'}">
+          <p><strong>${qIdx+1}. ${q.q}</strong></p>
+          <p>Tu respuesta: ${selected >= 0 ? q.options[selected] : 'Sin responder'}</p>
+          <p>Respuesta correcta: <strong>${q.options[q.answer]}</strong></p>
+        </div>`;
       });
       html += `</div>`;
     });
   } else {
-    html += `<p class="note note-warning">Aún no se muestra la corrección. Te quedan <strong>${ATTEMPTS_MAX - attempts.length}</strong> intento(s).</p>`;
+    html += `<p class="note note-warning">Quedan <strong>${ATTEMPTS_MAX - attempts.length}</strong> intento(s). Todavía no se muestra la corrección.</p>`;
   }
+
   html += `</section>`;
   mount.innerHTML = html;
 }
 
-function renderTestBlock(phase) {
-  const mount = document.getElementById("dynamic-test");
-  if (!mount) return;
-  const progress = getProgress();
-  if (!progress.verified[phase]) {
-    mount.innerHTML = `<section class="card"><h2>Test bloqueado</h2><p>Primero debes entregar la práctica en EVAGD y validar el código del docente para activar el test.</p></section>`;
-    return;
-  }
-  if (progress.passed[phase]) {
-    mount.innerHTML = `<section class="card"><h2>Fase superada</h2><p>Ya has superado el test de esta fase con una puntuación mínima de <strong>${PASS_MARK}/10</strong>.</p></section>`;
-    return;
-  }
-  const attempts = progress.attempts[phase] || [];
-  if (attempts.length >= ATTEMPTS_MAX) {
-    mount.innerHTML = `<section class="card"><h2>Intentos agotados</h2><p>Ya se han consumido los tres intentos permitidos. Consulta la autocorrección final en el bloque inferior.</p></section>`;
-    return;
-  }
-  const usedQuestions = attempts.flatMap(at => (at.questions || []).map(q => q.q));
-  const questions = sampleQuestions(phase, usedQuestions);
-  mount.innerHTML = `
-    <section class="card">
-      <div class="test-header-flex">
-        <div>
-          <p class="eyebrow">Evaluación</p>
-          <h2>Test autocorregible de la fase</h2>
-          <p>Dispones de <strong>${ATTEMPTS_MAX} intentos</strong>. Cada intento genera <strong>10 preguntas</strong> con <strong>4 opciones</strong>. La fase solo se supera con un mínimo de <strong>${PASS_MARK} aciertos</strong>. La corrección aparece únicamente al finalizar el tercer intento.</p>
-        </div>
-        <span class="attempt-badge">Intento ${attempts.length + 1} de ${ATTEMPTS_MAX}</span>
-      </div>
-      <form id="dynamic-test-form" class="quiz-form"></form>
-    </section>
-  `;
-  const form = document.getElementById("dynamic-test-form");
-  questions.forEach((item, idx) => {
-    const field = document.createElement("fieldset");
-    field.className = "test-item";
-    field.innerHTML = `<legend>${idx + 1}. ${item.q}</legend>`;
-    item.options.forEach((option, optIndex) => {
-      const label = document.createElement("label");
-      label.className = "option-row";
-      label.innerHTML = `<input type="radio" name="q_${idx}" value="${optIndex}" required><span>${String.fromCharCode(97 + optIndex)}) ${option}</span>`;
-      field.appendChild(label);
-    });
-    form.appendChild(field);
-  });
-  const footer = document.createElement("div");
-  footer.className = "quiz-actions";
-  footer.innerHTML = '<button class="button" type="submit">Enviar intento</button>';
-  form.appendChild(footer);
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let score = 0;
-    const answers = [];
-    questions.forEach((q, idx) => {
-      const checked = form.querySelector(`input[name="q_${idx}"]:checked`);
-      const value = Number(checked.value);
-      answers.push(value);
-      if (value === q.answer) score += 1;
-    });
-    const fresh = getProgress();
-    const phaseAttempts = fresh.attempts[phase] || [];
-    phaseAttempts.push({ score, answers, questions });
-    fresh.attempts[phase] = phaseAttempts;
-    fresh.bestScores[phase] = Math.max(...phaseAttempts.map(a => a.score));
-    if (phaseAttempts.length >= ATTEMPTS_MAX && fresh.bestScores[phase] >= PASS_MARK) {
-      fresh.passed[phase] = true;
-    }
-    saveProgress(fresh);
-    updatePhaseCards();
-    mountDashboard();
-    renderTestBlock(phase);
-    renderAttemptSummary(phase);
-    mountNextStep(phase);
-  });
-}
-
-function mountNextStep(phase) {
-  const mount = document.getElementById("next-step-card");
-  if (!mount) return;
-  const progress = getProgress();
-  const order = phaseOrder();
-  const idx = order.indexOf(phase);
-  let href = "certificado.html";
-  let label = "Ir al certificado final";
-  if (idx < order.length - 1) {
-    href = `fase-${order[idx+1]}.html`;
-    label = `Ir a la fase ${order[idx+1].toUpperCase()}`;
-  }
-  const currentPassed = !!progress.passed[phase];
-  mount.innerHTML = `
-    <section class="card">
-      <h2>Siguiente paso</h2>
-      <p>${currentPassed ? "Has superado esta fase y puedes continuar." : "Cuando completes el proceso de esta fase, se desbloqueará el avance real a la siguiente."}</p>
-      <a class="button ${currentPassed ? "" : "is-disabled"}" href="${href}" ${currentPassed ? "" : 'aria-disabled="true"'}>${label}</a>
-    </section>
-  `;
-}
-
-function mountPhasePage() {
-  const phase = document.body.dataset.phase;
-  if (!phase) return;
-  const progress = getProgress();
-  if (!isPhaseAccessible(phase, progress)) {
-    const main = document.getElementById("phase-learning-content");
-    if (main) {
-      main.innerHTML = `<div class="container"><section class="card card-warning"><h2>Fase bloqueada</h2><p>Debes superar la fase anterior antes de acceder a este bloque.</p><a class="button" href="index.html">Volver al inicio</a></section></div>`;
-    }
-    const lock = document.getElementById("phase-lock-state");
-    if (lock) lock.innerHTML = "";
-    return;
-  }
-  renderVerificationBlock(phase);
-  renderTestBlock(phase);
-  renderAttemptSummary(phase);
-  mountNextStep(phase);
-}
-
 function mountCertificate() {
   if (!document.body.classList.contains("certificate-page")) return;
+  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
+  updatePhaseCards();
   const progress = getProgress();
-  const allPassed = phaseOrder().every(p => !!progress.passed[p]);
+  const allPassed = phaseOrder().every(p => progress.passed[p]);
   const gate = document.getElementById("certificate-gate");
-  const panel = document.getElementById("certificate-panel");
+  const cert = document.getElementById("certificate-panel");
   if (!allPassed) {
     gate.innerHTML = `<section class="card card-warning"><h2>Certificado bloqueado</h2><p>Debes superar las seis fases para acceder al certificado final.</p><a class="button" href="index.html">Volver al inicio</a></section>`;
-    panel.innerHTML = "";
+    cert.innerHTML = "";
     return;
   }
-  gate.innerHTML = `
+  gate.innerHTML = `<section class="card"><h2>Certificado final disponible</h2><p>Has superado las seis fases. Escribe el nombre del estudiante y genera el certificado.</p></section>`;
+  cert.innerHTML = `
     <section class="card">
-      <h2>Certificado final disponible</h2>
-      <p>El nombre guardado se usa automáticamente. También puedes editarlo antes de generar el certificado.</p>
       <form id="cert-form" class="inline-form">
-        <input type="text" id="cert-student-input" placeholder="Nombre y apellidos del estudiante" value="${progress.studentName || ""}" required>
+        <input type="text" id="student-name" placeholder="Nombre y apellidos del estudiante" required>
         <button class="button" type="submit">Generar certificado</button>
       </form>
     </section>
-  `;
-  panel.innerHTML = "";
-  document.getElementById("cert-form").addEventListener("submit", (e) => {
+    <section class="certificate-sheet" id="certificate-sheet" hidden>
+      <p class="cert-mini">Certificado de aprovechamiento</p>
+      <h1>LibreOffice Calc · Tratamiento Informático de la Información</h1>
+      <p>Se certifica que</p>
+      <h2 id="cert-student-name">Nombre del estudiante</h2>
+      <p>ha completado satisfactoriamente las seis fases del itinerario didáctico de LibreOffice Calc, incluyendo prácticas guiadas, verificación por fase y pruebas tipo test con autocorrección final.</p>
+      <p class="cert-footer">Fecha de emisión: <span id="cert-date"></span></p>
+      <div class="cert-signatures">
+        <div><span>Profesorado</span></div>
+        <div><span>Centro educativo</span></div>
+      </div>
+      <button class="button no-print" onclick="window.print()">Imprimir / Guardar en PDF</button>
+    </section>`;
+  const form = document.getElementById("cert-form");
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const name = document.getElementById("cert-student-input").value.trim();
-    const fresh = getProgress();
-    fresh.studentName = name;
-    saveProgress(fresh);
-    updateStudentNameUI();
-    const rows = phaseOrder().map(phase => `
-      <tr>
-        <td>Fase ${phase.toUpperCase()}</td>
-        <td>${APP_DATA.titles[phase]}</td>
-        <td>${fresh.bestScores[phase] || 0}/10</td>
-        <td>${fresh.verified[phase] ? "Sí" : "No"}</td>
-      </tr>
-    `).join("");
-    panel.innerHTML = `
-      <section class="certificate-sheet" id="certificate-sheet">
-        <p class="cert-mini">Certificado de aprovechamiento</p>
-        <h1>LibreOffice Calc · Tratamiento Informático de la Información</h1>
-        <p>Se certifica que</p>
-        <h2>${name}</h2>
-        <p>ha completado satisfactoriamente las seis fases del itinerario didáctico de LibreOffice Calc, con verificación del profesorado, entrega de prácticas y superación de los test correspondientes.</p>
-        <div class="table-wrap" style="margin-top:1.5rem;">
-          <table class="data-table">
-            <thead><tr><th>Fase</th><th>Bloque</th><th>Mejor puntuación</th><th>Verificada</th></tr></thead>
-            <tbody>${rows}</tbody>
-          </table>
-        </div>
-        <p class="cert-footer">Fecha de emisión: ${new Date().toLocaleDateString("es-ES")}</p>
-        <div class="cert-signatures">
-          <div><span>Profesorado</span></div>
-          <div><span>Centro educativo</span></div>
-        </div>
-        <button class="button no-print" onclick="window.print()">Imprimir / Guardar en PDF</button>
-      </section>
-    `;
+    const name = document.getElementById("student-name").value.trim();
+    if (!name) return;
+    document.getElementById("cert-student-name").textContent = name;
+    document.getElementById("cert-date").textContent = new Date().toLocaleDateString("es-ES");
+    document.getElementById("certificate-sheet").hidden = false;
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  updateYear();
-  updateStudentNameUI();
-  mountStudentProfile();
+  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
   updatePhaseCards();
-  mountDashboard();
   mountPhasePage();
   mountCertificate();
 });
