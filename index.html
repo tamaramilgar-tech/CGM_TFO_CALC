@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
-<body>
+<body class="home-page">
   <header class="hero">
     <nav class="topbar container">
       <a class="brand" href="index.html">Calc · TII</a>
-      <div class="navlinks">
+      <div class="student-name-badge">👤 <span data-student-name>Nombre del alumno/a</span></div><div class="navlinks">
         <a href="#fases">Fases</a>
         <a href="#estructura">Estructura</a>
         <a href="#uso">Uso en clase</a>
@@ -52,6 +52,48 @@
   </header>
 
   <main>
+
+    <section class="section container">
+      <div class="grid-2">
+        <article class="card student-card">
+          <p class="eyebrow">Alumno/a</p>
+          <h2>Guardar nombre y progreso</h2>
+          <p>El avance se guarda en este navegador para que el estudiante pueda salir de la página y continuar más tarde sin empezar de nuevo.</p>
+          <div class="student-form-row">
+            <input id="student-name-input" type="text" placeholder="Nombre y apellidos del estudiante" />
+            <button class="button" id="save-student-name" type="button">Guardar nombre</button>
+          </div>
+          <div class="student-actions">
+            <button class="button button-light" id="reset-progress" type="button">Reiniciar progreso</button>
+          </div>
+          <div id="student-profile-message" class="form-message"></div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Cómo funciona</p>
+          <h2>Verificación y avance por fases</h2>
+          <ol class="list-clean">
+            <li>Realiza la práctica de la fase siguiendo la guía.</li>
+            <li>Entrega la evidencia en EVAGD cuando proceda.</li>
+            <li>Introduce el código facilitado por el profesorado.</li>
+            <li>Supera el test con un mínimo de 8 aciertos sobre 10.</li>
+            <li>Continúa hasta desbloquear el certificado final.</li>
+          </ol>
+          <div id="overall-progress"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Panel de progreso</p>
+          <h2>Estado del itinerario</h2>
+          <p>La web recuerda el trabajo ya realizado en este navegador.</p>
+        </div>
+        <div id="phase-dashboard" class="dashboard-grid"></div>
+      </div>
+    </section>
+
     <section class="section container" id="estructura">
       <div class="section-heading">
         <p class="eyebrow">Cómo está pensada</p>
