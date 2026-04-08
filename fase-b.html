@@ -21,9 +21,7 @@
     </div>
   </header>
 
-  <section class="section-soft" style="padding:1.4rem 0 0;">
-    <div class="container" id="phase-lock-state"></div>
-  </section>
+  <section class="section-soft" style="padding:1.2rem 0 0;"><div class="container" id="phase-lock-state"></div></section>
 
   <main class="section" id="phase-learning-content">
     <div class="container content-grid">
@@ -96,24 +94,12 @@
           </div>
         </section>
 
-        <section class="card">
-          <h2>Tipo test final</h2>
-          <p>Marca una sola opción en cada pregunta.</p>
-          <div class="test-item"><h4>1. ¿Cómo empieza cualquier fórmula en Calc?</h4><ol class="options"><li><strong>a)</strong> Con +</li><li><strong>b)</strong> Con =</li><li><strong>c)</strong> Con #</li><li><strong>d)</strong> Con @</li></ol></div>
-<div class="test-item"><h4>2. ¿Qué función calcula la media de varias notas?</h4><ol class="options"><li><strong>a)</strong> SUMA</li><li><strong>b)</strong> MAX</li><li><strong>c)</strong> PROMEDIO</li><li><strong>d)</strong> SI</li></ol></div>
-<div class="test-item"><h4>3. ¿Qué fórmula se usó para la nota final?</h4><ol class="options"><li><strong>a)</strong> =SUMA(B2:D2)</li><li><strong>b)</strong> =PROMEDIO(B2:D2)</li><li><strong>c)</strong> =MAX(B2:D2)</li><li><strong>d)</strong> =MIN(B2:D2)</li></ol></div>
-<div class="test-item"><h4>4. ¿Qué función muestra Aprobado o Suspenso según una condición?</h4><ol class="options"><li><strong>a)</strong> CONTAR</li><li><strong>b)</strong> SI</li><li><strong>c)</strong> SUMA</li><li><strong>d)</strong> REDONDEAR</li></ol></div>
-<div class="test-item"><h4>5. ¿Qué resultado inicial tiene Ana en E2?</h4><ol class="options"><li><strong>a)</strong> 6,00</li><li><strong>b)</strong> 7,00</li><li><strong>c)</strong> 8,00</li><li><strong>d)</strong> 5,50</li></ol></div>
-<div class="test-item"><h4>6. ¿Qué función localiza la nota más alta?</h4><ol class="options"><li><strong>a)</strong> MIN</li><li><strong>b)</strong> MAX</li><li><strong>c)</strong> SI</li><li><strong>d)</strong> PROMEDIO</li></ol></div>
-<div class="test-item"><h4>7. ¿Qué función se usó para contar aprobados?</h4><ol class="options"><li><strong>a)</strong> CONTAR.SI</li><li><strong>b)</strong> SUMA.SI</li><li><strong>c)</strong> PROMEDIO</li><li><strong>d)</strong> ABS</li></ol></div>
-<div class="test-item"><h4>8. ¿Cuál es la media inicial del grupo?</h4><ol class="options"><li><strong>a)</strong> 5,00</li><li><strong>b)</strong> 6,40</li><li><strong>c)</strong> 7,25</li><li><strong>d)</strong> 8,67</li></ol></div>
-<div class="test-item"><h4>9. ¿Para qué sirve REDONDEAR?</h4><ol class="options"><li><strong>a)</strong> Para cambiar una nota por texto</li><li><strong>b)</strong> Para mostrar menos decimales según una regla</li><li><strong>c)</strong> Para ordenar una tabla</li><li><strong>d)</strong> Para filtrar alumnos</li></ol></div>
-<div class="test-item"><h4>10. Si una alumna tiene 4, 5 y 7, ¿aprueba según la condición >=5?</h4><ol class="options"><li><strong>a)</strong> No, porque hay un 4</li><li><strong>b)</strong> Sí, porque la media es 5,33</li><li><strong>c)</strong> Solo si lo dice el profesor</li><li><strong>d)</strong> Solo si se usa SUMA</li></ol></div><div class="details"><summary>Ver plantilla de corrección</summary><ol class="answer-key"><li><strong>1.</strong> b) Con =</li><li><strong>2.</strong> c) PROMEDIO</li><li><strong>3.</strong> b) =PROMEDIO(B2:D2)</li><li><strong>4.</strong> b) SI</li><li><strong>5.</strong> b) 7,00</li><li><strong>6.</strong> b) MAX</li><li><strong>7.</strong> a) CONTAR.SI</li><li><strong>8.</strong> b) 6,40</li><li><strong>9.</strong> b) Para mostrar menos decimales según una regla</li><li><strong>10.</strong> b) Sí, porque la media es 5,33</li></ol></div>
-        </section>
-
+        <section id="verification-block"></section>
+        <section id="dynamic-test"></section>
+        <section id="attempt-summary"></section>
         <nav class="phase-nav">
-          <a class="button button-light" href="fase-a.html">Ir a la fase A</a>
-          <a class="button" href="fase-c.html">Ir a la fase C</a>
+          <a class="button button-light" href="index.html">Volver al inicio</a>
+          <a class="button is-disabled" id="next-phase-link" href="#">Siguiente fase</a>
         </nav>
       </div>
     </div>

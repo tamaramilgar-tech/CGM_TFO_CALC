@@ -1,1241 +1,358 @@
 
-const APP_DATA = {
-  "titles": {
-    "a": "Tipos de datos y referencias",
-    "b": "Fórmulas y funciones",
-    "c": "Gráficos",
-    "d": "Macros",
-    "e": "Importación y exportación",
-    "f": "Hoja de cálculo como base de datos"
-  },
-  "pools": {
-    "a": [
-      {
-        "q": "¿Qué tipo de referencia no cambia al copiar una fórmula?",
-        "options": [
-          "Relativa",
-          "Absoluta",
-          "Mixta",
-          "Enlace externo"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué representa A2:D6 en Calc?",
-        "options": [
-          "Una sola celda",
-          "Un rango de celdas",
-          "Un gráfico",
-          "Una hoja"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Cuál de estos valores se interpreta normalmente como fecha?",
-        "options": [
-          "21%",
-          "07/10/2025",
-          "Bolígrafos",
-          "$G$2"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Para qué se usó la celda $G$2 en la práctica?",
-        "options": [
-          "Para guardar el nombre del producto",
-          "Para fijar el IVA",
-          "Para poner la fecha",
-          "Para crear un gráfico"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué ocurre con la referencia B2 al copiarla una fila hacia abajo?",
-        "options": [
-          "Pasa a B3",
-          "Se convierte en $B$2",
-          "Desaparece",
-          "Pasa a C2"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál es un ejemplo de referencia mixta?",
-        "options": [
-          "A1:B5",
-          "$C$4",
-          "$B2",
-          "Hoja2.A1"
-        ],
-        "answer": 2
-      },
-      {
-        "q": "Si una fórmula usa datos de otra hoja del mismo libro, estamos usando…",
-        "options": [
-          "Una referencia entre hojas",
-          "Una macro",
-          "Un filtro",
-          "Un comentario"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué dato de la práctica era texto?",
-        "options": [
-          "1,20",
-          "21%",
-          "Bolígrafos",
-          "07/10/2025"
-        ],
-        "answer": 2
-      },
-      {
-        "q": "¿Qué formato conviene aplicar a la columna de precios?",
-        "options": [
-          "Porcentaje",
-          "Moneda",
-          "Texto fijo",
-          "Fecha"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Para qué sirve una referencia absoluta en una tabla de cálculos repetidos?",
-        "options": [
-          "Para que la fórmula falle",
-          "Para fijar una celda común",
-          "Para ordenar alfabéticamente",
-          "Para ocultar filas"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Cuál de estas expresiones referencia una celda de otra hoja?",
-        "options": [
-          "=SUMA(A1:A5)",
-          "=Resumen.B2",
-          "=$B$2",
-          "=A1+B1"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué identifica a una celda en Calc?",
-        "options": [
-          "El nombre de la hoja y un color",
-          "La columna y la fila",
-          "Solo la fila",
-          "Solo la columna"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué es un libro de cálculo?",
-        "options": [
-          "Una única celda",
-          "Un conjunto de hojas",
-          "Una función avanzada",
-          "Un tipo de gráfico"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "En la práctica, el cálculo base del total sin IVA fue…",
-        "options": [
-          "Precio × cantidad",
-          "IVA × fecha",
-          "Producto ÷ cantidad",
-          "Fecha + precio"
-        ],
-        "answer": 0
-      }
-    ],
-    "b": [
-      {
-        "q": "¿Con qué símbolo debe comenzar una fórmula en Calc?",
-        "options": [
-          "+",
-          "=",
-          "@",
-          "#"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué función calcula la media aritmética?",
-        "options": [
-          "SUMA",
-          "SI",
-          "PROMEDIO",
-          "MIN"
-        ],
-        "answer": 2
-      },
-      {
-        "q": "¿Qué función devuelve el valor más alto?",
-        "options": [
-          "MAX",
-          "MIN",
-          "CONTAR",
-          "MEDIANA"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Para qué sirve la función SI?",
-        "options": [
-          "Para ordenar celdas",
-          "Para evaluar una condición",
-          "Para insertar una imagen",
-          "Para crear hojas nuevas"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué fórmula sería adecuada para promediar B2:D2?",
-        "options": [
-          "=SUMA(B2:D2)",
-          "=PROMEDIO(B2:D2)",
-          "=SI(B2:D2)",
-          "=MAX(B2:D2)"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "Si quieres mostrar “Apto” cuando una nota es igual o mayor que 5, usarías…",
-        "options": [
-          "Una tabla dinámica",
-          "Una función SI",
-          "Un filtro automático",
-          "Un gráfico de líneas"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué función usarías para conocer la nota más baja de una lista?",
-        "options": [
-          "MAX",
-          "MIN",
-          "SUMA",
-          "HOY"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Cuál es el objetivo principal de una fórmula?",
-        "options": [
-          "Dar formato visual",
-          "Calcular un resultado",
-          "Bloquear la hoja",
-          "Insertar comentarios"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "En una hoja de notas, ¿qué función usarías para sumar varias calificaciones?",
-        "options": [
-          "SUMA",
-          "PROMEDIO",
-          "SI",
-          "MAX"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué pasa si copias una fórmula con referencias relativas hacia abajo?",
-        "options": [
-          "Las referencias se ajustan",
-          "La fórmula se elimina",
-          "Se convierte en texto",
-          "No se puede copiar"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál de estas expresiones es una función válida?",
-        "options": [
-          "=PROMEDIO(B2:D2)",
-          "PROMEDIO=B2:D2",
-          "B2:D2=PROMEDIO",
-          "{PROMEDIO}"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué resultado lógico puede devolver una condición en la función SI?",
-        "options": [
-          "Verdadero o falso",
-          "Solo números negativos",
-          "Solo texto",
-          "Solo fechas"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué función elegirías para saber cuántas celdas numéricas hay?",
-        "options": [
-          "CONTAR",
-          "SI",
-          "MAX",
-          "SUMA"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué ventaja tiene usar funciones en vez de calcular a mano?",
-        "options": [
-          "Empeoran la precisión",
-          "Automatizan y reducen errores",
-          "Solo sirven para gráficos",
-          "Obligan a usar macros"
-        ],
-        "answer": 1
-      }
-    ],
-    "c": [
-      {
-        "q": "¿Qué gráfico suele ser más adecuado para comparar cantidades entre categorías?",
-        "options": [
-          "Columnas o barras",
-          "Sectores",
-          "Radar",
-          "Superficie"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué gráfico muestra mejor la evolución en el tiempo?",
-        "options": [
-          "Líneas",
-          "Sectores",
-          "Dispersión",
-          "Pirámide"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué gráfico es útil para representar porcentajes de un total?",
-        "options": [
-          "Líneas",
-          "Sectores",
-          "Burbujas",
-          "Cotizaciones"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué elemento identifica cada serie de datos en un gráfico?",
-        "options": [
-          "La leyenda",
-          "El borde de la hoja",
-          "La barra de fórmulas",
-          "El comentario"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Para qué sirve el título del gráfico?",
-        "options": [
-          "Para ocultar datos",
-          "Para describir qué muestra",
-          "Para bloquear celdas",
-          "Para sumar valores"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué se necesita antes de insertar un gráfico?",
-        "options": [
-          "Seleccionar los datos",
-          "Crear una macro",
-          "Proteger la hoja",
-          "Guardar como PDF"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "Si modificas los datos de origen, el gráfico en Calc normalmente…",
-        "options": [
-          "Se actualiza",
-          "Se borra",
-          "Se convierte en imagen",
-          "Se cierra"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué parte de un gráfico ayuda a interpretar las escalas?",
-        "options": [
-          "Los ejes",
-          "El pie de página",
-          "La contraseña",
-          "La hoja 2"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué acción mejora la legibilidad de un gráfico?",
-        "options": [
-          "Quitar todos los textos",
-          "Añadir títulos claros y etiquetas",
-          "Usar 3D siempre",
-          "Duplicar las series"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Para qué sirve cambiar el tipo de gráfico?",
-        "options": [
-          "Para adaptar la visualización al objetivo",
-          "Solo para decorar",
-          "Para bloquear los datos",
-          "Para hacer macros"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál sería un mal uso frecuente de los gráficos?",
-        "options": [
-          "Elegir un tipo poco adecuado para los datos",
-          "Revisar los valores antes de insertarlo",
-          "Poner un título descriptivo",
-          "Mostrar leyenda"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué gráfico elegirías para ventas por meses de enero a junio?",
-        "options": [
-          "Líneas",
-          "Sectores",
-          "Anillos múltiples",
-          "Mapa"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué gráfico elegirías para repartir el porcentaje de ventas por producto?",
-        "options": [
-          "Sectores",
-          "Líneas",
-          "Columnas 3D obligatoriamente",
-          "Dispersión"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál es la fuente de un gráfico en Calc?",
-        "options": [
-          "Los datos de las celdas",
-          "Un archivo de audio",
-          "Una macro grabada",
-          "El explorador web"
-        ],
-        "answer": 0
-      }
-    ],
-    "d": [
-      {
-        "q": "¿Qué es una macro en Calc?",
-        "options": [
-          "Un gráfico especial",
-          "Una secuencia de acciones automatizadas",
-          "Un filtro de texto",
-          "Una hoja protegida"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Para qué puede ser útil grabar una macro?",
-        "options": [
-          "Para repetir tareas frecuentes",
-          "Para cambiar el idioma de Calc",
-          "Para dibujar a mano alzada",
-          "Para abrir internet"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué ventaja ofrecen las macros en documentos repetitivos?",
-        "options": [
-          "Aumentan el trabajo manual",
-          "Ahorran tiempo",
-          "Impiden guardar archivos",
-          "Solo sirven para gráficos"
-        ],
-        "answer": 1
-      },
-      {
-        "q": "¿Qué acción suele hacerse antes de grabar una macro?",
-        "options": [
-          "Planificar qué pasos se van a repetir",
-          "Borrar todas las hojas",
-          "Insertar un vídeo",
-          "Desactivar el teclado"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Dónde puede guardarse una macro?",
-        "options": [
-          "En el documento o en Mi Macros",
-          "Solo en PDF",
-          "Solo en una imagen",
-          "En el correo electrónico"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué es recomendable probar después de grabar una macro?",
-        "options": [
-          "Que repite bien las acciones",
-          "Que cambia el fondo del sistema",
-          "Que crea usuarios nuevos",
-          "Que bloquea internet"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Para qué sirve asignar una macro a un botón?",
-        "options": [
-          "Para ejecutarla más fácilmente",
-          "Para ocultarla",
-          "Para imprimir automáticamente siempre",
-          "Para convertirla en gráfico"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál es un uso razonable de una macro en esta unidad?",
-        "options": [
-          "Aplicar formato repetitivo a una tabla",
-          "Crear una cuenta de correo",
-          "Editar un vídeo",
-          "Buscar archivos en toda la red"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué ocurre si la tarea cambia mucho cada vez?",
-        "options": [
-          "La macro puede ser menos útil",
-          "La macro siempre será perfecta",
-          "No hace falta pensar",
-          "La hoja no se guarda"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué conviene hacer si una macro falla?",
-        "options": [
-          "Revisar los pasos grabados y volver a probar",
-          "Eliminar el programa",
-          "No guardar nunca",
-          "Cambiar el monitor"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué relación tienen las macros con la automatización?",
-        "options": [
-          "La facilitan",
-          "La impiden",
-          "No tienen ninguna",
-          "Solo la usan los gráficos"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué buena práctica mejora el uso de macros?",
-        "options": [
-          "Poner nombres claros a las macros",
-          "Nombrarlas todas igual",
-          "No documentarlas nunca",
-          "Usarlas sin pruebas"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué elemento puede ejecutar una macro además del menú?",
-        "options": [
-          "Un botón o atajo",
-          "Solo una impresora",
-          "Una imagen de fondo",
-          "El pie de página"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué objetivo tenía la práctica de macros?",
-        "options": [
-          "Generar documentos o plantillas con menos trabajo manual",
-          "Aprender a dibujar gráficos 3D",
-          "Navegar por internet",
-          "Crear bases de datos externas"
-        ],
-        "answer": 0
-      }
-    ],
-    "e": [
-      {
-        "q": "¿Cuál es el formato nativo de LibreOffice Calc?",
-        "options": [
-          "ODS",
-          "CSV",
-          "DOCX",
-          "PPTX"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué caracteriza a un archivo CSV?",
-        "options": [
-          "Guarda datos separados por delimitadores",
-          "Incluye macros complejas siempre",
-          "Solo almacena imágenes",
-          "No puede abrirse en Calc"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué acción permite trabajar con archivos de Excel en Calc?",
-        "options": [
-          "Importarlos o abrirlos",
-          "Convertirlos en vídeo",
-          "Escanearlos",
-          "Bloquearlos"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Por qué conviene revisar un archivo importado?",
-        "options": [
-          "Porque el formato puede cambiar",
-          "Porque siempre se borra solo",
-          "Porque no tiene datos",
-          "Porque Calc no admite tablas"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué formato suele usarse para intercambio simple de datos tabulares?",
-        "options": [
-          "CSV",
-          "PNG",
-          "MP3",
-          "HTML"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué puede alterarse al pasar de una aplicación a otra?",
-        "options": [
-          "Formatos, fórmulas o caracteres",
-          "La existencia del teclado",
-          "La pantalla física",
-          "La conexión eléctrica"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué significa exportar una hoja?",
-        "options": [
-          "Guardar o generar el archivo en otro formato",
-          "Cerrar el programa",
-          "Eliminar los datos",
-          "Copiar solo una celda"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué formato es adecuado si quieres seguir editando la hoja en Calc con plena compatibilidad?",
-        "options": [
-          "ODS",
-          "JPG",
-          "PDF exclusivamente",
-          "TXT plano siempre"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué ventaja tiene XLSX frente a ODS en algunos contextos?",
-        "options": [
-          "Mayor compatibilidad con Microsoft Excel",
-          "Mejor para audios",
-          "Sirve para macros en cualquier caso",
-          "Nunca pierde formato"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué conviene comprobar al importar un CSV?",
-        "options": [
-          "Separador, codificación y tipo de datos",
-          "Solo el color del fondo",
-          "La webcam",
-          "La batería del ratón"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "Si necesitas enviar una hoja para solo lectura e impresión, un formato habitual sería…",
-        "options": [
-          "PDF",
-          "ODS",
-          "CSV",
-          "XML de macros"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué problema puede aparecer al exportar?",
-        "options": [
-          "Cambios en fórmulas o formato",
-          "Que el archivo se convierta en vídeo",
-          "Que desaparezca el sistema operativo",
-          "Que la hoja hable"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué acción ayuda a evitar errores de intercambio?",
-        "options": [
-          "Hacer pruebas de apertura en el formato destino",
-          "No revisar nunca el archivo",
-          "Usar nombres aleatorios",
-          "Borrar encabezados"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué finalidad tuvo la práctica de esta fase?",
-        "options": [
-          "Importar y exportar hojas entre aplicaciones y formatos",
-          "Crear únicamente macros",
-          "Ordenar bases de datos",
-          "Diseñar certificados"
-        ],
-        "answer": 0
-      }
-    ],
-    "f": [
-      {
-        "q": "En una lista tipo base de datos, cada fila suele representar…",
-        "options": [
-          "Un registro",
-          "Un gráfico",
-          "Una macro",
-          "Una hoja nueva"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "En una lista tipo base de datos, cada columna suele representar…",
-        "options": [
-          "Un campo",
-          "Una impresora",
-          "Un comentario",
-          "Un filtro"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Para qué sirve ordenar datos?",
-        "options": [
-          "Para reorganizar registros según un criterio",
-          "Para borrarlos",
-          "Para convertirlos en imágenes",
-          "Para bloquear el teclado"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué permite un filtro?",
-        "options": [
-          "Mostrar solo los datos que cumplen una condición",
-          "Eliminar todos los datos",
-          "Crear macros automáticamente",
-          "Cambiar el sistema operativo"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué utilidad tiene proteger una hoja?",
-        "options": [
-          "Evitar cambios no deseados",
-          "Hacer gráficos 3D",
-          "Insertar vídeos",
-          "Importar CSV"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué ventaja tiene usar la hoja de cálculo como base de datos sencilla?",
-        "options": [
-          "Gestionar listas con rapidez",
-          "Crear videojuegos",
-          "Enviar correos masivos sin control",
-          "Reparar hardware"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué es recomendable en la fila 1 de una lista?",
-        "options": [
-          "Poner encabezados de campos",
-          "Dejarla vacía siempre",
-          "Escribir macros",
-          "Insertar imágenes grandes"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Para qué sirve un formulario en este contexto?",
-        "options": [
-          "Facilitar la introducción y consulta de registros",
-          "Cambiar el color del sistema",
-          "Activar internet",
-          "Ocultar todas las hojas"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Cuál es una buena práctica con listas largas?",
-        "options": [
-          "Usar filtros y ordenaciones",
-          "Escribir todo en una sola celda",
-          "Eliminar encabezados",
-          "No guardar cambios"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué puede hacerse antes de compartir una hoja con datos sensibles?",
-        "options": [
-          "Proteger celdas u hoja",
-          "Convertirla en audio",
-          "Quitar todas las columnas",
-          "Duplicar fórmulas aleatoriamente"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué operación ayuda a localizar rápidamente clientes de una ciudad concreta?",
-        "options": [
-          "Filtrar por la columna ciudad",
-          "Poner zoom al 200%",
-          "Cambiar la fuente",
-          "Insertar un gráfico circular"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué operación permite ver primero los importes mayores?",
-        "options": [
-          "Ordenar de mayor a menor",
-          "Proteger hoja",
-          "Exportar a CSV",
-          "Grabar una macro"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué objetivo tenía esta fase?",
-        "options": [
-          "Usar Calc como base de datos sencilla con listas, filtros, ordenación y protección",
-          "Diseñar solo gráficos",
-          "Importar archivos de audio",
-          "Crear presentaciones"
-        ],
-        "answer": 0
-      },
-      {
-        "q": "¿Qué riesgo reduce la protección de la hoja?",
-        "options": [
-          "Modificaciones accidentales",
-          "La falta de internet",
-          "La falta de ratón",
-          "El tamaño del monitor"
-        ],
-        "answer": 0
-      }
-    ]
-  }
-};
-
-const PHASE_CODES = {
-  a: "CAMBIA-CODIGO-A",
-  b: "CAMBIA-CODIGO-B",
-  c: "CAMBIA-CODIGO-C",
-  d: "CAMBIA-CODIGO-D",
-  e: "CAMBIA-CODIGO-E",
-  f: "CAMBIA-CODIGO-F"
-};
-
-const PASS_MARK = 8;
-const ATTEMPTS_MAX = 3;
+const APP_DATA = {"titles": {"a": "Tipos de datos y referencias", "b": "Fórmulas y funciones", "c": "Gráficos", "d": "Macros", "e": "Importación y exportación", "f": "Calc como base de datos"}, "pools": {"a": [{"q": "¿Qué tipo de referencia no cambia al copiar una fórmula?", "options": ["Relativa", "Absoluta", "Mixta", "Rango"], "answer": 1}, {"q": "¿Qué representa A2:D6?", "options": ["Una hoja", "Un rango", "Una macro", "Una fecha"], "answer": 1}, {"q": "¿Cuál de estos datos es un porcentaje?", "options": ["07/10/2025", "Bolígrafos", "21%", "30,00"], "answer": 2}, {"q": "¿Cuál es un ejemplo de referencia absoluta?", "options": ["A1", "$G$2", "B$2", "$C4"], "answer": 1}, {"q": "¿Qué ocurre con B2 al copiarla una fila hacia abajo?", "options": ["Pasa a B3", "No cambia nunca", "Pasa a C2", "Se borra"], "answer": 0}, {"q": "¿Para qué sirve una referencia absoluta en esta práctica?", "options": ["Para fijar el IVA", "Para crear el gráfico", "Para insertar fechas", "Para proteger la hoja"], "answer": 0}, {"q": "¿Qué dato de la práctica era texto?", "options": ["1,20", "21%", "Bolígrafos", "07/10/2025"], "answer": 2}, {"q": "¿Qué formato conviene aplicar a la columna de precios?", "options": ["Fecha", "Moneda", "Texto", "Porcentaje"], "answer": 1}, {"q": "¿Qué es un libro de cálculo?", "options": ["Una única hoja", "Un conjunto de hojas", "Un gráfico", "Una macro"], "answer": 1}, {"q": "¿Qué cálculo base se usa para obtener el importe de una línea?", "options": ["Precio × cantidad", "IVA × cantidad", "Fecha + precio", "Producto ÷ cantidad"], "answer": 0}, {"q": "¿Cuál de estas es una referencia mixta?", "options": ["$B2", "$B$2", "A1:B5", "Hoja2.A1"], "answer": 0}, {"q": "Una celda se identifica por…", "options": ["Nombre y color", "Columna y fila", "Solo fila", "Solo columna"], "answer": 1}, {"q": "¿Qué permite una referencia entre hojas?", "options": ["Calcular con datos de otra hoja", "Cambiar el idioma", "Crear filtros", "Guardar en PDF"], "answer": 0}, {"q": "¿Qué significa que una referencia sea relativa?", "options": ["Se adapta al copiarla", "Se bloquea", "No usa fórmulas", "Solo vale en gráficos"], "answer": 0}], "b": [{"q": "¿Con qué símbolo empieza una fórmula en Calc?", "options": ["#", "=", "+", "@"], "answer": 1}, {"q": "¿Qué función calcula la media?", "options": ["SUMA", "MAX", "PROMEDIO", "SI"], "answer": 2}, {"q": "¿Qué función devuelve el valor más alto?", "options": ["MIN", "MAX", "SI", "CONTAR"], "answer": 1}, {"q": "¿Para qué sirve la función SI?", "options": ["Para evaluar una condición", "Para dibujar un gráfico", "Para ordenar filas", "Para importar CSV"], "answer": 0}, {"q": "¿Qué fórmula promedia B2:D2?", "options": ["=SUMA(B2:D2)", "=PROMEDIO(B2:D2)", "=MAX(B2:D2)", "=SI(B2:D2)"], "answer": 1}, {"q": "¿Qué función usarías para la nota más baja?", "options": ["MAX", "MIN", "SUMA", "PROMEDIO"], "answer": 1}, {"q": "¿Qué ventaja tiene usar funciones?", "options": ["Reducen errores y automatizan cálculos", "Solo sirven para decorar", "Bloquean la hoja", "Impiden copiar fórmulas"], "answer": 0}, {"q": "¿Qué función sumarías varias calificaciones?", "options": ["SI", "SUMA", "MAX", "MIN"], "answer": 1}, {"q": "¿Qué pasa al copiar una fórmula con referencias relativas?", "options": ["Se ajustan", "Se borran", "No cambia nada", "Se convierte en texto"], "answer": 0}, {"q": "¿Cuál es una función válida?", "options": ["=PROMEDIO(B2:D2)", "PROMEDIO=B2:D2", "{PROMEDIO}", "B2:D2=PROMEDIO"], "answer": 0}, {"q": "¿Qué puede devolver una condición lógica?", "options": ["Verdadero o falso", "Solo texto", "Solo fechas", "Solo decimales"], "answer": 0}, {"q": "¿Qué función usarías para contar celdas numéricas?", "options": ["CONTAR", "MAX", "SI", "SUMA"], "answer": 0}, {"q": "En una hoja de notas, ¿qué función ayuda a decidir Apto/No apto?", "options": ["SI", "MAX", "MIN", "HOY"], "answer": 0}, {"q": "¿Qué símbolo separa normalmente argumentos según configuración regional española?", "options": [";", "/", "#", "@"], "answer": 0}], "c": [{"q": "¿Qué gráfico es adecuado para comparar cantidades?", "options": ["Columnas/Barras", "Sectores", "Radar", "Superficie"], "answer": 0}, {"q": "¿Qué gráfico muestra mejor una evolución temporal?", "options": ["Líneas", "Sectores", "Anillos", "Mapa"], "answer": 0}, {"q": "¿Qué gráfico es útil para porcentajes de un total?", "options": ["Sectores", "Líneas", "Barras", "Dispersión"], "answer": 0}, {"q": "¿Qué elemento identifica cada serie de datos?", "options": ["Leyenda", "Comentarios", "Pie de página", "Encabezado"], "answer": 0}, {"q": "¿Para qué sirve el título del gráfico?", "options": ["Describe qué muestra", "Bloquea la hoja", "Cambia fórmulas", "Protege datos"], "answer": 0}, {"q": "Antes de insertar un gráfico debes…", "options": ["Seleccionar los datos", "Grabar una macro", "Proteger la hoja", "Exportar a PDF"], "answer": 0}, {"q": "Si cambian los datos de origen, el gráfico…", "options": ["Se actualiza", "Se borra", "Se convierte en imagen", "Se desactiva"], "answer": 0}, {"q": "¿Qué parte ayuda a interpretar escalas?", "options": ["Ejes", "Macros", "Comentarios", "Filtros"], "answer": 0}, {"q": "¿Qué mejora la legibilidad?", "options": ["Títulos claros y etiquetas", "Quitar todos los textos", "Usar 3D siempre", "Duplicar series"], "answer": 0}, {"q": "¿Para qué sirve cambiar el tipo de gráfico?", "options": ["Adaptar la visualización al objetivo", "Solo decorar", "Bloquear datos", "Crear más hojas"], "answer": 0}, {"q": "¿Cuál sería un uso poco adecuado?", "options": ["Elegir un tipo que no encaja con los datos", "Poner leyenda", "Revisar valores", "Añadir título"], "answer": 0}, {"q": "¿Cuál es la fuente de un gráfico en Calc?", "options": ["Las celdas seleccionadas", "Un vídeo", "Una macro", "Internet"], "answer": 0}, {"q": "¿Qué gráfico elegirías para ventas por meses?", "options": ["Líneas", "Sectores", "Anillos", "Radar"], "answer": 0}, {"q": "¿Qué gráfico elegirías para reparto porcentual por producto?", "options": ["Sectores", "Líneas", "Dispersión", "Áreas"], "answer": 0}], "d": [{"q": "¿Qué es una macro en Calc?", "options": ["Una secuencia automatizada", "Un gráfico", "Un filtro", "Una celda protegida"], "answer": 0}, {"q": "¿Para qué sirve grabar una macro?", "options": ["Repetir tareas frecuentes", "Cambiar idioma", "Crear audios", "Abrir Internet"], "answer": 0}, {"q": "¿Qué ventaja aportan las macros?", "options": ["Ahorran tiempo", "Borran datos", "Impidan guardar", "Solo decoran"], "answer": 0}, {"q": "Antes de grabar una macro conviene…", "options": ["Planificar los pasos", "Borrar las hojas", "Insertar vídeo", "Cerrar Calc"], "answer": 0}, {"q": "¿Dónde puede guardarse una macro?", "options": ["En el documento o en Mis macros", "Solo en PDF", "Solo en imagen", "Solo en el navegador"], "answer": 0}, {"q": "Después de grabarla es recomendable…", "options": ["Probarla", "Publicarla en web", "Cambiar el monitor", "Borrar el archivo"], "answer": 0}, {"q": "¿Para qué sirve asignarla a un botón?", "options": ["Ejecutarla fácilmente", "Ocultarla", "Cambiar fuente", "Crear filtros"], "answer": 0}, {"q": "¿Qué uso razonable tiene aquí?", "options": ["Aplicar formato repetitivo", "Enviar correos", "Editar vídeo", "Buscar wifi"], "answer": 0}, {"q": "Si la tarea cambia mucho cada vez…", "options": ["La macro puede ser menos útil", "Será perfecta siempre", "No hace falta pensar", "No se guarda"], "answer": 0}, {"q": "Si una macro falla conviene…", "options": ["Revisar los pasos", "Eliminar el programa", "No guardar nunca", "Cambiar impresora"], "answer": 0}, {"q": "Las macros facilitan…", "options": ["La automatización", "La pérdida de datos", "Los errores tipográficos", "Los gráficos 3D"], "answer": 0}, {"q": "Buena práctica con macros:", "options": ["Poner nombres claros", "Nombrarlas todas igual", "No documentarlas", "No probarlas"], "answer": 0}, {"q": "Además del menú, una macro puede ejecutarse con…", "options": ["Un botón o atajo", "La barra espaciadora siempre", "Una imagen", "El pie de página"], "answer": 0}, {"q": "Objetivo de esta fase:", "options": ["Generar documentos y plantillas con menos trabajo manual", "Aprender a dibujar", "Navegar por internet", "Hacer bases externas"], "answer": 0}], "e": [{"q": "¿Cuál es el formato nativo de Calc?", "options": ["ODS", "CSV", "DOCX", "PPTX"], "answer": 0}, {"q": "¿Qué caracteriza a un CSV?", "options": ["Datos separados por delimitadores", "Macros complejas", "Solo imágenes", "No abre en Calc"], "answer": 0}, {"q": "¿Qué permite trabajar con archivos de Excel?", "options": ["Importarlos o abrirlos", "Escanearlos", "Bloquearlos", "Convertirlos en vídeo"], "answer": 0}, {"q": "¿Por qué conviene revisar un archivo importado?", "options": ["Porque pueden cambiar formatos o fórmulas", "Porque siempre se borra", "Porque no tiene datos", "Porque Calc no admite tablas"], "answer": 0}, {"q": "¿Qué formato se usa mucho para intercambio simple de datos?", "options": ["CSV", "PNG", "MP3", "JPG"], "answer": 0}, {"q": "¿Qué puede alterarse al pasar entre aplicaciones?", "options": ["Formatos, fórmulas o caracteres", "La pantalla física", "El teclado", "La conexión eléctrica"], "answer": 0}, {"q": "Exportar una hoja significa…", "options": ["Guardar en otro formato", "Cerrar el programa", "Eliminar datos", "Copiar una celda"], "answer": 0}, {"q": "Si quieres seguir editando con plena compatibilidad en Calc, usa…", "options": ["ODS", "PDF", "PNG", "CSV"], "answer": 0}, {"q": "Ventaja de XLSX en algunos contextos:", "options": ["Compatibilidad con Excel", "Mejor para audios", "Nunca pierde formato", "Solo sirve para macros"], "answer": 0}, {"q": "Al importar un CSV conviene comprobar…", "options": ["Separador, codificación y tipo de datos", "Solo el color", "La webcam", "La batería del ratón"], "answer": 0}, {"q": "Para solo lectura e impresión, formato habitual:", "options": ["PDF", "ODS", "CSV", "TXT"], "answer": 0}, {"q": "Problema posible al exportar:", "options": ["Cambios en fórmulas o formato", "El archivo habla", "Se vuelve vídeo", "Desaparece el sistema"], "answer": 0}, {"q": "¿Qué ayuda a evitar errores de intercambio?", "options": ["Probar apertura en el formato destino", "No revisar nunca", "Borrar encabezados", "Usar nombres aleatorios"], "answer": 0}, {"q": "Objetivo de la fase:", "options": ["Importar y exportar hojas entre formatos", "Crear solo macros", "Diseñar certificados", "Ordenar bases de datos"], "answer": 0}], "f": [{"q": "En una lista, cada fila suele representar…", "options": ["Un registro", "Un gráfico", "Una macro", "Una hoja"], "answer": 0}, {"q": "Cada columna suele representar…", "options": ["Un campo", "Una contraseña", "Una impresora", "Una macro"], "answer": 0}, {"q": "¿Para qué sirve ordenar datos?", "options": ["Reorganizarlos según un criterio", "Borrarlos", "Convertirlos en imagen", "Cambiar idioma"], "answer": 0}, {"q": "¿Qué permite un filtro?", "options": ["Mostrar solo registros que cumplen condición", "Eliminar todo", "Crear macros", "Bloquear el teclado"], "answer": 0}, {"q": "¿Qué utilidad tiene proteger una hoja?", "options": ["Evitar cambios no deseados", "Hacer gráficos 3D", "Insertar vídeos", "Importar CSV"], "answer": 0}, {"q": "¿Qué ventaja tiene usar Calc como base de datos sencilla?", "options": ["Gestionar listas con rapidez", "Crear videojuegos", "Reparar hardware", "Diseñar carteles"], "answer": 0}, {"q": "En la fila 1 conviene…", "options": ["Poner encabezados", "Dejarla vacía", "Escribir macros", "Insertar imágenes grandes"], "answer": 0}, {"q": "¿Para qué sirve un formulario?", "options": ["Facilitar la entrada y consulta de registros", "Activar internet", "Cambiar el color del sistema", "Ocultar hojas"], "answer": 0}, {"q": "Buena práctica con listas largas:", "options": ["Usar filtros y ordenaciones", "Escribir todo en una celda", "Eliminar encabezados", "No guardar"], "answer": 0}, {"q": "Antes de compartir datos sensibles conviene…", "options": ["Proteger hoja o celdas", "Convertirla en audio", "Quitar columnas", "Duplicar fórmulas"], "answer": 0}, {"q": "Para localizar clientes de una ciudad concreta usarías…", "options": ["Filtrar por la columna ciudad", "Zoom 200%", "Cambiar la fuente", "Un gráfico circular"], "answer": 0}, {"q": "Para ver primero importes mayores usarías…", "options": ["Ordenar de mayor a menor", "Proteger hoja", "Exportar a CSV", "Grabar macro"], "answer": 0}, {"q": "Objetivo de la fase:", "options": ["Usar Calc como base de datos sencilla", "Diseñar gráficos", "Importar audios", "Crear presentaciones"], "answer": 0}, {"q": "La protección de hoja reduce…", "options": ["Modificaciones accidentales", "La falta de internet", "El tamaño del monitor", "La batería"], "answer": 0}]}};
+const STORAGE_KEY = "calc_tii_progress_v4";
+const PASS_SCORE = 8;
+const MAX_ATTEMPTS = 3;
 const QUESTIONS_PER_ATTEMPT = 10;
-const STORAGE_KEY = "calc_tii_progress_v2";
 
-function getProgress() {
+function getTodayCode() {
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2, "0");
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const yy = String(d.getFullYear()).slice(-2);
+  return dd + mm + yy;
+}
+
+function phaseOrder() { return ["a","b","c","d","e","f"]; }
+
+function defaultState() {
+  return {
+    studentName: "",
+    verified: {},
+    passed: {},
+    attempts: {},
+    bestScores: {}
+  };
+}
+
+function getState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    const parsed = raw ? JSON.parse(raw) : {};
-    parsed.verified = parsed.verified || {};
-    parsed.passed = parsed.passed || {};
-    parsed.attempts = parsed.attempts || {};
-    parsed.bestScores = parsed.bestScores || {};
-    return parsed;
+    const state = raw ? JSON.parse(raw) : defaultState();
+    return Object.assign(defaultState(), state);
   } catch (e) {
-    return { verified: {}, passed: {}, attempts: {}, bestScores: {} };
+    return defaultState();
   }
 }
 
-function saveProgress(progress) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+function saveState(state) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-function shuffle(array) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    [a[i], a[j]] = [a[j], a[i]];
   }
-  return arr;
+  return a;
 }
 
-function sampleQuestions(phase, usedQuestions=[]) {
+function isPhaseAccessible(phase, state) {
+  const order = phaseOrder();
+  const idx = order.indexOf(phase);
+  if (idx === 0) return true;
+  return state.passed[order[idx - 1]] === true;
+}
+
+function allPassed(state) {
+  return phaseOrder().every(p => state.passed[p]);
+}
+
+function mountCommon() {
+  document.querySelectorAll("[data-current-year]").forEach(el => el.textContent = new Date().getFullYear());
+}
+
+function updateHome() {
+  if (document.body.dataset.page !== "home") return;
+  const state = getState();
+  const input = document.getElementById("student-name-input");
+  const form = document.getElementById("student-form");
+  const msg = document.getElementById("student-status");
+  const resetBtn = document.getElementById("reset-progress-btn");
+  if (input) input.value = state.studentName || "";
+  if (msg) msg.textContent = state.studentName ? `Nombre guardado: ${state.studentName}` : "Aún no has guardado tu nombre.";
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const s = getState();
+      const name = (input.value || "").trim();
+      if (!name) {
+        msg.textContent = "Escribe tu nombre y apellidos antes de guardar.";
+        return;
+      }
+      s.studentName = name;
+      saveState(s);
+      msg.textContent = `Nombre guardado: ${name}`;
+      refreshPhaseCards();
+    });
+  }
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      localStorage.removeItem(STORAGE_KEY);
+      location.reload();
+    });
+  }
+  refreshPhaseCards();
+}
+
+function refreshPhaseCards() {
+  const state = getState();
+  document.querySelectorAll("[data-phase-card]").forEach(card => {
+    const phase = card.dataset.phaseCard;
+    const accessible = isPhaseAccessible(phase, state);
+    const passed = !!state.passed[phase];
+    const status = card.querySelector("[data-phase-status]");
+    if (status) {
+      status.textContent = passed ? "Superada" : (accessible ? "Disponible" : "Bloqueada");
+      status.className = "phase-status " + (passed ? "phase-status-pass" : (accessible ? "phase-status-open" : "phase-status-lock"));
+    }
+    if (!accessible) {
+      card.classList.add("is-locked");
+      card.onclick = (e) => e.preventDefault();
+    }
+  });
+  document.querySelectorAll("[data-certificate-link]").forEach(link => {
+    if (!allPassed(state)) {
+      link.classList.add("is-disabled");
+      link.onclick = (e) => e.preventDefault();
+    }
+  });
+}
+
+function getQuestionSet(phase) {
   const pool = APP_DATA.pools[phase];
-  const unused = pool.filter(q => !usedQuestions.includes(q.q));
-  const source = unused.length >= QUESTIONS_PER_ATTEMPT ? unused : pool;
-  return shuffle(source).slice(0, QUESTIONS_PER_ATTEMPT).map((item) => {
-    const order = shuffle(item.options.map((opt, idx) => ({ text: opt, originalIndex: idx })));
+  return shuffle(pool).slice(0, QUESTIONS_PER_ATTEMPT).map(item => {
+    const opts = shuffle(item.options.map((t, i) => ({ text: t, original: i })));
     return {
       q: item.q,
-      options: order.map(o => o.text),
-      answer: order.findIndex(o => o.originalIndex === item.answer)
+      options: opts.map(o => o.text),
+      answer: opts.findIndex(o => o.original === item.answer)
     };
   });
 }
 
-function phaseOrder() {
-  return ["a","b","c","d","e","f"];
-}
-
-function isPhaseAccessible(phase, progress) {
-  const order = phaseOrder();
-  const index = order.indexOf(phase);
-  if (index <= 0) return true;
-  return order.slice(0, index).every(p => progress.passed[p]);
-}
-
-function updatePhaseCards() {
-  const progress = getProgress();
-  document.querySelectorAll("[data-phase-card]").forEach(card => {
-    const phase = card.dataset.phaseCard;
-    const accessible = isPhaseAccessible(phase, progress);
-    const passed = !!progress.passed[phase];
-    const badge = card.querySelector("[data-phase-status]");
-    if (badge) {
-      badge.textContent = passed ? "Superada" : (accessible ? "Disponible" : "Bloqueada");
-      badge.className = "phase-status " + (passed ? "phase-status-pass" : (accessible ? "phase-status-open" : "phase-status-lock"));
-    }
-    if (!accessible) {
-      card.classList.add("is-locked");
-      card.setAttribute("aria-disabled","true");
-      card.addEventListener("click", (e) => e.preventDefault(), { once: true });
-    }
-  });
-  document.querySelectorAll("[data-certificate-link]").forEach(link => {
-    const allPassed = phaseOrder().every(p => progress.passed[p]);
-    if (!allPassed) {
-      link.classList.add("is-disabled");
-      link.setAttribute("aria-disabled", "true");
-      link.addEventListener("click", (e) => e.preventDefault(), { once: true });
-    } else {
-      link.classList.remove("is-disabled");
-      link.removeAttribute("aria-disabled");
-    }
-  });
-}
-
-function mountPhasePage() {
-  const page = document.body.dataset.phase;
-  if (!page) return;
-  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
-
-  const progress = getProgress();
-  const accessible = isPhaseAccessible(page, progress);
-  const title = APP_DATA.titles[page];
+function mountPhase() {
+  const phase = document.body.dataset.phase;
+  if (!phase) return;
+  const state = getState();
+  const title = APP_DATA.titles[phase];
   const lockBox = document.getElementById("phase-lock-state");
-  const content = document.getElementById("phase-learning-content");
-  const testMount = document.getElementById("dynamic-test");
-  const summaryMount = document.getElementById("attempt-summary");
+  const verification = document.getElementById("verification-block");
+  const test = document.getElementById("dynamic-test");
+  const summary = document.getElementById("attempt-summary");
   const nextLink = document.getElementById("next-phase-link");
 
-  if (!accessible) {
-    content.innerHTML = `
-      <section class="card card-warning">
-        <h2>Fase bloqueada</h2>
-        <p>Para acceder a <strong>${title}</strong> primero debes superar la fase anterior. Vuelve al inicio y continúa el itinerario en orden.</p>
-        <a class="button" href="index.html">Volver al inicio</a>
-      </section>`;
-    if (lockBox) lockBox.remove();
+  if (!isPhaseAccessible(phase, state)) {
+    if (lockBox) lockBox.innerHTML = `<div class="card card-warning"><h2>Fase bloqueada</h2><p>Antes de acceder a <strong>${title}</strong> debes superar la fase anterior.</p><a class="button" href="index.html">Volver al inicio</a></div>`;
+    if (verification) verification.innerHTML = "";
+    if (test) test.innerHTML = "";
+    if (summary) summary.innerHTML = "";
     return;
   }
 
-  renderVerificationBlock(page, progress);
-
-  if (progress.verified[page]) {
-    renderTestBlock(page);
-  } else if (testMount) {
-    testMount.innerHTML = `
-      <div class="note note-warning">
-        <strong>Test aún bloqueado.</strong> Cuando entregues la práctica en EVAGD, introduce aquí el código facilitado por el profesorado para activar el test de esta fase.
-      </div>`;
+  if (lockBox) {
+    lockBox.innerHTML = `<div class="card"><h2>Progreso de la fase</h2><p><strong>Alumno:</strong> ${state.studentName || "Sin nombre guardado en la portada"}</p><p><strong>Estado:</strong> ${state.passed[phase] ? "Superada" : "Pendiente"}</p></div>`;
   }
 
-  if (summaryMount) renderAttemptSummary(page, summaryMount);
+  renderVerification(phase);
+  renderTestArea(phase);
+  renderSummary(phase);
 
   if (nextLink) {
-    const order = phaseOrder();
-    const idx = order.indexOf(page);
-    if (idx === order.length - 1) {
-      nextLink.href = "certificado.html";
-      nextLink.textContent = "Ir al certificado final";
-    } else {
-      nextLink.href = `fase-${order[idx+1]}.html`;
+    const np = {"a": "b", "b": "c", "c": "d", "d": "e", "e": "f", "f": null};
+    const next = np[phase];
+    if (state.passed[phase]) {
+      nextLink.classList.remove("is-disabled");
+      nextLink.href = next ? `fase-${next}.html` : "certificado.html";
+      nextLink.textContent = next ? `Ir a la fase ${next.toUpperCase()}` : "Ir al certificado final";
     }
-    if (progress.passed[page]) nextLink.classList.remove('is-disabled');
   }
 }
 
-function renderVerificationBlock(phase, progress) {
-  const mount = document.getElementById("phase-lock-state");
+function renderVerification(phase) {
+  const state = getState();
+  const mount = document.getElementById("verification-block");
   if (!mount) return;
-  const alreadyVerified = !!progress.verified[phase];
-  mount.innerHTML = `
-    <section class="card verification-card">
-      <h2>Verificación de práctica en EVAGD</h2>
-      <p>Cuando hayas subido la práctica de esta fase a EVAGD, introduce el <strong>código de verificación</strong> que te facilita el profesorado. El código se escribe en modo oculto para que no se vea en pantalla.</p>
-      <form id="phase-code-form" class="inline-form">
-        <input type="password" id="phase-code-input" placeholder="Introduce el código de la fase" autocomplete="off" ${alreadyVerified ? "disabled" : ""}>
-        <button class="button" type="submit" ${alreadyVerified ? "disabled" : ""}>${alreadyVerified ? "Práctica verificada" : "Validar práctica"}</button>
-      </form>
-      <div id="phase-code-message" class="form-message">${alreadyVerified ? "La práctica ya está verificada. Ya puedes trabajar el test de esta fase." : ""}</div>
-    </section>`;
-  const form = document.getElementById("phase-code-form");
-  if (!form || alreadyVerified) return;
-  form.addEventListener("submit", (e) => {
+  if (state.verified[phase]) {
+    mount.innerHTML = `<section class="card"><h2>Práctica verificada</h2><p>La práctica de esta fase ya está validada. El test está disponible.</p></section>`;
+    return;
+  }
+  mount.innerHTML = `<section class="card verification-card">
+    <h2>Validación tras la entrega en EVAGD</h2>
+    <p>Cuando hayas subido la práctica de esta fase a EVAGD, introduce el código de verificación facilitado por el profesorado.</p>
+    <form id="code-form" class="inline-form">
+      <input type="password" id="code-input" inputmode="numeric" maxlength="6" placeholder="Código de 6 dígitos" autocomplete="off" />
+      <button class="button" type="submit">Validar práctica</button>
+    </form>
+    <p class="form-message" id="code-message"></p>
+  </section>`;
+  document.getElementById("code-form").addEventListener("submit", (e) => {
     e.preventDefault();
-    const input = document.getElementById("phase-code-input");
-    const msg = document.getElementById("phase-code-message");
-    const value = (input.value || "").trim();
-    if (value && value === PHASE_CODES[phase]) {
-      const fresh = getProgress();
-      fresh.verified[phase] = true;
-      saveProgress(fresh);
-      msg.textContent = "Código correcto. El test de esta fase se ha desbloqueado.";
-      renderVerificationBlock(phase, fresh);
-      renderTestBlock(phase);
+    const value = (document.getElementById("code-input").value || "").trim();
+    const msg = document.getElementById("code-message");
+    if (value === getTodayCode()) {
+      const s = getState();
+      s.verified[phase] = true;
+      saveState(s);
+      msg.textContent = "Código correcto. El test ya está desbloqueado.";
+      renderVerification(phase);
+      renderTestArea(phase);
     } else {
-      msg.textContent = "Código incorrecto. Revisa el código facilitado por el profesorado en EVAGD.";
+      msg.textContent = "Código incorrecto. Revisa la fecha o consulta al profesorado.";
     }
   });
 }
 
-function renderTestBlock(phase) {
-  const progress = getProgress();
+function renderTestArea(phase) {
+  const state = getState();
   const mount = document.getElementById("dynamic-test");
   if (!mount) return;
-  const history = progress.attempts[phase] || [];
-  const attemptsUsed = history.length;
-  const passed = !!progress.passed[phase];
 
-  if (passed) {
-    mount.innerHTML = `
-      <section class="card">
-        <h2>Test de fase superado</h2>
-        <p>Ya has superado esta fase con al menos <strong>${PASS_MARK}/10</strong>. Puedes repasar el contenido o continuar con la siguiente fase.</p>
-      </section>`;
+  if (!state.verified[phase]) {
+    mount.innerHTML = `<section class="card"><h2>Test bloqueado</h2><p>El test se activará cuando la práctica haya sido validada con el código diario.</p></section>`;
     return;
   }
 
-  if (attemptsUsed >= ATTEMPTS_MAX) {
-    mount.innerHTML = `
-      <section class="card">
-        <h2>Intentos agotados</h2>
-        <p>Ya se han utilizado los tres intentos disponibles. Consulta la autocorrección final y revisa tus errores antes de continuar con apoyo del profesorado.</p>
-      </section>`;
+  if (state.passed[phase]) {
+    const score = state.bestScores[phase] || 0;
+    mount.innerHTML = `<section class="card"><h2>Fase superada</h2><p>Ya has superado esta fase con <strong>${score}/10</strong>. Puedes continuar.</p></section>`;
     return;
   }
 
-  const usedQuestions = history.flatMap(at => (at.questions || []).map(q => q.q));
-  const questions = sampleQuestions(phase, usedQuestions);
-  mount.innerHTML = `
-    <section class="card">
-      <div class="test-header-flex">
-        <div>
-          <h2>Test autocorregible de la fase</h2>
-          <p><strong>Normas:</strong> 3 intentos máximos, 10 preguntas por intento, 4 opciones por pregunta y solo se supera la fase con <strong>${PASS_MARK} aciertos o más</strong>.</p>
-          <p class="muted-text">La corrección no se muestra hasta agotar los tres intentos.</p>
-        </div>
-        <span class="attempt-badge">Intento ${attemptsUsed + 1} de ${ATTEMPTS_MAX}</span>
+  const attempts = state.attempts[phase] || [];
+  if (attempts.length >= MAX_ATTEMPTS) {
+    mount.innerHTML = `<section class="card card-warning"><h2>Intentos agotados</h2><p>Has utilizado los tres intentos disponibles. Revisa la corrección final y consulta al profesorado.</p></section>`;
+    return;
+  }
+
+  const questions = getQuestionSet(phase);
+  mount.innerHTML = `<section class="card">
+    <div class="test-header-flex">
+      <div>
+        <h2>Test de la fase</h2>
+        <p>10 preguntas, 4 opciones por pregunta. Necesitas al menos <strong>8 aciertos</strong> para superar la fase.</p>
       </div>
-      <form id="dynamic-test-form" class="quiz-form"></form>
-    </section>`;
-
-  const form = document.getElementById("dynamic-test-form");
-  questions.forEach((item, idx) => {
-    const block = document.createElement("fieldset");
-    block.className = "test-item";
-    block.innerHTML = `<legend>${idx+1}. ${item.q}</legend>`;
-    item.options.forEach((option, optIdx) => {
-      const wrap = document.createElement("label");
-      wrap.className = "option-row";
-      wrap.innerHTML = `<input type="radio" name="q_${idx}" value="${optIdx}" required> <span>${String.fromCharCode(97 + optIdx)}) ${option}</span>`;
-      block.appendChild(wrap);
+      <span class="attempt-badge">Intento ${attempts.length + 1} de ${MAX_ATTEMPTS}</span>
+    </div>
+    <form id="quiz-form" class="quiz-form"></form>
+  </section>`;
+  const form = document.getElementById("quiz-form");
+  questions.forEach((q, i) => {
+    const field = document.createElement("fieldset");
+    field.className = "test-item";
+    field.innerHTML = `<legend>${i+1}. ${q.q}</legend>`;
+    q.options.forEach((opt, j) => {
+      const row = document.createElement("label");
+      row.className = "option-row";
+      row.innerHTML = `<input required type="radio" name="q${i}" value="${j}"> <span>${String.fromCharCode(97+j)}) ${opt}</span>`;
+      field.appendChild(row);
     });
-    form.appendChild(block);
+    form.appendChild(field);
   });
-
-  const footer = document.createElement("div");
-  footer.className = "quiz-actions";
-  footer.innerHTML = `<button class="button" type="submit">Enviar intento</button>`;
-  form.appendChild(footer);
+  const actions = document.createElement("div");
+  actions.className = "quiz-actions";
+  actions.innerHTML = `<button class="button" type="submit">Enviar intento</button>`;
+  form.appendChild(actions);
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const answers = [];
     let score = 0;
-    questions.forEach((q, idx) => {
-      const selected = form.querySelector(`input[name="q_${idx}"]:checked`);
-      const value = Number(selected.value);
+    const answers = [];
+    questions.forEach((q, i) => {
+      const checked = form.querySelector(`input[name="q${i}"]:checked`);
+      const value = Number(checked.value);
       answers.push(value);
-      if (value === q.answer) score += 1;
+      if (value === q.answer) score++;
     });
-
-    const fresh = getProgress();
-    const phaseAttempts = fresh.attempts[phase] || [];
-    phaseAttempts.push({ score, answers, questions });
-    fresh.attempts[phase] = phaseAttempts;
-    fresh.bestScores[phase] = Math.max(...phaseAttempts.map(a => a.score));
-    if (phaseAttempts.length >= ATTEMPTS_MAX && fresh.bestScores[phase] >= PASS_MARK) {
-      fresh.passed[phase] = true;
+    const percent = Math.round((score / QUESTIONS_PER_ATTEMPT) * 100);
+    const s = getState();
+    s.attempts[phase] = s.attempts[phase] || [];
+    s.attempts[phase].push({ score, percent, answers, questions });
+    s.bestScores[phase] = Math.max(score, s.bestScores[phase] || 0);
+    if (score >= PASS_SCORE) {
+      s.passed[phase] = true;
     }
-    saveProgress(fresh);
-
-    renderAttemptSummary(phase, document.getElementById("attempt-summary"));
-    updatePhaseCards();
-
-    if (phaseAttempts.length >= ATTEMPTS_MAX) {
-      mount.innerHTML = `
-        <section class="card">
-          <h2>Intentos completados</h2>
-          <p>Ya has realizado los tres intentos. Debajo tienes la autocorrección final y el resultado de la fase.</p>
-        </section>`;
-      const nextLink = document.getElementById("next-phase-link");
-      if (nextLink && fresh.passed[phase]) nextLink.classList.remove("is-disabled");
-    } else {
-      renderTestBlock(phase);
-    }
+    saveState(s);
+    renderSummary(phase);
+    renderTestArea(phase);
+    refreshPhaseCards();
   });
 }
 
-function renderAttemptSummary(phase, mount) {
+function renderSummary(phase) {
+  const state = getState();
+  const mount = document.getElementById("attempt-summary");
   if (!mount) return;
-  const progress = getProgress();
-  const attempts = progress.attempts[phase] || [];
+  const attempts = state.attempts[phase] || [];
   if (!attempts.length) {
     mount.innerHTML = "";
     return;
   }
-  const exhausted = attempts.length >= ATTEMPTS_MAX;
-  const best = progress.bestScores[phase] || 0;
-  const passed = !!progress.passed[phase];
-  let html = `
-    <section class="card">
-      <h2>Seguimiento del test</h2>
-      <div class="attempt-grid">
-        ${attempts.map((at, idx) => `<article class="attempt-card"><h3>Intento ${idx+1}</h3><p>Registrado correctamente.</p><p class="muted-text">${exhausted ? `Puntuación: <strong>${at.score}/10</strong>` : 'La corrección se mostrará al final del tercer intento.'}</p></article>`).join('')}
-      </div>`;
-
-  if (exhausted) {
-    html += `<div class="result-banner ${passed ? 'result-pass' : 'result-fail'}">
-      <strong>Resultado final:</strong> mejor puntuación <strong>${best}/10</strong>.
-      ${passed ? 'Fase superada.' : 'Fase no superada. Necesita revisión con el profesorado.'}
-    </div>`;
-
-    attempts.forEach((attempt, idx) => {
-      html += `<div class="correction-block"><h3>Autocorrección del intento ${idx+1}</h3>`;
-      attempt.questions.forEach((q, qIdx) => {
-        const selected = attempt.answers[qIdx];
-        const isOk = selected === q.answer;
-        html += `<div class="correction-item ${isOk ? 'ok' : 'ko'}">
-          <p><strong>${qIdx+1}. ${q.q}</strong></p>
-          <p>Tu respuesta: ${selected >= 0 ? q.options[selected] : 'Sin responder'}</p>
-          <p>Respuesta correcta: <strong>${q.options[q.answer]}</strong></p>
-        </div>`;
+  const last = attempts[attempts.length - 1];
+  const passed = !!state.passed[phase];
+  let html = `<section class="card"><h2>Resultado del test</h2>
+    <p><strong>Último intento:</strong> ${last.score}/10 · <strong>${last.percent}%</strong> de acierto.</p>`;
+  if (passed) {
+    html += `<div class="result-banner result-pass">Has alcanzado el 80% o más. Ya puedes avanzar a la siguiente fase.</div>`;
+  } else {
+    const left = MAX_ATTEMPTS - attempts.length;
+    html += `<div class="result-banner result-fail">Todavía no has alcanzado el 80%. Puedes repetir el test. Te quedan <strong>${left}</strong> intento(s).</div>`;
+    if (left === 0) {
+      html += `<div class="correction-block"><h3>Autocorrección final</h3>`;
+      last.questions.forEach((q, i) => {
+        const chosen = last.answers[i];
+        const ok = chosen === q.answer;
+        html += `<div class="correction-item ${ok ? "ok" : "ko"}"><p><strong>${i+1}. ${q.q}</strong></p><p>Tu respuesta: ${typeof chosen === "number" ? q.options[chosen] : "Sin responder"}</p><p>Respuesta correcta: <strong>${q.options[q.answer]}</strong></p></div>`;
       });
       html += `</div>`;
-    });
-  } else {
-    html += `<p class="note note-warning">Quedan <strong>${ATTEMPTS_MAX - attempts.length}</strong> intento(s). Todavía no se muestra la corrección.</p>`;
+    }
   }
-
-  html += `</section>`;
+  html += `<div class="attempt-grid">` + attempts.map((at, i) => `<article class="attempt-card"><h3>Intento ${i+1}</h3><p>${at.score}/10</p><p>${at.percent}%</p></article>`).join("") + `</div></section>`;
   mount.innerHTML = html;
+
+  const nextLink = document.getElementById("next-phase-link");
+  const order = phaseOrder();
+  const idx = order.indexOf(phase);
+  const next = order[idx+1];
+  if (nextLink && passed) {
+    nextLink.classList.remove("is-disabled");
+    nextLink.href = next ? `fase-${next}.html` : "certificado.html";
+    nextLink.textContent = next ? `Ir a la fase ${next.toUpperCase()}` : "Ir al certificado final";
+  }
 }
 
 function mountCertificate() {
   if (!document.body.classList.contains("certificate-page")) return;
-  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
-  updatePhaseCards();
-  const progress = getProgress();
-  const allPassed = phaseOrder().every(p => progress.passed[p]);
+  const state = getState();
   const gate = document.getElementById("certificate-gate");
-  const cert = document.getElementById("certificate-panel");
-  if (!allPassed) {
-    gate.innerHTML = `<section class="card card-warning"><h2>Certificado bloqueado</h2><p>Debes superar las seis fases para acceder al certificado final.</p><a class="button" href="index.html">Volver al inicio</a></section>`;
-    cert.innerHTML = "";
+  const panel = document.getElementById("certificate-panel");
+  if (!allPassed(state)) {
+    gate.innerHTML = `<section class="card card-warning"><h2>Certificado bloqueado</h2><p>Debes superar las seis fases para acceder al certificado.</p><a class="button" href="index.html">Volver al inicio</a></section>`;
+    panel.innerHTML = "";
     return;
   }
-  gate.innerHTML = `<section class="card"><h2>Certificado final disponible</h2><p>Has superado las seis fases. Escribe el nombre del estudiante y genera el certificado.</p></section>`;
-  cert.innerHTML = `
-    <section class="card">
-      <form id="cert-form" class="inline-form">
-        <input type="text" id="student-name" placeholder="Nombre y apellidos del estudiante" required>
-        <button class="button" type="submit">Generar certificado</button>
-      </form>
-    </section>
-    <section class="certificate-sheet" id="certificate-sheet" hidden>
-      <p class="cert-mini">Certificado de aprovechamiento</p>
-      <h1>LibreOffice Calc · Tratamiento Informático de la Información</h1>
-      <p>Se certifica que</p>
-      <h2 id="cert-student-name">Nombre del estudiante</h2>
-      <p>ha completado satisfactoriamente las seis fases del itinerario didáctico de LibreOffice Calc, incluyendo prácticas guiadas, verificación por fase y pruebas tipo test con autocorrección final.</p>
-      <p class="cert-footer">Fecha de emisión: <span id="cert-date"></span></p>
-      <div class="cert-signatures">
-        <div><span>Profesorado</span></div>
-        <div><span>Centro educativo</span></div>
-      </div>
-      <button class="button no-print" onclick="window.print()">Imprimir / Guardar en PDF</button>
-    </section>`;
-  const form = document.getElementById("cert-form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("student-name").value.trim();
-    if (!name) return;
-    document.getElementById("cert-student-name").textContent = name;
-    document.getElementById("cert-date").textContent = new Date().toLocaleDateString("es-ES");
-    document.getElementById("certificate-sheet").hidden = false;
-  });
+  const today = new Date().toLocaleDateString("es-ES");
+  gate.innerHTML = `<section class="card"><h2>Certificado disponible</h2><p>Se ha detectado el itinerario completo superado.</p></section>`;
+  panel.innerHTML = `<section class="certificate-sheet">
+    <p class="cert-mini">Certificado de aprovechamiento</p>
+    <h1>LibreOffice Calc · Tratamiento Informático de la Información</h1>
+    <p>Se certifica que</p>
+    <h2>${state.studentName || "Alumno/a"}</h2>
+    <p>ha completado satisfactoriamente las seis fases del itinerario didáctico de LibreOffice Calc.</p>
+    <div class="attempt-grid">
+      ${phaseOrder().map(p => `<article class="attempt-card"><h3>Fase ${p.toUpperCase()}</h3><p>${APP_DATA.titles[p]}</p><p><strong>${(state.bestScores[p] || 0)}/10</strong></p></article>`).join("")}
+    </div>
+    <p class="cert-footer">Fecha de emisión: ${today}</p>
+    <div class="cert-signatures"><div><span>Profesorado</span></div><div><span>Centro educativo</span></div></div>
+    <button class="button no-print" onclick="window.print()">Imprimir / Guardar en PDF</button>
+  </section>`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('[data-current-year]').forEach(span => span.textContent = new Date().getFullYear());
-  updatePhaseCards();
-  mountPhasePage();
+  mountCommon();
+  updateHome();
+  refreshPhaseCards();
+  mountPhase();
   mountCertificate();
 });
