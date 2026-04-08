@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASE A | Tipos de datos y referencias | Calc</title>
+  <meta name="description" content="Fase A del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-phase="a">
+  <header class="page-header">
+    <div class="container">
+      <a class="breadcrumb" href="index.html">← Inicio</a>
+      <p class="eyebrow">FASE A</p>
+      <h1>Tipos de datos y referencias</h1>
+      <p class="lead">Uso de texto, número, moneda, fecha y referencias relativas, absolutas, mixtas, entre hojas y por rangos.</p>
+    </div>
+  </header>
+
+  <section class="section-soft" style="padding:1.2rem 0 0;"><div class="container" id="phase-lock-state"></div></section>
+
+  <main class="section" id="phase-learning-content">
+    <div class="container content-grid">
+      <aside class="card sticky-card">
+        <h3>Situación real</h3>
+        <p>Eres auxiliar administrativo en una papelería y debes preparar una hoja de ventas semanal para que la responsable pueda revisar importes, IVA y un resumen general sin calcular nada a mano.</p>
+        <h4>Material necesario</h4>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo nuevo en formato ODS</span><span class="pill">Saber guardar un libro y cambiar el nombre de una hoja</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
+      </aside>
+
+      <div>
+        <section class="card">
+          <h2>Conceptos básicos que debes conocer</h2>
+          <ul class="list-clean"><li>Tipos de datos: texto, número, fecha, moneda, porcentaje y fórmula.</li><li>Una celda se identifica por columna y fila, por ejemplo A1 o D7.</li><li>Un rango agrupa varias celdas contiguas, por ejemplo A2:E6.</li><li>Referencia relativa: cambia al copiar la fórmula, por ejemplo B2*C2.</li><li>Referencia absoluta: mantiene fija la celda, por ejemplo $G$2.</li><li>Referencia mixta: fija solo fila o columna, por ejemplo $B2 o B$2.</li><li>Se pueden usar fórmulas con datos de otra hoja del mismo libro, por ejemplo =SUMA(Ventas.E2:E6).</li></ul>
+        </section>
+
+        <section class="card">
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Contenido</th></tr></thead><tbody><tr><td>A1</td><td>Producto</td></tr>
+<tr><td>B1</td><td>Precio unitario</td></tr>
+<tr><td>C1</td><td>Cantidad</td></tr>
+<tr><td>D1</td><td>Fecha</td></tr>
+<tr><td>A2</td><td>Bolígrafos</td></tr>
+<tr><td>B2</td><td>1,20</td></tr>
+<tr><td>C2</td><td>25</td></tr>
+<tr><td>D2</td><td>07/10/2025</td></tr>
+<tr><td>A3</td><td>Cuadernos</td></tr>
+<tr><td>B3</td><td>2,50</td></tr>
+<tr><td>C3</td><td>18</td></tr>
+<tr><td>D3</td><td>07/10/2025</td></tr>
+<tr><td>A4</td><td>Carpetas</td></tr>
+<tr><td>B4</td><td>3,10</td></tr>
+<tr><td>C4</td><td>12</td></tr>
+<tr><td>D4</td><td>08/10/2025</td></tr>
+<tr><td>A5</td><td>Archivadores</td></tr>
+<tr><td>B5</td><td>4,90</td></tr>
+<tr><td>C5</td><td>9</td></tr>
+<tr><td>D5</td><td>08/10/2025</td></tr>
+<tr><td>A6</td><td>Folios A4</td></tr>
+<tr><td>B6</td><td>5,75</td></tr>
+<tr><td>C6</td><td>14</td></tr>
+<tr><td>D6</td><td>09/10/2025</td></tr>
+<tr><td>G1</td><td>IVA</td></tr>
+<tr><td>G2</td><td>21%</td></tr></tbody></table></div>
+        </section>
+
+        <section class="card">
+          <h2>Práctica guiada paso a paso</h2>
+          <div class="step-list"><article class="step"><h4>Paso 1. Crear el libro y preparar la hoja</h4><p>Abre Calc, guarda el archivo como <strong>fase-a-datos-referencias.ods</strong> y cambia el nombre de la hoja 1 a <strong>Ventas</strong>. Ajusta el ancho de las columnas A a G para que se vea todo el contenido.</p></article><article class="step"><h4>Paso 2. Introducir los encabezados</h4><p>Escribe en las celdas A1, B1, C1, D1, E1 y F1 estos títulos: <strong>Producto</strong>, <strong>Precio unitario</strong>, <strong>Cantidad</strong>, <strong>Fecha</strong>, <strong>Total sin IVA</strong> y <strong>Total con IVA</strong>. En G1 escribe <strong>IVA</strong> y en G2 introduce <strong>21%</strong>.</p></article><article class="step"><h4>Paso 3. Escribir los datos</h4><p>Introduce los productos y valores de A2:D6 exactamente como aparecen en la tabla de datos. Aplica formato <strong>Moneda</strong> a B2:B6 y formato <strong>Fecha</strong> a D2:D6.</p></article><article class="step"><h4>Paso 4. Calcular el total sin IVA con referencia relativa</h4><p>En E2 escribe <code>=B2*C2</code>. Pulsa Intro y comprueba que aparece <strong>30,00</strong>. Copia la fórmula hasta E6. Los resultados esperados son: E3 = <strong>45,00</strong>, E4 = <strong>37,20</strong>, E5 = <strong>44,10</strong> y E6 = <strong>80,50</strong>.</p></article><article class="step"><h4>Paso 5. Calcular el total con IVA con referencia absoluta</h4><p>En F2 escribe <code>=E2*(1+$G$2)</code>. Pulsa Intro y debería aparecer <strong>36,30</strong>. Copia la fórmula hasta F6. Los resultados esperados son: F3 = <strong>54,45</strong>, F4 = <strong>45,01</strong>, F5 = <strong>53,36</strong> y F6 = <strong>97,41</strong>. Observa que <code>$G$2</code> no cambia al copiar.</p></article><article class="step"><h4>Paso 6. Practicar una referencia mixta</h4><p>En I1, J1 y K1 escribe <strong>1</strong>, <strong>2</strong> y <strong>3</strong>. En H2:H6 copia de nuevo los nombres de los productos. En I2 escribe <code=$B2*I$1</code>. Copia la fórmula hasta K6. Así comprobarás que queda fija la fila 1 y que la columna B se mantiene al arrastrar horizontalmente.</p></article><article class="step"><h4>Paso 7. Crear un resumen en otra hoja</h4><p>Añade una nueva hoja y llámala <strong>Resumen</strong>. En A1 escribe <strong>Importe total con IVA</strong>. En B1 escribe <code>=SUMA(Ventas.F2:F6)</code>. El resultado esperado es <strong>286,53</strong>. En A2 escribe <strong>Producto más caro</strong> y en B2 escribe manualmente <strong>Folios A4</strong> tras revisar la columna B.</p></article><article class="step"><h4>Paso 8. Comprobar que las referencias funcionan</h4><p>Vuelve a la hoja Ventas y cambia el precio de los bolígrafos en B2 de 1,20 a 1,50. Comprueba que E2 pasa a <strong>37,50</strong>, F2 a <strong>45,38</strong> y que el valor del resumen también cambia automáticamente.</p></article><article class="step"><h4>Paso 9. Guardar y documentar</h4><p>Guarda el archivo. En la hoja Resumen, en A4, escribe una frase breve indicando qué fórmula usó referencia relativa y cuál referencia absoluta.</p></article><article class="step"><h4>Paso 10. Revisión final</h4><p>Comprueba que has usado al menos un dato de tipo texto, número, fecha, porcentaje y fórmula. Si todo está correcto, la práctica está terminada.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Resultado esperado inicial</th></tr></thead><tbody><tr><td>E2</td><td>30,00</td></tr>
+<tr><td>E3</td><td>45,00</td></tr>
+<tr><td>E4</td><td>37,20</td></tr>
+<tr><td>E5</td><td>44,10</td></tr>
+<tr><td>E6</td><td>80,50</td></tr>
+<tr><td>F2</td><td>36,30</td></tr>
+<tr><td>F3</td><td>54,45</td></tr>
+<tr><td>F4</td><td>45,01</td></tr>
+<tr><td>F5</td><td>53,36</td></tr>
+<tr><td>F6</td><td>97,41</td></tr>
+<tr><td>Resumen.B1</td><td>286,53</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
+          </div>
+        </section>
+
+        <section id="verification-block"></section>
+        <section id="dynamic-test"></section>
+        <section id="attempt-summary"></section>
+        <nav class="phase-nav">
+          <a class="button button-light" href="index.html">Volver al inicio</a>
+          <a class="button is-disabled" id="next-phase-link" href="#">Siguiente fase</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>FASE A · Tipos de datos y referencias · <span data-current-year></span></p>
+      <a href="index.html">Portada</a>
+    </div>
+  <p class="version-tag">Versión v-correcta-2026-04-08</p>
+  </footer>
+</body>
+</html>

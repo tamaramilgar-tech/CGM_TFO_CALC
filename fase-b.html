@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FASE B | Fórmulas y funciones | Calc</title>
+  <meta name="description" content="Fase B del módulo Tratamiento Informático de la Información con LibreOffice Calc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-phase="b">
+  <header class="page-header">
+    <div class="container">
+      <a class="breadcrumb" href="index.html">← Inicio</a>
+      <p class="eyebrow">FASE B</p>
+      <h1>Fórmulas y funciones</h1>
+      <p class="lead">Aplicación de operaciones y funciones habituales de Calc en un boletín de calificaciones.</p>
+    </div>
+  </header>
+
+  <section class="section-soft" style="padding:1.2rem 0 0;"><div class="container" id="phase-lock-state"></div></section>
+
+  <main class="section" id="phase-learning-content">
+    <div class="container content-grid">
+      <aside class="card sticky-card">
+        <h3>Situación real</h3>
+        <p>Trabajas en la secretaría de un centro y debes preparar una hoja que calcule automáticamente la nota final de varios alumnos y muestre si han aprobado o no.</p>
+        <h4>Material necesario</h4>
+        <div class="pill-row"><span class="pill">LibreOffice Calc</span><span class="pill">Archivo nuevo o una nueva hoja</span><span class="pill">Conocer la diferencia entre fórmula y función</span></div>
+        <div class="note note-success" style="margin-top:1rem;">
+          <strong>Objetivo de la práctica:</strong> completar una tarea funcional y comprobar cada resultado sin depender del profesor en cada paso.
+        </div>
+      </aside>
+
+      <div>
+        <section class="card">
+          <h2>Conceptos básicos que debes conocer</h2>
+          <ul class="list-clean"><li>Una fórmula comienza siempre por el signo igual.</li><li>Las funciones son fórmulas predefinidas que simplifican cálculos frecuentes.</li><li>SUMA, PROMEDIO, MAX y MIN permiten hacer estadísticas básicas.</li><li>SI permite mostrar un resultado u otro según se cumpla una condición.</li><li>Las funciones se pueden copiar a otras filas si las referencias están bien planteadas.</li></ul>
+        </section>
+
+        <section class="card">
+          <h2>Datos de partida</h2>
+          <p>Introduce exactamente esta información antes de empezar los cálculos o las acciones de la práctica.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Contenido</th></tr></thead><tbody><tr><td>A1</td><td>Alumno</td></tr>
+<tr><td>B1</td><td>Práctica 1</td></tr>
+<tr><td>C1</td><td>Práctica 2</td></tr>
+<tr><td>D1</td><td>Examen</td></tr>
+<tr><td>E1</td><td>Nota final</td></tr>
+<tr><td>F1</td><td>Resultado</td></tr>
+<tr><td>A2</td><td>Ana</td></tr>
+<tr><td>B2</td><td>7</td></tr>
+<tr><td>C2</td><td>8</td></tr>
+<tr><td>D2</td><td>6</td></tr>
+<tr><td>A3</td><td>Bruno</td></tr>
+<tr><td>B3</td><td>5</td></tr>
+<tr><td>C3</td><td>6</td></tr>
+<tr><td>D3</td><td>4</td></tr>
+<tr><td>A4</td><td>Carla</td></tr>
+<tr><td>B4</td><td>9</td></tr>
+<tr><td>C4</td><td>8</td></tr>
+<tr><td>D4</td><td>9</td></tr>
+<tr><td>A5</td><td>Diego</td></tr>
+<tr><td>B5</td><td>6</td></tr>
+<tr><td>C5</td><td>7</td></tr>
+<tr><td>D5</td><td>5</td></tr>
+<tr><td>A6</td><td>Elena</td></tr>
+<tr><td>B6</td><td>4</td></tr>
+<tr><td>C6</td><td>5</td></tr>
+<tr><td>D6</td><td>7</td></tr></tbody></table></div>
+        </section>
+
+        <section class="card">
+          <h2>Práctica guiada paso a paso</h2>
+          <div class="step-list"><article class="step"><h4>Paso 1. Preparar la hoja</h4><p>Crea una hoja llamada <strong>Notas</strong> y escribe los encabezados de A1:F1 como aparecen en la tabla. Después introduce los nombres y calificaciones de A2:D6.</p></article><article class="step"><h4>Paso 2. Calcular la nota final</h4><p>En E2 escribe <code>=PROMEDIO(B2:D2)</code>. El resultado esperado es <strong>7,00</strong>. Copia la fórmula hasta E6. Debes obtener: E3 = <strong>5,00</strong>, E4 = <strong>8,67</strong>, E5 = <strong>6,00</strong> y E6 = <strong>5,33</strong>.</p></article><article class="step"><h4>Paso 3. Determinar aprobado o suspenso</h4><p>En F2 escribe <code>=SI(E2>=5;"Aprobado";"Suspenso")</code>. Copia la fórmula hasta F6. El resultado esperado es: Ana aprobado, Bruno aprobado, Carla aprobado, Diego aprobado y Elena aprobado. Después cambia D3 de 4 a 3 y comprueba si Bruno sigue aprobando o no.</p></article><article class="step"><h4>Paso 4. Hallar la nota más alta</h4><p>En H1 escribe <strong>Nota más alta</strong> y en H2 introduce <code>=MAX(E2:E6)</code>. El resultado esperado es <strong>8,67</strong>.</p></article><article class="step"><h4>Paso 5. Hallar la nota más baja</h4><p>En I1 escribe <strong>Nota más baja</strong> y en I2 introduce <code>=MIN(E2:E6)</code>. El resultado esperado es <strong>5,00</strong> antes del cambio de Bruno y <strong>5,33</strong> si has cambiado su examen a 3.</p></article><article class="step"><h4>Paso 6. Contar cuántos aprobados hay</h4><p>En J1 escribe <strong>Aprobados</strong> y en J2 usa <code>=CONTAR.SI(F2:F6;"Aprobado")</code>. El resultado inicial esperado es <strong>5</strong>.</p></article><article class="step"><h4>Paso 7. Calcular la media del grupo</h4><p>En K1 escribe <strong>Media del grupo</strong> y en K2 usa <code>=PROMEDIO(E2:E6)</code>. El resultado esperado inicial es <strong>6,40</strong>.</p></article><article class="step"><h4>Paso 8. Formato y redondeo</h4><p>Selecciona E2:E6 y aplica dos decimales. Después en L1 escribe <strong>Nota redondeada</strong> y en L2 usa <code>=REDONDEAR(E2;0)</code>. Copia hasta L6 para ver cómo cambia la presentación de la nota.</p></article><article class="step"><h4>Paso 9. Interpretar la hoja</h4><p>Responde por escrito en N1:N3: quién obtiene la mejor media, cuál es la media general y qué función te ha servido para decidir si un alumno aprueba.</p></article><article class="step"><h4>Paso 10. Guardar</h4><p>Guarda el archivo como <strong>fase-b-formulas-funciones.ods</strong>.</p></article></div>
+        </section>
+
+        <section class="card">
+          <h2>Resultados esperados</h2>
+          <p>Usa esta tabla para comprobar si tus fórmulas, gráficos o acciones están funcionando correctamente.</p>
+          <div class="table-wrap"><table class="data-table"><thead><tr><th>Celda</th><th>Resultado esperado inicial</th></tr></thead><tbody><tr><td>E2</td><td>7,00</td></tr>
+<tr><td>E3</td><td>5,00</td></tr>
+<tr><td>E4</td><td>8,67</td></tr>
+<tr><td>E5</td><td>6,00</td></tr>
+<tr><td>E6</td><td>5,33</td></tr>
+<tr><td>H2</td><td>8,67</td></tr>
+<tr><td>I2</td><td>5,00</td></tr>
+<tr><td>J2</td><td>5</td></tr>
+<tr><td>K2</td><td>6,40</td></tr></tbody></table></div>
+          <div class="note note-warning" style="margin-top:1rem;">
+            <strong>Atención:</strong> puede haber pequeñas diferencias de redondeo o de separadores decimales según la configuración regional del equipo. Lo importante es que el procedimiento sea correcto.
+          </div>
+        </section>
+
+        <section id="verification-block"></section>
+        <section id="dynamic-test"></section>
+        <section id="attempt-summary"></section>
+        <nav class="phase-nav">
+          <a class="button button-light" href="index.html">Volver al inicio</a>
+          <a class="button is-disabled" id="next-phase-link" href="#">Siguiente fase</a>
+        </nav>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>FASE B · Fórmulas y funciones · <span data-current-year></span></p>
+      <a href="index.html">Portada</a>
+    </div>
+  <p class="version-tag">Versión v-correcta-2026-04-08</p>
+  </footer>
+</body>
+</html>
